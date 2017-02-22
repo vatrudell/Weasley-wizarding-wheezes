@@ -18,10 +18,10 @@ describe "user adds an item to the cart" do
     expect(current_path).to eq('/cart')
     within("table") do
       expect(page).to have_content("Love Potion")
-      # expect(page).to have_content("$10.99")
+      expect(page).to have_content("$10.99")
     end
-    # within(".total") do
-    #   expect(page).to have_content("Total: $10.99")
-    # end
+    within(".total") do
+      expect(page).to have_content("Total: $10.99")
+    end
   end
 end
