@@ -29,7 +29,7 @@ describe "user adds an item to the cart" do
 end
 
 describe "user views cart" do
-  it "user sees multiple items in cart" do
+  xit "user sees multiple items in cart" do
     category = Category.create!(name: "wands")
     item_one = category.items.create!(title:"Fox wand", description: "Does magical things", price: 15.22)
     cart = Cart.new(session[:cart]n         )
