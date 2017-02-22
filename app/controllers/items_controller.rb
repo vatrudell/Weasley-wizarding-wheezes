@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-    # byebug
     @items = Item.all
+    @cart = Cart.new(session[:cart])
   end
-
 end

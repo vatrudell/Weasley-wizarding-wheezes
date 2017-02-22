@@ -11,6 +11,7 @@
           <p>
             <%= item.price %>
           </p>
+          <%= button_to "Add to Cart", carts_path(item_id: item.id) %>
       </div>
     </div>
   </div>
