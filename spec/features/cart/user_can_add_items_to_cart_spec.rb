@@ -20,6 +20,7 @@ describe "user adds an item to the cart" do
     within("table") do
       expect(page).to have_content("Love Potion")
       expect(page).to have_content("$10.99")
+
     end
     within(".total") do
       expect(page).to have_content("Total: $10.99")
@@ -27,20 +28,25 @@ describe "user adds an item to the cart" do
   end
 end
 
-xdescribe "user views cart" do
+describe "user views cart" do
   it "user sees multiple items in cart" do
-    # item_1 =  Fabricate(:item)
-    # item_2 =  Fabricate(:item)
-    # item_3 =  Fabricate(:item)
-    category = Category.create!(id: 1, name: "wands")
-    item_1 = Item.new(title:"Fox wand", description: "Does magical things", price: 15.22, category_id: category)
-    item_2 = Item.new(title:"Elder wand", description: "Does magical things", price: 20.22, category_id: category)
-    item_3 = Item.new(title:"Elephant wand", description: "Does magical things", price: 13.22, category_id: category)
-    cart = [item_1.title, item_2.title, item_3.title]
-    visit cart_path  #sees the cart path but is a poro
-    table_cell = page.all("table tr")
-    # byebug
-    # save_and_open_page
-    expect(table_cell[0]).to have_content(item_1.title)
+    category = Category.create!(name: "wands")
+    item_one = category.items.create!(title:"Fox wand", description: "Does magical things", price: 15.22)
+    cart = Cart.new(session[:cart]n         )
+    item_two = category.items.create!(title:"Elder wand", description: "Derp", price: 20.22)
+
+    item_three = category.items.create!(title:"Elephant wand", description: "things", price: 13.22)
+
+    items = [item_one, item_two, item_three]
+    cart = Cart.new(items)
+    visit cart_path
+    save_and_open_page
+    #byebug
+    # table_cell = page.all("table tr")
+
+    # expect(table_cell[0]).to have_content(item_1.title)
+    expect(page).to have_content(item_one.title)
+    expect(page).to have_content(item_two.title)
+    expect(page).to have_content(item_three.title)
   end
 end
