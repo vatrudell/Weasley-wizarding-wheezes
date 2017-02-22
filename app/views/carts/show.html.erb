@@ -1,0 +1,23 @@
+<h1>Username Cart</h1>
+
+<h3 class='total'>Total: $<%= @cart.total %></h3>
+
+<table>
+  <thead>
+    <tr>
+        <th data-field="id">Item</th>
+        <th data-field="name">Quantity</th>
+        <th data-field="price">Price</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cart.contents.each do |item, quantity| %>
+    <tr>
+      <td><%= Item.find(item).title %></td>
+      <td><%= quantity %></td>
+      <td>$<%= Item.find(item).price %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
