@@ -2,7 +2,6 @@ class CartsController < ApplicationController
   include ActionView::Helpers::TextHelper
   def create
     item = Item.find(params[:item_id])
-    @cart = Cart.new(session[:cart])
     @cart.add_item(item.id)
     session[:cart] = @cart.contents
 
@@ -11,7 +10,5 @@ class CartsController < ApplicationController
   end
 
   def show
-    # byebug
-    @cart = Cart.new(session[:cart])
   end
 end
