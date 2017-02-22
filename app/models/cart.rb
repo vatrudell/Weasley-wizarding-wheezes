@@ -3,6 +3,7 @@
 
    def initialize(initial_contents)
      @contents = initial_contents || {}
+
    end
 
    def add_item(item_id)

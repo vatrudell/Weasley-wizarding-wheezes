@@ -9,7 +9,6 @@ describe "user adds an item to the cart" do
                         category: category)
     visit root_path
     click_on "Add to Cart"
-
     within(".notice") do
       expect(page).to have_content("Love Potion added to cart")
     end
