@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 20170221225907) do
   create_table "items", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
-    t.decimal  "price",       precision: 2
+    t.float    "price"
     t.string   "image_tag"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
