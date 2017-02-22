@@ -31,6 +31,6 @@ feature "visitor can adjust items in cart" do
       expect(page).to have_content("1")
     end
 
-    select("10", from: "item[quantity]")
+    select("10", from: "item[]")
   end
 end
