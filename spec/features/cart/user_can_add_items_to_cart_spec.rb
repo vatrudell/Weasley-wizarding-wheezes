@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "user adds an item to the cart" do
+xdescribe "user adds an item to the cart" do
   it "from root path" do
     category = Category.create!(name: "potions")
     item = Item.create!(title: "Love Potion",

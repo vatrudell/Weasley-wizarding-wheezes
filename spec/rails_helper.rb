@@ -7,7 +7,6 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'database_cleaner'
 require 'capybara/rspec'
-require 'capybara/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
