@@ -5,17 +5,19 @@
 <table>
   <thead>
     <tr>
-        <th data-field="id">Item</th>
-        <th data-field="name">Quantity</th>
+        <th data-field="item-name">Item</th>
+        <th data-field="quantity">Quantity</th>
         <th data-field="price">Price</th>
     </tr>
   </thead>
 
   <tbody>
     <% @cart.contents.each do |item, quantity| %>
+    <% range = (0..10).to_a.map{ |i| i.to_s } %>
     <tr>
       <td><%= Item.find(item).title %></td>
-      <td><%= quantity %></td>
+      <td><%= collection_select(@cart, range, :quantity, @cart.set_quantity(:quantity), :to_i, prompt: quantity.to_s) %></td>
+
       <td>$<%= Item.find(item).price %></td>
     </tr>
     <% end %>

@@ -16,4 +16,8 @@
      end
      prices.reduce(:+)
    end
+
+   def set_quantity(id, quantity)
+     contents[id] = quantity
+   end
  end
