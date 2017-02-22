@@ -42,7 +42,7 @@ group :development, :test do
   gem 'launchy'
   gem 'shoulda-matchers', '~> 3.0'
   gem 'fabrication'
-  gem 'faker'
+  gem 'faker', github: 'stympy/faker.git'
 end
 
 group :development do
