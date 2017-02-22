@@ -1,0 +1,18 @@
+
+
+<div class="col s4">
+  <div class="card">
+    <div class="card-image">
+      <img src="<%= @item.image_tag %>" />
+    </div>
+    <div class="card-content">
+        <span class="card-title"><%= @item.title %></span>
+        <ul>
+          <li>Price: <%= @item.price %></li>
+          <li>Category: <%= @item.category.name %></li>
+          <li>Description: <%= @item.description %></li>
+        </ul>
+        <%= button_to "Add to Cart", carts_path(item_id: @item.id) %>
+    </div>
+  </div>
+</div>
