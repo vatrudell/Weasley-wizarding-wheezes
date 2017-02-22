@@ -14,7 +14,7 @@ describe "user adds an item to the cart" do
       expect(page).to have_content("Love Potion added to cart")
     end
 
-    click_on "View Cart"
+    click_on "Cart"
 
     expect(current_path).to eq('/cart')
     within("table") do
