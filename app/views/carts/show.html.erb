@@ -13,12 +13,16 @@
 
   <tbody>
     <% @cart.contents.each do |item, quantity| %>
-    <% range = (0..10).to_a.map{ |i| i.to_s } %>
     <tr>
       <td><%= Item.find(item).title %></td>
-      <td><%= collection_select(@cart, range, :quantity, @cart.set_quantity(:quantity), :to_i, prompt: quantity.to_s) %></td>
-
+      <td>
+        <%= form_tag('/cart', method: :put) do %>
+          <%= label_tag :quantity %>
+          <%= number_field_tag :quantity, params[:quantity], min: 1, placeholder: quantity %>
+        <% end %>
+      </td>
       <td>$<%= Item.find(item).price %></td>
+      <td><%= button_tag "Update Cart", method: :update %></td>
     </tr>
     <% end %>
   </tbody>
