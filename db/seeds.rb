@@ -13,7 +13,6 @@ def import_product_csv
   puts "Products have loaded!"
 end
 
-
 Item.delete_all
 Category.delete_all
 import_product_csv
