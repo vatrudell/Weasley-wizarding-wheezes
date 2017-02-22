@@ -1,7 +1,8 @@
 class CategoriesController < ApplicationController
 
   def show
-    @category = Category.friendly.find(params[:name])
+    # byebug
+    @category = Category.find_by(slug: params[:name])
     @items = @category.items
   end
 

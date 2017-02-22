@@ -26,7 +26,7 @@ describe 'when user visits category show page' do
                           category: category2
                           )
 
-      visit category_path(category1)
+      visit '/joke-products'
 
       expect(page).to have_content(item1.title)
       expect(page).to have_content(item2.title)

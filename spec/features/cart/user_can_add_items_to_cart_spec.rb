@@ -17,7 +17,6 @@ describe "user adds an item to the cart" do
 
     expect(current_path).to eq('/cart')
     within("table") do
-      save_and_open_page
       expect(page).to have_content("Love Potion")
       # expect(page).to have_content("$10.99")
     end
