@@ -4,7 +4,8 @@ RSpec.describe Item, type: :model do
   describe "validations" do
     context "is valid" do
       it "with valid attributes" do
-        item = Item.new(title: "Bang Bang Boggart Banger", description: "a rocket from the Explosive Enterprises line by Weasleys' Wizard Wheezes", price: 10.99 )
+        category = Category.create!(name: "toys")
+        item = category.items.new(title: "Bang Bang Boggart Banger", description: "a rocket from the Explosive Enterprises line by Weasleys' Wizard Wheezes", price: 10.99 )
 
         expect(item).to be_valid
       end
