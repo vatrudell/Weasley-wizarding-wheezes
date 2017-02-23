@@ -19,6 +19,12 @@
      prices.reduce(:+)
    end
 
+   def subtotal(item)
+     price = Item.find(item).price
+     quantity = contents[item]
+     price * quantity
+   end
+
    def set_quantity(id, quantity)
      contents[id] = quantity
    end
