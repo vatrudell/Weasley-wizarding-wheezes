@@ -61,7 +61,7 @@ describe "user adds an item to the cart" do
 
     click_on 'Add to Cart'
 
-    within('.nav-wrapper .badge') do
+    within('.nav-wrapper') do
       expect(page).to have_content('2')
     end
   end
