@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170223022356) do
+ActiveRecord::Schema.define(version: 20170223203005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,9 +26,10 @@ ActiveRecord::Schema.define(version: 20170223022356) do
     t.string   "description"
     t.float    "price"
     t.string   "image_tag"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "category_id"
+    t.integer  "item_status", default: 0
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
   end
 
@@ -38,6 +39,8 @@ ActiveRecord::Schema.define(version: 20170223022356) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_foreign_key "items", "categories"
