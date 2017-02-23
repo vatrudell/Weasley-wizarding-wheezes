@@ -47,6 +47,6 @@ describe Cart do
     cart.add_item(item_1.id)
     cart.add_item(item_2.id)
 
-    expect(cart.subtotal(item_1)).to eq(14)
+    expect(cart.subtotal(item_1.id)).to eq(14)
   end
 end

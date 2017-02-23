@@ -20,9 +20,7 @@
    end
 
    def subtotal(item)
-     price = Item.find(item).price
-     quantity = contents[item]
-     price * quantity
+     Item.find(item).price * contents[item.to_s]
    end
 
    def set_quantity(id, quantity)
