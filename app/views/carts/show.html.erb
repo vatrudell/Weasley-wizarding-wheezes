@@ -8,6 +8,7 @@
         <th data-field="quantity">Quantity</th>
         <th data-field="change-quantity">Change Quantity</th>
         <th data-field="price">Price</th>
+        <th data-field="price">Subtotal</th>
     </tr>
   </thead>
 
@@ -25,6 +26,7 @@
         <% end %>
       </td>
       <td>$<%= Item.find(item).price %></td>
+      <td>$<%= @cart.subtotal(item) %></td>
     </tr>
     <% end %>
   </tbody>
