@@ -17,4 +17,6 @@
      end
      prices.reduce(:+)
    end
+
+   
  end
