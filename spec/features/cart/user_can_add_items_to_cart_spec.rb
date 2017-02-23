@@ -14,8 +14,9 @@ describe "user adds an item to the cart" do
     within(".notice") do
       expect(page).to have_content("Love Potion added to cart")
     end
-
-    click_on "Cart"
+    within(".nav-wrapper") do
+      click_on "Cart"
+    end
 
     expect(current_path).to eq('/cart')
     within("table") do
