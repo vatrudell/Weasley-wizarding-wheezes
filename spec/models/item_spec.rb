@@ -1,34 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  describe "validations" do
-    context "is valid" do
-      it "with valid attributes" do
-        category = Category.create!(name: "toys")
-        item = category.items.new(title: "Bang Bang Boggart Banger", description: "a rocket from the Explosive Enterprises line by Weasleys' Wizard Wheezes", price: 10.99 )
+  context "validations" do
+    it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_uniqueness_of(:title) }
+    it { is_expected.to validate_presence_of(:description) }
+    it { is_expected.to validate_uniqueness_of(:description) }
+    it { is_expected.to validate_presence_of(:price) }
+  end
 
-        expect(item).to be_valid
-      end
-    end
+  context "relationships" do
+    it { should belong_to(:category)}
+  end
 
-    context "is invalid" do
-      it "without a title" do
-        item = Item.new( description: "a rocket from the Explosive Enterprises line by Weasleys' Wizard Wheezes", price: 10.99 )
-
-        expect(item).to be_invalid
-      end
-
-      it "without description" do
-        item = Item.new(title: "Bang Bang Boggart Banger",  price: 10.99 )
-
-        expect(item).to be_invalid
-      end
-
-      it "without price" do
-        item = Item.new(title: "Bang Bang Boggart Banger", description: "a rocket from the Explosive Enterprises line by Weasleys' Wizard Wheezes" )
-
-        expect(item).to be_invalid
-      end
-    end
+  context "process" do
+    it { should define_enum_for(:item_status) }
   end
 end
