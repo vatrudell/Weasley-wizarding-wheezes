@@ -6,11 +6,16 @@
         <img src="<%= item.image_tag %>" />
       </div>
       <div class="card-content">
-          <span class="card-title"><%= link_to item.title, item_path(item) %></span>
-          <h5>
-            $<%= item.price %>
-          </h5>
-          <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "waves-effect waves-light btn" %>
+         <span class="card-title"><%= link_to item.title, item_path(item) %></span>
+         <h5>
+            <%= item.price %>
+        </h5>
+          <% if item.available? %>
+            <%= button_to "Add to Cart", carts_path(item_id: item.id) %>
+          <% else %>
+            <%= button_to "Retired", class: "btn disabled" %>
+          <% end %>
+
       </div>
     </div>
   </div>

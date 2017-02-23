@@ -10,7 +10,6 @@ class CartsController < ApplicationController
   end
 
   def show
-    @range = (0..10).to_a.map{ |i| i.to_s }
   end
 
   def update
