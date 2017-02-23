@@ -6,17 +6,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" rel="stylesheet"/>
     <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="/application.css">
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <% flash.each do |type, message| %>
-      <%= content_tag :div, message, class: type %>
-    <% end %>
     <%= render partial: 'shared/nav' %>
-    <%= yield %>
+    <div class="container">
+      <% flash.each do |type, message| %>
+      <%= content_tag :div, sanitize(message), class: type %>
+      <% end %>
+      <%= yield %>
+    </div>
     <%= render partial: 'shared/footer' %>
   </body>
 </html>

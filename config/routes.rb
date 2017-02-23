@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'errors/not_found'
 
-  resources :items, only: [:index]
-  resources :carts, only: [:create]
-  get '/cart', to: 'carts#show'
+  get 'errors/internal_server_error'
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'items#index'
+  resources :items, only: [:index, :show]
+
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
+
+  resources :carts, only: [:create]
+  put '/cart', to: "carts#update"
+  get '/cart', to: 'carts#show'
+  delete '/cart', to: 'carts#remove'
+  get '/:name', to: 'categories#show', as: 'category'
 end
