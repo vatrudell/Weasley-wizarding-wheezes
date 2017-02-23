@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :index, :create]
 
+  get '/login', to: "sessions#new"
+  post '/login', to: "sessions#create"
+  delete '/logout', to: "sessions#destroy"
+
   get '/dashboard', :to => "users#show"
 
   match "/404", :to => "errors#not_found", :via => :all
@@ -19,8 +23,4 @@ Rails.application.routes.draw do
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#remove'
   get '/:name', to: 'categories#show', as: 'category'
-
-  get '/login', to: "sessions#new"
-  get '/login', to: "sessions#create"
-  get '/logout', to: "sessions#destroy"
 end

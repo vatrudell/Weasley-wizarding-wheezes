@@ -1,20 +1,25 @@
  class SessionsController < ApplicationController
+
    def new
    end
 
-   def create
-    user = User.find(username: params[:session][:username])
+  def create
+    user = User.find_by(username: params[:session][:username])
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
-      flash[:notice] = "Logged In Sucessfully"
+      flash[:notice] = "Logged in as #{user.username}"
+      redirect_to dashboard_path
     else
       flash.now[:notice] = "Your email or password"
-      redirect_to login_path
+      render :new
     end
+  end
 
-    def destory
-      session.clear
-      flash[:notice] = "Logged Out"
-      redirect_to login_path
-    end
+  def destory
+
+    byebug
+    session.clear
+    flash[:notice] = "Logged Out"
+    redirect_to login_path   #change maybe
+  end
  end
