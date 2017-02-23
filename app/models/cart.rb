@@ -3,7 +3,6 @@
 
    def initialize(initial_contents)
      @contents = initial_contents || {}
-
    end
 
    def add_item(item_id)
@@ -13,6 +12,7 @@
 
    def total
      prices = []
+    #  byebug
      contents.each_pair do |id, quantity|
        prices << (Item.find(id).price * quantity)
      end
@@ -24,7 +24,7 @@
    end
 
    def subtotal(item)
-     Item.find(item).price * contents[item.to_s]
+     item.price * contents[item.id.to_s]
    end
 
    def set_quantity(id, quantity)
@@ -33,5 +33,13 @@
 
    def total_count
      contents.values.reduce(:+)
+   end
+
+   def items
+     items_hash = {}
+     contents.each do |id, quantity|
+       items_hash[Item.find(id)] = quantity
+     end
+     items_hash
    end
  end
