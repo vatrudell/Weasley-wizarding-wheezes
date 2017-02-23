@@ -1,8 +1,5 @@
  class SessionsController < ApplicationController
 
-   def new
-   end
-
   def create
     user = User.find_by(username: params[:session][:username])
     if user && user.authenticate(params[:session][:password])
@@ -15,9 +12,7 @@
     end
   end
 
-  def destory
-
-    byebug
+  def destroy
     session.clear
     flash[:notice] = "Logged Out"
     redirect_to login_path   #change maybe
