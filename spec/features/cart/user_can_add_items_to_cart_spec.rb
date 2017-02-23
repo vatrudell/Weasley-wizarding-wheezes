@@ -42,27 +42,4 @@ describe "user adds an item to the cart" do
 
     end
   end
-
-end
-
-describe "user views cart" do
-  xit "user sees multiple items in cart" do
-    category = Category.create!(name: "wands")
-    item_one = category.items.create!(title:"Fox wand", description: "Does magical things", price: 15.22)
-    item_two = category.items.create!(title:"Elder wand", description: "Derp", price: 20.22)
-
-    item_three = category.items.create!(title:"Elephant wand", description: "things", price: 13.22)
-
-    items = [item_one, item_two, item_three]
-    cart = Cart.new(items)
-    visit cart_path
-    save_and_open_page
-    #byebug
-    # table_cell = page.all("table tr")
-
-    # expect(table_cell[0]).to have_content(item_1.title)
-    expect(page).to have_content(item_one.title)
-    expect(page).to have_content(item_two.title)
-    expect(page).to have_content(item_three.title)
-  end
 end
