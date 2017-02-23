@@ -20,7 +20,7 @@
         <%= form_for(:session, url: cart_path, method: :put) do |f| %>
           <%= f.hidden_field :item_id, value: item %>
           <%= f.label :quantity %>
-          <%= f.text_field :quantity, placeholder: @cart.contents[item] %>
+          <%= f.number_field :quantity, min: 1 %>
           <%= f.submit "Update Cart" %>
         <% end %>
       </td>
