@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :items, only: [:index, :show]
 
-  resources :users, only: [:new, :index, :create, :show]
+  resources :users, only: [:new, :index, :create]
+
+  get '/dashboard', :to => "users#show"
 
   match "/404", :to => "errors#not_found", :via => :all
   match "/500", :to => "errors#internal_server_error", :via => :all

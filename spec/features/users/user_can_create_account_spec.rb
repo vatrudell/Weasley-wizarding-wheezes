@@ -17,6 +17,7 @@ describe "When user clicks create account" do
 
     click_on "Create Account"
 
+    expect(page).to have_content("Logged in as Cj")
     expect(page).to have_content("Cj")
     expect(page).to have_content("email@email.com")
   end
