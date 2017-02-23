@@ -14,7 +14,7 @@ class CartsController < ApplicationController
   end
 
   def update
-    @cart.set_quantity(params[:session][:item_id], params[:session][:quantity])
+    @cart.set_quantity(params[:session][:item_id], params[:session][:quantity].to_i)
     flash[:notice] = "Quantity changed to #{params[:session][:quantity]}"
     redirect_to cart_path
   end
