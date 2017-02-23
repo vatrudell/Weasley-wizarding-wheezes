@@ -18,8 +18,8 @@
       <% flash.each do |type, message| %>
       <%= content_tag :div, sanitize(message), class: type %>
       <% end %>
-      <%= yield %>
     </div>
+    <%= yield %>
     <%= render partial: 'shared/footer' %>
   </body>
 </html>
