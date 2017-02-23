@@ -4,18 +4,21 @@
 <table>
   <thead>
     <tr>
+        <th data-field="image">Image</th>
         <th data-field="item-name">Item</th>
         <th data-field="quantity">Quantity</th>
         <th data-field="change-quantity">Change Quantity</th>
         <th data-field="price">Price</th>
         <th data-field="price">Subtotal</th>
+        <th data-field="remove">Remove</th>
     </tr>
   </thead>
 
   <tbody>
     <% @cart.contents.each do |item, quantity| %>
     <tr>
-      <td><%= Item.find(item).title %></td>
+      <td><img src="<%=Item.find(item).image_tag%>"/></td>
+      <td><%= link_to Item.find(item).title, item_path(Item.find(item)) %></td>
       <td><%= quantity %></td>
       <td>
         <%= form_for(:session, url: cart_path, method: :put) do |f| %>
@@ -27,6 +30,7 @@
       </td>
       <td>$<%= Item.find(item).price %></td>
       <td>$<%= @cart.subtotal(item) %></td>
+      <td><%= link_to "Remove Item", cart_path({item_id: item}), method: :delete%><td>
     </tr>
     <% end %>
   </tbody>

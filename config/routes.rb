@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   resources :carts, only: [:create]
   put '/cart', to: "carts#update"
   get '/cart', to: 'carts#show'
+  delete '/cart', to: 'carts#remove'
   get '/:name', to: 'categories#show', as: 'category'
 end

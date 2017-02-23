@@ -19,6 +19,10 @@
      prices.reduce(:+)
    end
 
+   def remove_item(item_id)
+     @contents.delete(item_id)
+   end 
+
    def subtotal(item)
      Item.find(item).price * contents[item.to_s]
    end
