@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   match "/500", :to => "errors#internal_server_error", :via => :all
 
   resources :carts, only: [:create]
+  put '/cart', to: "carts#update"
   get '/cart', to: 'carts#show'
   get '/:name', to: 'categories#show', as: 'category'
 end

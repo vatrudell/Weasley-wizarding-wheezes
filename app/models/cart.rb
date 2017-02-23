@@ -12,11 +12,18 @@
    end
 
    def total
-     prices = contents.keys.map do |id|
-       Item.find(id).price
+     prices = []
+     contents.each_pair do |id, quantity|
+       prices << (Item.find(id).price * quantity)
      end
      prices.reduce(:+)
    end
 
-   
+   def subtotal(item)
+     Item.find(item).price * contents[item.to_s]
+   end
+
+   def set_quantity(id, quantity)
+     contents[id] = quantity
+   end
  end
