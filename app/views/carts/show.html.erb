@@ -1,22 +1,25 @@
 <h1>Username Cart</h1>
-
 <h3 class='total'>Total: $<%= @cart.total %></h3>
 
 <table>
   <thead>
     <tr>
+        <th data-field="image">Image</th>
         <th data-field="id">Item</th>
         <th data-field="name">Quantity</th>
         <th data-field="price">Price</th>
+        <th data-field="remove">Remove</th>
     </tr>
   </thead>
 
   <tbody>
     <% @cart.contents.each do |item, quantity| %>
     <tr>
-      <td><%= Item.find(item).title %></td>
+      <td><img src="<%=Item.find(item).image_tag%>"/></td>
+      <td><%= link_to Item.find(item).title, item_path(Item.find(item)) %></td>
       <td><%= quantity %></td>
-      <td>$<%= Item.find(item).price %></td>
+      <td><%= Item.find(item).price %></td>
+      <td><%= link_to "Remove Item", cart_path({item_id: item}), method: :delete%><td>
     </tr>
     <% end %>
   </tbody>

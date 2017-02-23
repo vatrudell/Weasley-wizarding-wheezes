@@ -16,6 +16,6 @@ describe 'user can see nav and footer' do
   scenario 'sees view cart link' do
     visit root_path
 
-    expect(page).to have_link('View Cart')
+    expect(page).to have_link('Cart')
   end
 end

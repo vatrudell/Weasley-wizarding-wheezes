@@ -3,6 +3,7 @@
 
    def initialize(initial_contents)
      @contents = initial_contents || {}
+
    end
 
    def add_item(item_id)
@@ -15,5 +16,9 @@
        Item.find(id).price
      end
      prices.reduce(:+)
+   end
+
+   def remove_item(item_id)
+     @contents.delete(item_id)
    end
  end
