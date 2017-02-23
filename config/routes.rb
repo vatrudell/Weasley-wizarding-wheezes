@@ -19,4 +19,8 @@ Rails.application.routes.draw do
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#remove'
   get '/:name', to: 'categories#show', as: 'category'
+
+  get '/login', to: "sessions#new"
+  get '/login', to: "sessions#create"
+  get '/logout', to: "sessions#destroy"
 end

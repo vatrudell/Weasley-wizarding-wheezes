@@ -1,0 +1,6 @@
+<%= flash.now[:error] %>
+<%= flash[:notice] %>
+
+<%= form_for(:session, url: login_path) do |f| %>
+  <%= f.label :username %>
+<% end %>
