@@ -10,6 +10,8 @@ describe "When user clicks create account" do
 
     visit new_user_path
 
+    fill_in "user[first_name]", :with => "Charlotte"
+    fill_in "user[last_name]", :with => "Moore"
     fill_in "Username", :with => "Cj"
     fill_in "Email", :with => "email@email.com"
     fill_in "Password", :with => "password"
@@ -18,6 +20,8 @@ describe "When user clicks create account" do
     click_on "Create Account"
 
     expect(page).to have_content("Logged in as Cj")
+    expect(page).to have_content("Charlotte")
+    expect(page).to have_content("Moore")
     expect(page).to have_content("Cj")
     expect(page).to have_content("email@email.com")
   end

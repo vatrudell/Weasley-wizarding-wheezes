@@ -2,7 +2,9 @@ require 'rails_helper'
 
 describe "User can view own show page" do
   scenario "and see account details" do
-    user = User.create(username: "Cj",
+    user = User.create(first_name: "Charlotte",
+                       last_name: "Moore",
+                       username: "Cj",
                        email: "email@email.com",
                        password: "password")
 
