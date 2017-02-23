@@ -12,7 +12,6 @@ describe "visitor can adjust items in cart" do
     click_on "Add to Cart"
 
     visit '/cart'
-    save_and_open_page
     within("table") do
       expect(page).to have_content("Love Potion")
       expect(page).to have_content("$11.0")
@@ -25,10 +24,9 @@ describe "visitor can adjust items in cart" do
     within("table") do
       expect(page).to have_content("1")
     end
-
-    fill_in("quantity", with: 3)
+    fill_in("session[quantity]", with: 3)
     click_on "Update Cart"
-    save_and_open_page
+    
     expect(current_path).to eq('/cart')
 
     within("table") do
@@ -39,7 +37,7 @@ describe "visitor can adjust items in cart" do
       expect(page).to have_content("$33.00")
     end
 
-    select("2", from: "item[quantity]")
+    fill_in("session[quantity]", with: 2)
     click_on "Update Cart"
 
     expect(current_path).to eq('/cart')

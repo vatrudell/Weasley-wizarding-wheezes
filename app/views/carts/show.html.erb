@@ -6,6 +6,7 @@
     <tr>
         <th data-field="item-name">Item</th>
         <th data-field="quantity">Quantity</th>
+        <th data-field="change-quantity">Change Quantity</th>
         <th data-field="price">Price</th>
     </tr>
   </thead>
@@ -14,14 +15,16 @@
     <% @cart.contents.each do |item, quantity| %>
     <tr>
       <td><%= Item.find(item).title %></td>
+      <td><%= quantity %></td>
       <td>
-        <%= form_tag('/cart', method: :put) do %>
-          <%= label_tag :quantity %>
-          <%= number_field_tag :quantity, params[:quantity], min: 1, placeholder: quantity %>
+        <%= form_for(:session, url: cart_path, method: :put) do |f| %>
+          <%= f.hidden_field :item_id, value: item %>
+          <%= f.label :quantity %>
+          <%= f.text_field :quantity, placeholder: @cart.contents[item] %>
+          <%= f.submit "Update Cart" %>
         <% end %>
       </td>
       <td>$<%= Item.find(item).price %></td>
-      <td><%= button_tag "Update Cart", method: :update %></td>
     </tr>
     <% end %>
   </tbody>

@@ -11,9 +11,10 @@ describe Cart do
                                     price: 7)
     cart = Cart.new({})
     cart.add_item(item_1.id)
+    cart.add_item(item_1.id)
     cart.add_item(item_2.id)
 
-    expect(cart.total).to eq(14)
+    expect(cart.total).to eq(21)
   end
 
   it ".set_quantity updates amount in cart" do
