@@ -21,23 +21,35 @@ describe "when an authenticated user visits their cart" do
   end
 
   it "they can checkout with two items" do
-  user = Fabricate(:user)
-  item = Fabricate(:item)
-  item2 = Fabricate(:item)
-  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    user = Fabricate(:user)
+    item = Fabricate(:item)
+    item2 = Fabricate(:item)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-  visit item_path(item)
-  click_on "Add to Cart"
-  visit item_path(item2)
-  click_on "Add to Cart"
-  click_on "Cart"
-  click_on "Check Out"
+    visit item_path(item)
+    click_on "Add to Cart"
+    visit item_path(item2)
+    click_on "Add to Cart"
+    click_on "Cart"
+    click_on "Check Out"
 
-  expect(current_path).to eq(orders_path)
-  expect(page).to have_content("2")
+    expect(current_path).to eq(orders_path)
+    expect(page).to have_content("2")
 
-  within(".success") do
-    expect(page).to have_content("Mischief is coming your way, you have successfully placed your order!")
+    within(".success") do
+      expect(page).to have_content("Mischief is coming your way, you have successfully placed your order!")
+    end
   end
 end
-end
+
+describe "when guest user visits cart page" do
+  it "they are unable to check out" do
+    item = Fabricate(:item)
+
+    visit items_path
+    click_on "Add to Cart"
+    click_on "Cart"
+
+    expect(page).to_not have_link("Check Out")
+  end
+end 
