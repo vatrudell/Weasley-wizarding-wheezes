@@ -29,6 +29,13 @@
   #main {
     flex: 1 0 auto;
   }
+
+  .image-format {
+    width: 200px;
+    height: 200px;
+  }
+
+
   /* ------------------- footer ------------------*/
   #footer .page-footer{
      position:absolute;
@@ -42,6 +49,17 @@
     font-size: 22px;
   }
 
+  td {
+    padding: 0 10px 0 10px;
+  }
+
+  th {
+    padding: 0 10px 0 10px;
+  }
+
+#quantity-form{
+  width: 50px;
+}
   /* ------------------- classes ------------------   */
 
   /* ------------------ navbar ---------------- */
