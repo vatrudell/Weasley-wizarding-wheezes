@@ -40,7 +40,13 @@
   <!--  checkout button goes here -->
 </div>
 
-<% unless current_user %>
+<% if current_user %>
+  <h5 id="user-message">Checkout</h5>
+  <div class="user-checkout">
+    <%= button_to "Check Out", orders_path, method: :post %>
+  </div>
+
+<% else %>
   <h5 id='guest-message'>Login or Create Account to Checkout</h5>
   <div class="row guest-links">
     <div class="col s1">

@@ -6,5 +6,4 @@ class Order < ApplicationRecord
 
   enum status: ['ordered', 'paid', 'canceled', 'completed']
 
-  
 end
