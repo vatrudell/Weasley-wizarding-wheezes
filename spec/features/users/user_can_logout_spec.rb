@@ -18,7 +18,10 @@ describe "A logged in user " do
   expect(current_path).to eq(dashboard_path)
   click_on "Logout"
 
-  expect(page).to have_content("Sucessfully Logged Out")
+  within(".notice") do
+    expect(page).to have_content("Logged Out")
+  end
+
   expect(page).to_not have_content("Logout")
   expect(page).to have_content("Login")
   end
