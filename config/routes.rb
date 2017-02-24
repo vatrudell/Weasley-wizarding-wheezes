@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :items, only: [:index, :show]
 
-  resources :orders, only: [:index]
+  resources :orders, only: [:index, :show]
 
   # get '/cart', to: 'orders#new'
   # post '/cart', to: 'orders#create'
