@@ -1,0 +1,27 @@
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[31mF[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33m*[0m[33m*[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m
+
+Pending: (Failures listed here are expected and do not affect your suite's status)
+[33m
+  1) OrderItem add some examples to (or delete) /Users/charlottemoore/turing/2module/projects/weasleys_wizard_wheezes/spec/models/order_item_spec.rb[0m
+     [36m# Not yet implemented[0m
+[36m     # ./spec/models/order_item_spec.rb:4
+[0m[33m
+  2) Order add some examples to (or delete) /Users/charlottemoore/turing/2module/projects/weasleys_wizard_wheezes/spec/models/order_spec.rb[0m
+     [36m# Not yet implemented[0m
+[36m     # ./spec/models/order_spec.rb:4
+[0m
+
+Failures:
+
+  1) When user views all orders they see all their orders
+     [31mFailure/Error: expect(page).to have_content(order1.id.to_s)[0m
+     [31m  expected to find text "1" in "Weasleys' Wizard Wheezes Cart Logout Cart 93 Diagon Alley, London, England"[0m
+     [36m# ./spec/features/orders/user_can_view_all_of_their_orders_spec.rb:49:in `block (2 levels) in <top (required)>'[0m
+
+Finished in 3.3 seconds (files took 2.93 seconds to load)
+[31m47 examples, 1 failure, 2 pending[0m
+
+Failed examples:
+
+[31mrspec ./spec/features/orders/user_can_view_all_of_their_orders_spec.rb:4[0m [36m# When user views all orders they see all their orders[0m
+
