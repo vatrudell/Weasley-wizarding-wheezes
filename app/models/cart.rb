@@ -21,7 +21,7 @@
 
    def remove_item(item_id)
      @contents.delete(item_id)
-   end 
+   end
 
    def subtotal(item)
      Item.find(item).price * contents[item.to_s]
@@ -29,5 +29,9 @@
 
    def set_quantity(id, quantity)
      contents[id] = quantity
+   end
+
+   def total_count
+     contents.values.reduce(:+)
    end
  end
