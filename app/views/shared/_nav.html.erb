@@ -3,13 +3,17 @@
      <div class ="container">
        <a href="<%= root_path %>" class="brand-logo">Weasleys' Wizard Wheezes</a>
        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="/cart" >Cart</a></li>
+          <li>
+            <% unless @cart.total_count.nil?  %>
+              <a href="/cart" >Cart<span class="badge purple circle white-text"><%= @cart.total_count %></span></a></li>
+            <% else %>
+              <a href="/cart" >Cart</a></li>
+            <% end %>
           <% if current_user %>
               <li><%= link_to "Logout", logout_path, method: :delete %></li>
           <% else  %>
             <li><%= link_to "Login", login_path, class: "login-link "%></li>
           <% end  %>
-          <li><a href="/cart" class='brand-logo'>Cart<span class="new badge purple"><%= @cart.total_count %></span></a></li>
         </ul>
      </div>
   </div>

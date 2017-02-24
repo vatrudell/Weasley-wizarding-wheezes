@@ -1,3 +1,4 @@
+
 require 'rails_helper'
 
 describe "when an authenticated user visits their cart" do
@@ -55,3 +56,4 @@ describe "when guest user visits cart page" do
     expect(page).to have_button("Create Account")
   end
 end
+
