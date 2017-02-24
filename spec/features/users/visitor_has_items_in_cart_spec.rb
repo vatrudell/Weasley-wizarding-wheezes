@@ -1,8 +1,7 @@
 require 'rails_helper'
-# Then I should see see "Login"
-# And I should not see "Logout"
-feature "when I visit root" do
-  context "as a visitor" do
+
+describe "when I visit root" do
+  it "as a visitor" do
     item = Fabricate(:item)
 
     visit root_path
@@ -15,17 +14,22 @@ feature "when I visit root" do
     end
 
     within(".total") do
-      expect(page).to have_content("Total: #{item.price}")
+      expect(page).to have_content("Total: $#{item.price}")
     end
 
-    # add within blocks for these four
-    
-    expect(page).to_not have_content("Checkout")
-    expect(page).to have_content("Login or Create Account to Checkout")
-    expect(page).to have_link("Login")
-    expect(page).to have_link("Create Account")
+    within('.user-links') do
+      expect(page).to_not have_content("Checkout")
+    end
 
-    click_on "Create Account"
+    within("#guest-message") do
+      expect(page).to have_content("Login or Create Account to Checkout")
+    end
+
+    within(".guest-links") do
+      expect(page).to have_button("Login")
+      expect(page).to have_button("Create Account")
+      click_on "Create Account"
+    end
 
     within("form") do
       fill_in "user[first_name]", with: "Razz"
@@ -33,7 +37,7 @@ feature "when I visit root" do
       fill_in "user[username]", with: "razz"
       fill_in "user[email]", with: "email@email.com"
       fill_in "user[password]", with: "password"
-      fill_in "user[password]", with: "password"
+      fill_in "user[password_confirmation]", with: "password"
     end
 
     click_on "Create Account"
@@ -46,14 +50,16 @@ feature "when I visit root" do
     end
 
     within(".total") do
-      expect(page).to have_content("Total: #{item.price}")
+      expect(page).to have_content("Total: $#{item.price}")
     end
 
-    # add within blocks for these three
-    click_on "Logout"
+    within(".nav-wrapper") do
+      click_on "Logout"
+    end
 
-    expect(page).to_not have_content("Log Out")
-    expect(page).to have_content("Log In")
-
+    within(".nav-wrapper") do
+      expect(page).to_not have_content("Logout")
+      expect(page).to have_content("Login")
+    end
   end
 end
