@@ -43,7 +43,7 @@ describe "when an authenticated user visits their cart" do
 end
 
 describe "when guest user visits cart page" do
-  it "they are unable to check out" do
+  it "they are unable to check out but can login or create accout" do
     item = Fabricate(:item)
 
     visit items_path
@@ -51,5 +51,7 @@ describe "when guest user visits cart page" do
     click_on "Cart"
 
     expect(page).to_not have_link("Check Out")
+    expect(page).to have_link("Login")
+    expect(page).to have_button("Create Account")
   end
-end 
+end
