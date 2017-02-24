@@ -1,0 +1,15 @@
+
+
+<%= form_for(:session, url: login_path) do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <div class="login-submit">
+    <%=f.submit "Login"%>
+  </div>
+<% end %>
+
+<%=link_to "Create Account", new_user_path %>

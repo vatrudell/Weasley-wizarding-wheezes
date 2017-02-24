@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :index, :create]
 
+  get '/login', to: "sessions#new"
+  post '/login', to: "sessions#create"
+  delete '/logout', to: "sessions#destroy"
+
   get '/dashboard', :to => "users#show"
 
   match "/404", :to => "errors#not_found", :via => :all
