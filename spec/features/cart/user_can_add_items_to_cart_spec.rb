@@ -42,8 +42,6 @@ describe "user adds an item to the cart" do
 
     within('.notice') do
       expect(page).to have_content('Love Potion added to cart')
-<<<<<<< HEAD
-=======
     end
   end
 
@@ -65,7 +63,6 @@ describe "user adds an item to the cart" do
 
     within('.nav-wrapper') do
       expect(page).to have_content('2')
->>>>>>> origin
     end
   end
 end

@@ -12,9 +12,8 @@ describe "user can loggin" do
     fill_in "session[username]", with: user.username
     fill_in "session[password]", with: user.password
 
-    save_and_open_page
     within(".login-submit") do
-      click_on "Login" 
+      click_on "Login"
     end
 
     expect(current_path).to eq(dashboard_path)

@@ -15,23 +15,39 @@
   </thead>
 
   <tbody>
-    <% @cart.contents.each do |item, quantity| %>
+    <% @cart.items.each do |item, quantity| %>
     <tr>
-      <td><img src="<%=Item.find(item).image_tag%>"/></td>
-      <td><h5><%= link_to Item.find(item).title, item_path(Item.find(item)) %></h5></td>
+      <td><img src="<%=item.image_tag%>"/></td>
+      <td><h5><%= link_to item.title, item_path(item) %></h5></td>
       <td><h5><%= quantity %></h5></td>
       <td>
         <%= form_for(:session, url: cart_path, method: :put) do |f| %>
-          <%= f.hidden_field :item_id, value: item %>
+          <%= f.hidden_field :item_id, value: item.id %>
           <%= f.label :quantity %>
           <%= f.number_field :quantity, min: 1 %>
           <%= f.submit "Update Cart", class: "waves-effect waves-light btn" %>
         <% end %>
       </td>
-      <td><h5>$<%= Item.find(item).price %></h5></td>
+      <td><h5>$<%= item.price %></h5></td>
       <td><h5>$<%= @cart.subtotal(item) %></h5></td>
       <td><h5><%= link_to "Remove Item", cart_path({item_id: item}), method: :delete%></h5><td>
     </tr>
     <% end %>
   </tbody>
 </table>
+
+<div class="user-links">
+  <!--  checkout button goes here -->
+</div>
+
+<% unless current_user %>
+  <h5 id='guest-message'>Login or Create Account to Checkout</h5>
+  <div class="row guest-links">
+    <div class="col s1">
+      <%= button_to "Login", login_path, method: :get, class: "waves-effect waves-light btn" %>
+    </div>
+    <div class="col s1 offset-s1">
+      <%= button_to "Create Account", new_user_path, method: :get, class: "waves-effect waves-light btn" %>
+    </div>
+  </div>
+<% end %>
