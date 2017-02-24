@@ -29,9 +29,9 @@ describe "When user views all orders" do
 
     visit orders_path
 
-    expect(page).to have_content(order1.id.to_s)
+    expect(page).to have_link(order1.id.to_s)
     expect(page).to have_content(order1_total)
-    expect(page).to have_content(order2.id.to_s)
+    expect(page).to have_link(order2.id.to_s)
     expect(page).to have_content(order2_total)
 
   end
