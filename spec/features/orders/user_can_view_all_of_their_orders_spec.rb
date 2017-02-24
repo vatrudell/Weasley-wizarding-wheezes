@@ -2,11 +2,6 @@ require 'rails_helper'
 
 describe "When user views all orders" do
   scenario "they see all their orders" do
-    # user = User.create(first_name: "Charlotte",
-    #                    last_name: "Moore",
-    #                    username: "Cj",
-    #                    email: "email@email.com",
-    #                    password: "password")
 
     user = Fabricate(:user)
 
@@ -29,20 +24,8 @@ describe "When user views all orders" do
     OrderItem.create(order_id: order1.id, item_id: item2.id, quantity: 1)
     OrderItem.create(order_id: order1.id, item_id: item1.id, quantity: 2)
 
-    # cart = Cart.new({})
-    # cart.add_item(item1.id)
-    # cart.add_item(item1.id)
-    # cart.add_item(item2.id)
-    #
-    # cart2 = Cart.new({})
-    # cart.add_item(item2.id)
-    # cart.add_item(item1.id)
-    #
-    # order = user.orders.create_order()
-    # order2 = user.orders.create_order()
-    #
-    order1_total = (item1.price*2) + item2.price
-    order2_total = (item2.price + item1.price)
+    order1_total = item1.price + item2.price
+    order2_total = item1.price*2
 
     visit orders_path
 
