@@ -1,5 +1,5 @@
 Fabricator(:order_item) do
-  order    nil
-  item     nil
+  order    Fabricate(:order)
+  item     Fabricate(:item)
   quantity 1
 end

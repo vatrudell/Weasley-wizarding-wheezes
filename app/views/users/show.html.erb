@@ -6,6 +6,10 @@
           <ul>
             <li>Username: <%= current_user.username %></li>
             <li>Email: <%= current_user.email %></li>
+            <% if current_admin? %>
+              <li>ADMIN</li>
+              <li><%= link_to "Update Account Info", edit_user_path(current_user) %></li>
+            <% end %>
           </ul>
       </div>
     </div>
