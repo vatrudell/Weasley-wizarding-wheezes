@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   get 'errors/internal_server_error'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'items#index'
   resources :items, only: [:index, :show]
 
@@ -18,7 +17,11 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
-  get '/dashboard', :to => "users#show"
+  namespace :admin do
+    get "/dashboard", to: "orders#index"
+  end
+  
+  get '/dashboard', to: "users#show"
 
   match "/404", :to => "errors#not_found", :via => :all
   match "/500", :to => "errors#internal_server_error", :via => :all
