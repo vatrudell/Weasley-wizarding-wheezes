@@ -40,6 +40,8 @@ describe "When user visits dashboard" do
       expect(page).to have_content("dude@dude.com")
       expect(page).to have_content("ADMIN")
       expect(page).to have_link("Update Account Info")
+      expect(user_admin.password).to eq("OpinionMan")
+
 
     end
 

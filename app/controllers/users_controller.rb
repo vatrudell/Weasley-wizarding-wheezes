@@ -26,9 +26,9 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     # byebug
-    if @user.authenticate(params[:current_password])
+    if @user.authenticate(params[:user][:current_password])
       @user.update_attributes(user_params)
-      @user.update_attribute(password: params[:new_password])
+      @user.update_attribute(:password, params[:user][:new_password])
       flash[:notice] = "Account Info Updated"
       redirect_to dashboard_path
     else
