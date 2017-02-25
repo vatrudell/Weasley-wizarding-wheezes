@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
   def current_admin?
     current_user && current_user.admin?
   end
+
+  def admin_login
+    redirect_to admin_dashboard_path if current_admin?
+  end
 end

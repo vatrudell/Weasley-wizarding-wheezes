@@ -1,4 +1,5 @@
  class SessionsController < ApplicationController
+   before_action :admin_login, except: [:destroy]
 
   def create
     user = User.find_by(username: params[:session][:username])
