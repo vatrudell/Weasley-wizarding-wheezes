@@ -2,13 +2,9 @@ require 'rails_helper'
 
 describe "When user clicks create account" do
   scenario "they are able to create an account" do
-    # visit login_path
-    #
-    # click_on "Create Account"
-    #
-    # expect(current_path).to eq(new_user_path)
-
-    visit new_user_path
+    visit login_path
+    click_on "Create Account"
+    expect(current_path).to eq(new_user_path)
 
     fill_in "user[first_name]", :with => "Charlotte"
     fill_in "user[last_name]", :with => "Moore"

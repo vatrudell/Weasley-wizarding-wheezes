@@ -2,16 +2,11 @@ require 'rails_helper'
 
 describe "an admin logs in" do
   it "redirects to /admin/dashboard" do
-    user = User.create(first_name: "Charlotte",
-                       last_name: "Moore",
-                       username: "Cj",
-                       email: "email@email.com",
-                       password: "password",
-                       role: 1)
-    visit login_path
+    user = Fabricate(:user, role: 1)
 
-    fill_in "session[username]", with: "Cj"
-    fill_in "session[password]", with: "password"
+    visit login_path
+    fill_in "session[username]", with: user.username
+    fill_in "session[password]", with: user.password
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
