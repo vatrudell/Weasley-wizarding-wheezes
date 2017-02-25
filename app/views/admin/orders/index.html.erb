@@ -1,1 +1,54 @@
 <h1>Admin Dashboard</h1>
+
+<div class="summary">
+  <table>
+    <tr>
+      <th>Ordered</th>
+      <td><%= @status["ordered"] %></td>
+    </tr>
+    <tr>
+      <th>Paid</th>
+      <td><%= @status["paid"] %></td>
+    </tr>
+    <tr>
+      <th>Cancelled</th>
+      <td><%= @status["cancelled"] %></td>
+    </tr>
+    <tr>
+      <th>Completed</th>
+      <td><%= @status["completed"] %></td>
+    </tr>
+  </table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<% @orders.each do |order| %>
+  <table>
+    <tr>
+      <th>Order Number</th>
+      <th></th>
+      <th>Total</th>
+    </tr>
+    <tr>
+      <% if order.status == "ordered"  %>
+        <td><%= order.id %></td>
+        <td><%= link_to "View", order_path(order)%></td>
+        <td><%= order.total_price %><td>
+      <% elsif order.status == "paid" %> 
+
+      <%elsif order.status == "completed" %>
+
+      <% elsif order.status == "cancelled" %>
+
+      <% end %>
+    </tr>
+  </table>
+<% end  %>
