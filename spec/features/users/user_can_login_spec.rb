@@ -20,32 +20,21 @@ describe "user can login" do
   end
 
   it "and can only see their own data" do
-    user_two = User.create(first_name: "Charlotte",
-                           last_name: "Moore",
-                           username: "Cj",
-                           email: "email@email.com",
-                           password: "password")
-    admin_user = User.create(first_name: "Courtney",
-                             last_name: "Meyerhofer",
-                             username: "pudding",
-                             email: "anon@anon.com",
-                             password: "password",
-                             role: 1)
-
+    user_two = Fabricate(:user, first_name: "Razz", username: "AAA", email: "a@a.com")
     authenticated_user = Fabricate(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(authenticated_user)
 
     visit dashboard_path
     within(".card-title") do
       expect(page).to have_content(authenticated_user.first_name)
-      expect(page).to_not have_content("Charlotte")
+      expect(page).to_not have_content(user_two.first_name)
     end
 
     within(".card-content ul") do
       expect(page).to have_content(authenticated_user.username)
       expect(page).to have_content(authenticated_user.email)
-      expect(page).to_not have_content("email@email.com")
-      expect(page).to_not have_content("Cj")
+      expect(page).to_not have_content(user_two.email)
+      expect(page).to_not have_content(user_two.username)
     end
 
     visit admin_dashboard_path

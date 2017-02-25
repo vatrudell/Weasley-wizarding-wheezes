@@ -1,21 +1,11 @@
 require 'rails_helper'
-
-# I cannot view another user's private data, such as current order, etc.
-# I should be redirected to login/create account when I try to check out.
 describe "an unauthenticated user visiting the site" do
   it "cannot view another user's data" do
-    user_two = User.create(first_name: "Charlotte",
-                           last_name: "Moore",
-                           username: "Cj",
-                           email: "email@email.com",
-                           password: "password")
-    unauthenticated_user = User.create(first_name: "Courtney",
-                                       last_name: "Meyerhofer",
-                                       username: "pudding",
-                                       email: "anon@anon.com",
-                                       password: "password")
-    admin_user = Fabricate(:user).admin!
-    
+    user_two = Fabricate(:user)
+    unauthenticated_user = Fabricate(:user,
+                                     first_name: "AAA",
+                                     email: "a@a.com",
+                                     username: "AAA")
     visit admin_dashboard_path
     within("h1") do
       expect(page).to have_content("Error: 404 page not found")
@@ -27,11 +17,11 @@ describe "an unauthenticated user visiting the site" do
       expect(page).to have_content("Error: 404 page not found")
     end
 
-    expect(page).to_not have_content("Charlotte")
-    expect(page).to_not have_content("Courtney")
-    expect(page).to_not have_content("email@email.com")
-    expect(page).to_not have_content("Cj")
-    expect(page).to_not have_content("anon@anon.com")
-    expect(page).to_not have_content("pudding")
+    expect(page).to_not have_content(user_two.first_name)
+    expect(page).to_not have_content(unauthenticated_user.first_name)
+    expect(page).to_not have_content(user_two.email)
+    expect(page).to_not have_content(unauthenticated_user.email)
+    expect(page).to_not have_content(user_two.username)
+    expect(page).to_not have_content(unauthenticated_user.username)
   end
 end
