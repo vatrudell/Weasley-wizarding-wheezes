@@ -55,6 +55,7 @@ describe "user can log in" do
     visit admin_dashboard_path
     within("h1") do
       expect(page).to have_content("Error: 404 page not found")
+      expect(page).to_not have_content("Admin Dashboard")
     end
   end
 end
