@@ -1,4 +1,3 @@
-
 require 'rails_helper'
 
 describe "when an authenticated user visits their cart" do

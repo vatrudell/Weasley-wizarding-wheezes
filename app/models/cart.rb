@@ -12,7 +12,6 @@
 
    def total
      prices = []
-    #  byebug
      contents.each_pair do |id, quantity|
        prices << (Item.find(id).price * quantity)
      end
