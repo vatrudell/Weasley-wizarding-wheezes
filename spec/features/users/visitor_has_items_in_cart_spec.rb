@@ -17,9 +17,7 @@ describe "when I visit root" do
       expect(page).to have_content("Total: $#{item.price}")
     end
 
-    within('.user-links') do
-      expect(page).to_not have_content("Checkout")
-    end
+    expect(page).to_not have_button("Checkout")
 
     within("#guest-message") do
       expect(page).to have_content("Login or Create Account to Checkout")

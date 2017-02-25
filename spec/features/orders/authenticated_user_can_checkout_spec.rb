@@ -9,7 +9,11 @@ describe "when an authenticated user visits their cart" do
 
     visit items_path
     click_on "Add to Cart"
-    click_on "Cart"
+    # save_and_open_page
+
+    within(".nav-wrapper") do
+      click_on "Cart"
+    end
 
     click_on "Check Out"
 
@@ -31,7 +35,9 @@ describe "when an authenticated user visits their cart" do
     click_on "Add to Cart"
     visit item_path(item2)
     click_on "Add to Cart"
-    click_on "Cart"
+    within(".nav-wrapper") do
+      click_on "Cart"
+    end
     click_on "Check Out"
 
     expect(current_path).to eq(orders_path)
@@ -49,11 +55,12 @@ describe "when guest user visits cart page" do
 
     visit items_path
     click_on "Add to Cart"
-    click_on "Cart"
+    within(".nav-wrapper") do
+      click_on "Cart"
+    end
 
     expect(page).to_not have_link("Check Out")
     expect(page).to have_link("Login")
     expect(page).to have_button("Create Account")
   end
 end
-
