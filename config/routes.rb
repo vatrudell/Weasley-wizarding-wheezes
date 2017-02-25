@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/dashboard", to: "orders#index"
   end
+  
   get '/dashboard', to: "users#show"
 
   match "/404", :to => "errors#not_found", :via => :all

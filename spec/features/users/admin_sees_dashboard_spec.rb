@@ -1,10 +1,5 @@
 require 'rails_helper'
-# As a registered user
-# When I visit "/admin/dashboard"
-# I get a 404
-# As an unregistered user
-# When I visit "/admin/dashboard"
-# I get a 404
+
 describe "user visits admin dashboard" do
   it "as an admin" do
     user = User.create(first_name: "Charlotte",
