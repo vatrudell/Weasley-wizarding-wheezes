@@ -1,5 +1,4 @@
 class Category < ApplicationRecord
-
   validates :name, presence: true, uniqueness: true
   has_many :items
   before_save :assign_slug

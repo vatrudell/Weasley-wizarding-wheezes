@@ -1,8 +1,8 @@
 require 'faker'
 
 Fabricator(:item) do
-  title { Faker::HarryPotter.book }
-  description { Faker::HarryPotter.quote }
+  title { Faker::HarryPotter.unique.book }
+  description { Faker::HarryPotter.unique.quote }
   price { Faker:: Number.decimal(2) }
   category  { Fabricate(:category) }
 end

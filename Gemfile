@@ -53,6 +53,7 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
