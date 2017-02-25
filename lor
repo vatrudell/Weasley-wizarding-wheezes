@@ -11,6 +11,6 @@ Pending: (Failures listed here are expected and do not affect your suite's statu
 [36m     # ./spec/models/order_spec.rb:4
 [0m
 
-Finished in 4.71 seconds (files took 3.84 seconds to load)
+Finished in 6.55 seconds (files took 4.09 seconds to load)
 [33m58 examples, 0 failures, 2 pending[0m
 

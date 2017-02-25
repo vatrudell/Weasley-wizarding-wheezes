@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  validates :total_price, presence: true
+
   belongs_to :user
 
   has_many :order_items
@@ -6,4 +8,13 @@ class Order < ApplicationRecord
 
   enum status: ['ordered', 'paid', 'canceled', 'completed']
 
+  def self.get_by_status(find_status)
+    orders = find_by(status: find_status)
+     if orders == nil
+       orders = []
+       orders
+     else
+       where(status: find_status)
+     end
+  end
 end

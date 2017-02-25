@@ -4,6 +4,10 @@ class OrdersController < ApplicationController
     @orders = current_user.orders
   end
 
+  def show
+    @order = current_user.orders.find_by(params[:order_id])
+  end
+
   def create
     order = current_user.orders.create(total_price: @cart.total)
     submit_order(order)
