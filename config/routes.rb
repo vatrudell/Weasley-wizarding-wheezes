@@ -8,10 +8,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :show, :create]
 
-  # get '/cart', to: 'orders#new'
-  # post '/cart', to: 'orders#create'
-
-  resources :users, only: [:new, :index, :create]
+  resources :users, except: [:show]
 
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
@@ -20,7 +17,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/dashboard", to: "orders#index"
   end
-  
+
   get '/dashboard', to: "users#show"
 
   match "/404", :to => "errors#not_found", :via => :all
