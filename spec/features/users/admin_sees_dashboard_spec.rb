@@ -42,5 +42,12 @@ describe "user visits admin dashboard" do
   end
 
   it "as an unregisterd user" do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(nil)
+
+    visit '/admin/dashboard'
+
+    within("h1") do
+      expect(page).to have_content("Error: 404 page not found")
+    end
   end
 end
