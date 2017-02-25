@@ -1,5 +1,31 @@
-[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[31mF[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33m*[0m[33m*[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m
 
-Finished in 58.15 seconds (files took 3.61 seconds to load)
-[32m20 examples, 0 failures[0m
+Pending: (Failures listed here are expected and do not affect your suite's status)
+[33m
+  1) OrderItem add some examples to (or delete) /Users/charlottemoore/turing/2module/projects/weasleys_wizard_wheezes/spec/models/order_item_spec.rb[0m
+     [36m# Not yet implemented[0m
+[36m     # ./spec/models/order_item_spec.rb:4
+[0m[33m
+  2) Order add some examples to (or delete) /Users/charlottemoore/turing/2module/projects/weasleys_wizard_wheezes/spec/models/order_spec.rb[0m
+     [36m# Not yet implemented[0m
+[36m     # ./spec/models/order_spec.rb:4
+[0m
+
+Failures:
+
+  1) When user visits dashboard if they are an admin they can edit their info
+     [31mFailure/Error: expect(current_path).to eq(dashboard_path)[0m
+     [31m[0m
+     [31m  expected: "/dashboard"[0m
+     [31m       got: "/users/4"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/features/users/admin_can_edit_own_info_spec.rb:35:in `block (3 levels) in <top (required)>'[0m
+
+Finished in 4.35 seconds (files took 3.85 seconds to load)
+[31m58 examples, 1 failure, 2 pending[0m
+
+Failed examples:
+
+[31mrspec ./spec/features/users/admin_can_edit_own_info_spec.rb:5[0m [36m# When user visits dashboard if they are an admin they can edit their info[0m
 
