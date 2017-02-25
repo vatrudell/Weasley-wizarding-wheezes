@@ -14,6 +14,8 @@ describe "an unauthenticated user visiting the site" do
                                        username: "pudding",
                                        email: "anon@anon.com",
                                        password: "password")
+    admin_user = Fabricate(:user).admin!
+    
     visit admin_dashboard_path
     within("h1") do
       expect(page).to have_content("Error: 404 page not found")
@@ -24,16 +26,12 @@ describe "an unauthenticated user visiting the site" do
     within("h1") do
       expect(page).to have_content("Error: 404 page not found")
     end
-    within(".card-title") do
-      expect(page).to_not have_content("Charlotte")
-      expect(page).to_not have_content("Courtney")
-    end
 
-    within(".card-content ul") do
-      expect(page).to_not have_content("email@email.com")
-      expect(page).to_not have_content("Cj")
-      expect(page).to_not have_content("anon@anon.com")
-      expect(page).to_not have_content("pudding")
-    end
+    expect(page).to_not have_content("Charlotte")
+    expect(page).to_not have_content("Courtney")
+    expect(page).to_not have_content("email@email.com")
+    expect(page).to_not have_content("Cj")
+    expect(page).to_not have_content("anon@anon.com")
+    expect(page).to_not have_content("pudding")
   end
 end

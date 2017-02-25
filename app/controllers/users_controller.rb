@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    render file: 'app/views/errors/not_found.html.erb' unless current_user
   end
 
   private
