@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Logged in as #{@user.username}"
@@ -17,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if User.find(params[:id]).admin?
+    if current_admin? && User.find(params[:id]) == current_user
       @user = current_user
     else
       render file: 'app/views/errors/not_found.html.erb'
@@ -26,7 +25,10 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update_attributes(user_params)
+    # byebug
+    if @user.authenticate(params[:current_password])
+      @user.update_attributes(user_params)
+      @user.update_attribute(password: params[:new_password])
       flash[:notice] = "Account Info Updated"
       redirect_to dashboard_path
     else

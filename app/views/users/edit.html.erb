@@ -14,11 +14,17 @@
   <%= f.label :email %>
   <%= f.email_field :email %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.label :current_password %>
+  <%= f.password_field :current_password %>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+  <%= f.label :current_password_confirmation %>
+  <%= f.password_field :current_password_confirmation %>
+
+  <%= f.label :new_password %>
+  <%= f.password_field :new_password %>
+
+  <%= f.label :new_password_confirmation %>
+  <%= f.password_field :new_password_confirmation %>
 
   <%= f.submit "Update Account", class: "waves-effect waves-light btn" %>
 

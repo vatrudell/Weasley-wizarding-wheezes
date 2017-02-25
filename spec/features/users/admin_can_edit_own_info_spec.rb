@@ -25,8 +25,10 @@ describe "When user visits dashboard" do
       fill_in "user[last_name]", with: "Lebowski"
       fill_in "Username", with: "TheDude"
       fill_in "Email", with: "dude@dude.com"
-      fill_in 'Password', with: "OpinionMan"
-      fill_in 'user[password_confirmation]', with: "OpinionMan"
+      fill_in 'user[current_password]', with: user_admin.password
+      fill_in 'user[current_password_confirmation]', with: user_admin.password
+      fill_in 'user[new_password]', with: "OpinionMan"
+      fill_in 'user[new_password_confirmation]', with: "OpinionMan"
 
       click_on "Update Account"
 
