@@ -2,23 +2,18 @@ require 'rails_helper'
 
 describe "visitor can adjust items in cart" do
   it "from the cart path" do
-    category = Category.create!(name: "potions")
-    item = Item.create!(title: "Love Potion",
-                        description: "make him love you",
-                        price: 11.00,
-                        category: category)
-
+    item = Fabricate(:item)
     visit root_path
     click_on "Add to Cart"
 
     visit '/cart'
     within("table") do
-      expect(page).to have_content("Love Potion")
-      expect(page).to have_content("$11.0")
+      expect(page).to have_content(item.title)
+      expect(page).to have_content(item.price)
     end
 
     within(".total") do
-      expect(page).to have_content("$11.0")
+      expect(page).to have_content(item.price)
     end
 
     within("table") do
@@ -34,7 +29,7 @@ describe "visitor can adjust items in cart" do
     end
 
     within(".total") do
-      expect(page).to have_content("Total: $33.0")
+      expect(page).to have_content((3 * item.price).round(2))
     end
 
     fill_in("session[quantity]", with: 2)
@@ -47,7 +42,7 @@ describe "visitor can adjust items in cart" do
     end
 
     within(".total") do
-      expect(page).to have_content("Total: $22.0")
+      expect(page).to have_content(2 * item.price)
     end
   end
 end

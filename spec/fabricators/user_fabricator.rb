@@ -4,4 +4,5 @@ Fabricator(:user) do
   username        "CoolTacos"
   email           "tacos@tacos.com"
   password        "password"
+  role            0
 end

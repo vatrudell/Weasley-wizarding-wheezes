@@ -1,13 +1,8 @@
 require 'rails_helper'
 
-
-describe "user can loggin" do
-  it "when nthey login" do
-    user = User.create(first_name: "Charlotte",
-                       last_name: "Moore",
-                       username: "Cj",
-                       email: "email@email.com",
-                       password: "password")
+describe "user can login" do
+  it "when they login" do
+    user = Fabricate(:user, role: 1)
     visit login_path
     fill_in "session[username]", with: user.username
     fill_in "session[password]", with: user.password
@@ -17,10 +12,35 @@ describe "user can loggin" do
     end
 
     expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content("Logged in as Cj")
-    expect(page).to have_content("Charlotte")
-    expect(page).to have_content("Moore")
-    expect(page).to have_content("Cj")
-    expect(page).to have_content("email@email.com")
+    expect(page).to have_content("Logged in as #{user.username}")
+    expect(page).to have_content("#{user.first_name}")
+    expect(page).to have_content("#{user.last_name}")
+    expect(page).to have_content("#{user.username}")
+    expect(page).to have_content("#{user.email}")
+  end
+
+  it "and can only see their own data" do
+    user_two = Fabricate(:user, first_name: "Razz", username: "AAA", email: "a@a.com")
+    authenticated_user = Fabricate(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(authenticated_user)
+
+    visit dashboard_path
+    within(".card-title") do
+      expect(page).to have_content(authenticated_user.first_name)
+      expect(page).to_not have_content(user_two.first_name)
+    end
+
+    within(".card-content ul") do
+      expect(page).to have_content(authenticated_user.username)
+      expect(page).to have_content(authenticated_user.email)
+      expect(page).to_not have_content(user_two.email)
+      expect(page).to_not have_content(user_two.username)
+    end
+
+    visit admin_dashboard_path
+    within("h1") do
+      expect(page).to have_content("Error: 404 page not found")
+      expect(page).to_not have_content("Admin Dashboard")
+    end
   end
 end

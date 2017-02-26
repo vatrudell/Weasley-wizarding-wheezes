@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def new
     @user = User.new
   end
@@ -25,7 +24,6 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    # byebug
     if @user.authenticate(params[:user][:current_password])
       @user.update_attributes(user_params)
       @user.update_attribute(:password, params[:user][:new_password])
@@ -34,6 +32,10 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def show
+    render file: 'app/views/errors/not_found.html.erb' unless current_user
   end
 
   private

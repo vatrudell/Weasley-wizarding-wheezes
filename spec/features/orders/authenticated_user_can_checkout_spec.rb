@@ -1,4 +1,3 @@
-
 require 'rails_helper'
 
 describe "when an authenticated user visits their cart" do
@@ -9,7 +8,6 @@ describe "when an authenticated user visits their cart" do
 
     visit items_path
     click_on "Add to Cart"
-    # save_and_open_page
 
     within(".nav-wrapper") do
       click_on "Cart"

@@ -16,6 +16,6 @@
   def destroy
     session.clear
     flash[:notice] = "Logged Out"
-    redirect_to login_path   #change maybe
+    redirect_to login_path
   end
  end

@@ -41,18 +41,12 @@ describe "When user visits dashboard" do
       expect(page).to have_content("ADMIN")
       expect(page).to have_link("Update Account Info")
       expect(user_admin.password).to eq("OpinionMan")
-
-
     end
 
     scenario "they cannot edit another user's info" do
       user_admin = Fabricate(:user)
       user_admin.admin!
-      user_default = Fabricate(:user, first_name: Faker::Name.name,
-                                      last_name: Faker::Name.name,
-                                      email: Faker::Internet.email,
-                                      username: Faker::Lorem.word)
-
+      user_default = Fabricate(:user, username: "Bob", email: "email@jokes.com")
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_admin)
 
       visit dashboard_path
@@ -62,7 +56,6 @@ describe "When user visits dashboard" do
       visit(edit_user_path(user_default))
 
       expect(page).to have_content("Error: 404 page not found")
-
     end
   end
 
