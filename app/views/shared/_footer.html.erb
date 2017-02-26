@@ -1,11 +1,29 @@
-<div class="main">
-  <footer class="page-footer orange darken-4">
-    <div class="footer-copyright">
-      <div class="container">
-        <p>
-          93 Diagon Alley, London, England
-        </p>
+
+
+<footer class="page-footer orange darken-4">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text"></h5>
+        <p class="grey-text text-lighten-4"></p>
+      </div>
+      <div class="col l4 offset-l2 s12 footer-links">
+        <% if current_user %>
+        <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="/dashboard">User Info</a></li>
+            <li><a class="grey-text text-lighten-3" href="/orders">Orders</a></li>
+            <% if current_admin? %>
+              <li><a class="grey-text text-lighten-3" href="/admin/dashboard">Admin Dashboard</a></li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
     </div>
-  </footer>
-</div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    93 Diagon Alley, London, England
+    </div>
+  </div>
+</footer>

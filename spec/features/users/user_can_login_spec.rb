@@ -25,12 +25,12 @@ describe "user can login" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(authenticated_user)
 
     visit dashboard_path
-    within(".card-title") do
+    within(".user-info") do
       expect(page).to have_content(authenticated_user.first_name)
       expect(page).to_not have_content(user_two.first_name)
     end
 
-    within(".card-content ul") do
+    within(".user-info") do
       expect(page).to have_content(authenticated_user.username)
       expect(page).to have_content(authenticated_user.email)
       expect(page).to_not have_content(user_two.email)
