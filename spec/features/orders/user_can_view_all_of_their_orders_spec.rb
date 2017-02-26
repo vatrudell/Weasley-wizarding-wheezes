@@ -16,12 +16,9 @@ describe "When user views all orders" do
     OrderItem.create(order_id: order2.id, item_id: item1.id, quantity: 2)
 
     visit orders_path
-
-
-    expect(page).to have_link(order1.id.to_s)
-    expect(page).to have_content(order1.total_price)
-    expect(page).to have_link(order2.id.to_s)
-    expect(page).to have_content(order2.total_price)
+    save_and_open_page
     expect(page).to have_link("View")
+    expect(page).to have_content(order1.total_price)
+    expect(page).to have_content(order2.total_price)
   end
 end
