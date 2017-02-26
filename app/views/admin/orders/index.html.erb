@@ -1,1 +1,53 @@
 <h1>Admin Dashboard</h1>
+
+<div class="summary">
+  <table>
+    <tr>
+      <th>Ordered</th>
+      <td><%= @status["ordered"] %></td>
+    </tr>
+    <tr>
+      <th>Paid</th>
+      <td><%= @status["paid"] %></td>
+    </tr>
+    <tr>
+      <th>Cancelled</th>
+      <td><%= @status["cancelled"] %></td>
+    </tr>
+    <tr>
+      <th>Completed</th>
+      <td><%= @status["completed"] %></td>
+    </tr>
+  </table>
+</div>
+<br>
+
+  <%= form_for(:session, url: admin_dashboard_path, method: :put) do |f| %>
+    <%= f.label :status %>
+    <select class="browser-default" name= "order[status]">
+      <option value="" disabled selected>Choose your status</option>
+      <option value = "ordered">Ordered</option>
+      <option value = 'paid'>Paid</option>
+      <option value = 'canceled'>Cancelled</option>
+      <option value = 'completed'>Completed</option>
+      <option value = 'all'>All Orders</option>
+    </select></br>
+    <%= f.submit "sort orders", class: "waves-effect waves-light btn" %>
+  <% end %>
+  <br>
+  <br>
+  <br>
+  <table class="striped">
+    <tr>
+      <th>Order</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+      <% @orders.each do |order| %>
+      <tr>
+        <td>#<%= order.id %></td>
+        <td><%= order.status %></td>
+        <td><%= link_to "View", order %></td>
+      </tr>
+      <% end %>
+  </table>
