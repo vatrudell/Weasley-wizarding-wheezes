@@ -1,5 +1,11 @@
 <h1><%= current_user.username %>'s Orders</h1>
 
+<table>
+  <tr>
+    <th>Order Number</th>
+    <th>Order Total</th>
+    <th>View</th>
+  </tr>
 <% @orders.each do |order| %>
   <table>
     <tr>
@@ -9,9 +15,8 @@
     </tr>
     <tr>
       <td>#<%= order.id %>
+      <td><%= number_to_currency(order.total_price, precision: 2) %></td>
       <td><%= link_to "View", order_path(order) %></td>
-      <td><%= order.total_price %></td>
     </tr>
+  <% end %>
   </table>
-
-<% end %>

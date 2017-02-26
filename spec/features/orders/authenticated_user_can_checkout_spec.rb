@@ -1,15 +1,13 @@
-
 require 'rails_helper'
 
 describe "when an authenticated user visits their cart" do
-  it "they can checkout with one item and the order saves" do
+  xit "they can checkout with one item and the order saves" do
     user = Fabricate(:user)
     item = Fabricate(:item)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit items_path
     click_on "Add to Cart"
-    # save_and_open_page
 
     within(".nav-wrapper") do
       click_on "Cart"
@@ -25,7 +23,7 @@ describe "when an authenticated user visits their cart" do
     end
   end
 
-  it "they can checkout with two items" do
+  xit "they can checkout with two items" do
     user = Fabricate(:user)
     item = Fabricate(:item)
     item2 = Fabricate(:item)

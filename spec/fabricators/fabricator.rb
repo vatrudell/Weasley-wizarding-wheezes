@@ -1,12 +1,15 @@
 require 'faker'
+Fabricate.sequence(:title)
+Fabricate.sequence(:description)
+Fabricate.sequence(:name)
 
 Fabricator(:item) do
-  title { Faker::HarryPotter.unique.book }
-  description { Faker::HarryPotter.unique.quote }
+  title { sequence(:title, 111) }
+  description { sequence(:description) { |i| "this is the #{i} description"} }
   price { Faker:: Number.decimal(2) }
   category  { Fabricate(:category) }
 end
 
 Fabricator(:category) do
-  name { Faker::HarryPotter.location }
+  name { sequence(:name) { |i| "name#{i}"} }
 end

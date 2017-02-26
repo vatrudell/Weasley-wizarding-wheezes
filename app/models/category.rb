@@ -6,5 +6,4 @@ class Category < ApplicationRecord
   def assign_slug
     self.slug = self.name.parameterize if self.name
   end
-
 end

@@ -1,13 +1,19 @@
 class Admin::OrdersController < Admin::BaseController
+  include ActionView::Helpers::TextHelper
+
+  before_action :set_status
 
   def index
     @orders = Order.all
-    @status = Order.group(:status).count
   end
 
   def sort_orders
-    @orders = Order.get_by_status(params[:order][:status])
-    @status =Order.all.group(:status).count
-    render 'admin/orders/index'
+    if params[:order] == "all"
+      @orders = Order.all
+      render "admin/orders/index"
+    else
+      @orders = Order.get_by_status(params[:order][:status])
+      render 'admin/orders/index'
+    end  
   end
 end

@@ -23,8 +23,6 @@ describe "when they visit the show page for an order" do
     OrderItem.create(order_id: order.id, item_id: item2.id, quantity: 1)
     OrderItem.create(order_id: order.id, item_id: item1.id, quantity: 2)
 
-    #order1_total = rder1_total = item1.price + item2.price
-
     visit order_path(order)
 
     expect(page).to have_link(item1.title)

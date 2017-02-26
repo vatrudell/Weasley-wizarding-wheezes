@@ -11,6 +11,8 @@ RSpec.describe Item, type: :model do
 
   context "relationships" do
     it { should belong_to(:category)}
+    it { should have_many(:order_items)}
+    it { should have_many(:orders)}
   end
 
   context "process" do

@@ -5,7 +5,11 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = current_user.orders.find_by(params[:order_id])
+    if current_admin?
+      @order = Order.find(params[:id])
+    else
+      @order = current_user.orders.find_by(params[:order_id])
+    end
   end
 
   def create

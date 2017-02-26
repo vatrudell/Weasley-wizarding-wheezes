@@ -30,23 +30,24 @@
       <option value = 'paid'>Paid</option>
       <option value = 'canceled'>Cancelled</option>
       <option value = 'completed'>Completed</option>
+      <option value = 'all'>All Orders</option>
     </select></br>
     <%= f.submit "sort orders", class: "waves-effect waves-light btn" %>
   <% end %>
   <br>
   <br>
   <br>
-  <table>
+  <table class="striped">
     <tr>
       <th>Order</th>
       <th>Status</th>
-      <th>View</th>
+      <th></th>
     </tr>
       <% @orders.each do |order| %>
       <tr>
         <td>#<%= order.id %></td>
         <td><%= order.status %></td>
-        <td><%= link_to "View", order_path(order) %></td>
+        <td><%= link_to "View", order %></td>
       </tr>
       <% end %>
   </table>
