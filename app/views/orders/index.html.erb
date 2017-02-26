@@ -9,10 +9,8 @@
 <% @orders.each do |order| %>
     <tr>
       <td>#<%= order.id %>
-      <td><%= order.total_price %></td>
+      <td><%= number_to_currency(order.total_price, precision: 2) %></td>
       <td><%= link_to "View", order_path(order) %></td>
     </tr>
   <% end %>
   </table>
-
-

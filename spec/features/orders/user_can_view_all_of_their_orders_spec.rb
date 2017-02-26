@@ -19,6 +19,10 @@ describe "When user views all orders" do
     
     expect(page).to have_link("View")
     expect(page).to have_content(order1.total_price)
+    expect(page).to have_content(order1.id.to_s)
+    expect(page).to have_content(order1.total_price)
+    expect(page).to have_content(order2.id.to_s)
+
     expect(page).to have_content(order2.total_price)
   end
 end
