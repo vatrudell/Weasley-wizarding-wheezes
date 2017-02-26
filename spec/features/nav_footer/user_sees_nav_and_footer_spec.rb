@@ -19,6 +19,21 @@ describe 'user can see nav and footer' do
     expect(page).to have_link('Cart')
   end
 
+  scenario "sees category dropdown" do
+    category = Fabricate(:category)
+    category_2 = Fabricate(:category)
+    visit root_path
+
+    within("nav") do
+      expect(page).to have_link("Products")
+    end
+
+    within(".dropdown-content") do
+      expect(page).to have_link(category.name)
+      expect(page).to have_link(category_2.name)
+    end
+  end
+
   scenario 'if user is logged in they see a link to their dashboard' do
     user = Fabricate(:user)
 
