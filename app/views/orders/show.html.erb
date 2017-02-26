@@ -1,0 +1,46 @@
+<h1>Order #<%=@order.id %></h1>
+<hr>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.items.each do |item| %>
+      <tr>
+        <td><%= link_to item.title, item_path(item) %></td>
+        <td><%= item.price %></td>
+        <td><%= item.get_quantity_in_order(@order)%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Total</th>
+      <th>Status</th>
+      <th>Created At</th>
+      <% if @order.status == "completed" || @order.status == "cancelled" %>
+        <th>Updated At</th>
+      <% end  %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @order.total_price %></td>
+      <td><%= @order.status %></td>
+      <td><%= @order.created_at %></td>
+      <% if @order.status == "completed" || @order.status == "cancelled" %>
+        <th><%= @order.updated_at%></th>
+      <% end  %>
+    </tr>
+  </tbody>
+</table>
