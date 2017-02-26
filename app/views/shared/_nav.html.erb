@@ -15,7 +15,7 @@
             <% unless @cart.total_count.nil?  %>
               <a href="/cart" class="cart-nav">Cart<span class="badge purple circle white-text"><%= @cart.total_count %></span></a></li>
             <% else %>
-              <a href="/cart" >Cart</a></li>
+              <a href="/cart">Cart</a></li>
             <% end %>
           <% if current_user %>
               <li><%= link_to "Logout", logout_path, method: :delete %></li>

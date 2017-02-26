@@ -16,5 +16,11 @@ class Order < ApplicationRecord
      else
        where(status: find_status)
      end
+
+  def submit_order(cart)
+    cart.items.each do |item, quantity|
+      order_items.create!(item_id: item.id,
+                          quantity: quantity)
+    end
   end
 end
