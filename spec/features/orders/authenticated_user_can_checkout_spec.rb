@@ -12,7 +12,7 @@ describe "when an authenticated user visits their cart" do
     within(".nav-wrapper") do
       click_on "Cart"
     end
-
+    visit cart_path
     click_on "Check Out"
 
     expect(current_path).to eq(orders_path)
