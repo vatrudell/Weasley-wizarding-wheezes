@@ -13,6 +13,19 @@ def import_product_csv
   puts "Products have loaded!"
 end
 
+User.create!(username: "user",
+             email: "email@email.com",
+             password: "user",
+             first_name: "Standard",
+             last_name: "User")
+
+User.create!(username: "admin",
+             email: "admin@email.com",
+             password: "admin",
+             first_name: "Admin",
+             last_name: "User",
+             role: 1)
+
 Item.delete_all
 Category.delete_all
 import_product_csv
