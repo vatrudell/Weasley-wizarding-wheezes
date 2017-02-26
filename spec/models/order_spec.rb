@@ -25,8 +25,8 @@ RSpec.describe Order, type: :model do
     cart.add_item(item2.id)
 
     order = user.orders.create!(total_price: cart.total)
-    order.submit
-    
+    order.submit_order(cart)
+
     expect(order.persisted?).to eq(true)
     expect(order.order_items.count).to eq(2)
     expect(OrderItem.find_by(item: item1).quantity).to eq(2)

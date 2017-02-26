@@ -7,4 +7,11 @@ class Order < ApplicationRecord
   has_many :items, through: :order_items
 
   enum status: ['ordered', 'paid', 'canceled', 'completed']
+
+  def submit_order(cart)
+    cart.items.each do |item, quantity|
+      order_items.create!(item_id: item.id,
+                          quantity: quantity)
+    end
+  end
 end
