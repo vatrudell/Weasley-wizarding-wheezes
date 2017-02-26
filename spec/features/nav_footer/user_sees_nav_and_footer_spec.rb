@@ -26,14 +26,38 @@ describe 'user can see nav and footer' do
 
     visit root_path
 
-    expect(page).to have_content("User Info")
-    expect(page).to have_content("Orders")
-    expect(page).to_not have_content("Admin Dashboard")
+    within (".page-footer") do
+      expect(page).to have_link("User Info")
+      expect(page).to have_link("Orders")
+      expect(page).to_not have_link("Admin Dashboard")
+    end
 
     user.admin!
 
     visit root_path
 
-    expect(page).to have_content("Admin Dashboard")
+    within(".page-footer") do
+      expect(page).to have_link("Admin Dashboard")
+    end
+  end
+
+  scenario 'when user is not logged in they see a login button' do
+    visit root_path
+
+    within('.nav-wrapper') do
+      expect(page).to have_link("Login")
+    end
+  end
+
+  scenario 'when user is logged in they see a logout button' do
+    user = Fabricate(:user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit root_path
+
+    within('.nav-wrapper') do
+      expect(page).to have_link("Logout")
+    end
   end
 end
