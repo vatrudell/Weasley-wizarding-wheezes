@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :set_cart
 
   helper_method :current_user,
-                :current_admin?
+                :current_admin?,
+                :admin_login
 
   def current_user
     @user ||= User.find(session[:user_id]) if session[:user_id]
