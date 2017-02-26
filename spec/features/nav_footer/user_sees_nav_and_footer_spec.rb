@@ -55,7 +55,7 @@ describe 'user can see nav and footer' do
 
   scenario 'if user is logged in they see a link to their dashboard' do
     user = Fabricate(:user)
-
+    
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit root_path
