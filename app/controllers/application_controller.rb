@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_login
+    # byebug
     redirect_to admin_dashboard_path if current_admin?
   end
 

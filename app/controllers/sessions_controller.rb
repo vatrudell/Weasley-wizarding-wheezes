@@ -8,7 +8,7 @@
       flash[:notice] = "Logged in as #{user.username}"
       redirect_to dashboard_path
     else
-      flash.now[:notice] = "Your email or password"
+      flash.now[:notice] = "Your username or password is incorrect"
       render :new
     end
   end
@@ -18,4 +18,4 @@
     flash[:notice] = "Logged Out"
     redirect_to login_path
   end
- end
+end
