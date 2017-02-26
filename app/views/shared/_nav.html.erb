@@ -1,8 +1,16 @@
+<ul id="dropdown1" class="dropdown-content">
+  <% @categories.each do |category| %>
+    <li><%= link_to category.name, category_path(category.slug) %></li>
+    <li class="divider"></li>
+  <% end %>
+</ul>
+
 <nav>
    <div class="nav-wrapper orange darken-3">
      <div class ="container">
        <a href="<%= root_path %>" class="brand-logo">Weasleys' Wizard Wheezes</a>
        <ul id="nav-mobile" class="right hide-on-med-and-down">
+         <li><a class="dropdown-button" href="/" data-activates="dropdown1">Products</a></li>
           <li>
             <% unless @cart.total_count.nil?  %>
               <a href="/cart" class="cart-nav">Cart<span class="badge purple circle white-text"><%= @cart.total_count %></span></a></li>
