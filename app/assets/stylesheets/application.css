@@ -57,9 +57,13 @@
     padding: 0 10px 0 10px;
   }
 
-#quantity-form{
-  width: 50px;
-}
+  #quantity-form {
+    width: 50px;
+  }
+
+  .my-links {
+    padding-top: 10px;
+  }
   /* ------------------- classes ------------------   */
 
   /* ------------------ navbar ---------------- */

@@ -11,7 +11,13 @@ describe "User can view own show page" do
       expect(page).to have_content("Welcome, #{user.first_name}!")
     end
 
+    within(".user-info h4") do
+      expect(page).to have_content("My Information")
+    end
+
     within(".user-info") do
+      expect(page).to have_content(user.first_name)
+      expect(page).to have_content(user.last_name)
       expect(page).to have_content(user.username)
       expect(page).to have_content(user.email)
     end

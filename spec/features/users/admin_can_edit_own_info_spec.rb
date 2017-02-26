@@ -14,7 +14,6 @@ describe "When user visits dashboard" do
       expect(page).to have_content(user_admin.first_name)
       expect(page).to have_content(user_admin.last_name)
       expect(page).to have_content(user_admin.email)
-      expect(page).to have_content("ADMIN")
       expect(page).to have_link("Update Account Info")
 
       click_on("Update Account Info")
@@ -38,7 +37,6 @@ describe "When user visits dashboard" do
       expect(page).to have_content("Lebowski")
       expect(page).to have_content("TheDude")
       expect(page).to have_content("dude@dude.com")
-      expect(page).to have_content("ADMIN")
       expect(page).to have_link("Update Account Info")
       expect(user_admin.password).to eq("OpinionMan")
     end
