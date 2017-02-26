@@ -7,7 +7,20 @@ describe "User can view own show page" do
 
     visit dashboard_path
 
-    expect(page).to have_content(user.username)
-    expect(page).to have_content(user.email)
+    within("h1") do
+      expect(page).to have_content("Welcome, #{user.first_name}!")
+    end
+
+    within(".user-info") do
+      expect(page).to have_content(user.username)
+      expect(page).to have_content(user.email)
+    end
+
+    within(".my-orders") do
+      expect(page).to have_link("My Orders")
+      click_on "My Orders"
+    end
+
+    expect(current_path).to eq(orders_path)
   end
 end
