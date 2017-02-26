@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  validates :total_price, presence: true
+
   belongs_to :user
 
   has_many :order_items

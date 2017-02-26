@@ -6,4 +6,8 @@ class Item < ApplicationRecord
   has_many :orders, through: :order_items
 
   enum item_status: ['available', 'retired']
+
+  def get_quantity_in_order(order)
+  	order_items.find_by(order_id: order.id).quantity
+  end
 end
