@@ -19,14 +19,17 @@ User.create!(username: "user",
              first_name: "Standard",
              last_name: "User",
              address: "123 Fake St" )
-
+puts "User Created!"
+             
 User.create!(username: "admin",
              email: "admin@email.com",
              password: "admin",
              first_name: "Admin",
              last_name: "User",
-             address: "123 Fake St",
+              address: "123 Fake St",
              role: 1)
+
+puts "Admin Created!"
 
 Item.delete_all
 Category.delete_all

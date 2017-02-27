@@ -26,10 +26,14 @@ ActiveRecord::Schema.define(version: 20170227005406) do
     t.string   "description"
     t.float    "price"
     t.string   "image_tag"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "category_id"
-    t.integer  "item_status", default: 0
+    t.integer  "item_status",        default: 0
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
   end
 
