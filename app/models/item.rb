@@ -14,4 +14,8 @@ class Item < ApplicationRecord
   def get_order_item(order)
     order_items.find_by(order_id: order.id)
   end
+
+  def get_subtotal_on_order(order)
+    get_order_item(order).subtotal
+  end
 end
