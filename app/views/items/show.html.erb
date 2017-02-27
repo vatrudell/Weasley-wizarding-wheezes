@@ -18,7 +18,7 @@
           <ul>
             <li>Price: <%= number_to_currency(@item.price, precision: 2) %></li>
             <li>Category: <%= @item.category.name %></li>
-            <li>Description: <%= @item.description %></li>
+            <li class="truncate">Description: <%= @item.description %></li>
           </ul>
           <% if @item.available? %>
             <%= button_to "Add to Cart", carts_path(item_id: @item.id), class: "btn" %>
