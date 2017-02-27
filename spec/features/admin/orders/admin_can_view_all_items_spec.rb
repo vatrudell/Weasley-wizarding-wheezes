@@ -13,6 +13,8 @@ describe "When admin is on orders index" do
 
     click_on("View All Items")
 
+    expect(current_path).to eq(admin_items_path)
+
     cards = page.all(".card")
 
     within(cards[0]) do
