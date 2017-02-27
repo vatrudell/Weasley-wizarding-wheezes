@@ -17,13 +17,15 @@ User.create!(username: "user",
              email: "email@email.com",
              password: "user",
              first_name: "Standard",
-             last_name: "User")
+             last_name: "User",
+             address: "123 Fake St" )
 
 User.create!(username: "admin",
              email: "admin@email.com",
              password: "admin",
              first_name: "Admin",
              last_name: "User",
+             address: "123 Fake St",
              role: 1)
 
 Item.delete_all
