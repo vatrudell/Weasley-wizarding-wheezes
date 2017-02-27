@@ -12,4 +12,9 @@ describe "When user visits root" do
     expect(page).to have_content(item2.title)
     expect(page).to have_content(item2.price)
   end
+
+  scenario "They see a list of most popular items" do
+    items = Fabricate.times(4, :item)
+    byebug
+  end
 end
