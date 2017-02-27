@@ -3,7 +3,10 @@ class Admin::ItemsController < Admin::BaseController
 
   def new
     @item = Item.new
-    @categories = Category.all
+
   end
+
+  def create
+  end 
 
 end
