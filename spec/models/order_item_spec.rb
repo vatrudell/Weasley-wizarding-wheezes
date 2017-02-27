@@ -9,4 +9,19 @@ RSpec.describe OrderItem, type: :model do
   context "validations" do
     it { is_expected.to validate_presence_of(:quantity) }
   end
+
+  it ".subtotal returns the subtotal for an item and quantity" do
+    item1 = Fabricate(:item)
+    item2 = Fabricate(:item)
+    user = Fabricate(:user)
+    item1_subtotal = item1.price
+    item2_subtotal = (2 * item2.price)
+    total = item1_subtotal + item2_subtotal
+    order = Order.create!(user: user, total_price: total)
+    order_item1 = order.order_items.create!(order: order, item: item1, quantity: 1)
+    order_item2 = order.order_items.create!(order: order, item: item2, quantity: 2)
+
+    expect(order_item1.subtotal).to eq(item1_subtotal)
+    expect(order_item2.subtotal).to eq(item2_subtotal)
+  end
 end

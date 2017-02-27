@@ -7,6 +7,10 @@ class Admin::OrdersController < Admin::BaseController
     @orders = Order.all
   end
 
+  def show
+    @order = Order.find(params[:id])
+  end
+
   def sort_orders
     if params[:order] == "all"
       @orders = Order.all
