@@ -7,8 +7,8 @@ require 'rails_helper'
      adminda.admin!
      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(adminda)
 
-      visit admin_dashboard_path
-      click_on "Create New Item"
+     visit admin_dashboard_path
+     click_on "Create New Item"
 
      fill_in "item[title]", with: "Test item"
      fill_in "item[description]", with: "Test description"
