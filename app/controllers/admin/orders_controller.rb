@@ -1,8 +1,6 @@
 class Admin::OrdersController < Admin::BaseController
   include ActionView::Helpers::TextHelper
 
-  before_action :set_status
-
   def index
     @orders = Order.all
   end
@@ -12,7 +10,7 @@ class Admin::OrdersController < Admin::BaseController
   end
 
   def sort_orders
-    if params[:order] == "all"
+    if params[:order][:status] == "all"
       @orders = Order.all
       render "admin/orders/index"
     else

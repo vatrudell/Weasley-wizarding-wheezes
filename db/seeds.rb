@@ -18,15 +18,15 @@ User.create!(username: "user",
              password: "user",
              first_name: "Standard",
              last_name: "User",
-             address: "42 Pine St.")
+             address: "123 Fake St" )
 puts "User Created!"
-
+             
 User.create!(username: "admin",
              email: "admin@email.com",
              password: "admin",
              first_name: "Admin",
              last_name: "User",
-             address: "4 Morning Hill Lane",
+              address: "123 Fake St",
              role: 1)
 
 puts "Admin Created!"
