@@ -7,6 +7,12 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def create
-  end 
+    @item = Item.new(item_params)
+  end
+
+  private
+  def item_params
+    
+  end
 
 end
