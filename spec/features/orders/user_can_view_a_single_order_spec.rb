@@ -14,11 +14,17 @@ describe "when they visit the show page for an order" do
 
     order = user.orders.create(total_price: 22.00)
 
-    oi1 = OrderItem.create(order_id: order.id, item_id: item2.id, quantity: 1)
-    oi2 = OrderItem.create(order_id: order.id, item_id: item1.id, quantity: 2)
+    oi1 = OrderItem.create!(order_id: order.id,
+                            item_id: item2.id,
+                            quantity: 1,
+                            price: item2.price)
+    oi2 = OrderItem.create!(order_id: order.id,
+                            item_id: item1.id,
+                            quantity: 2,
+                            price: item1.price)
 
     visit order_path(order)
-
+    save_and_open_page
     expect(page).to have_link(item1.title)
     expect(page).to have_content(item1.price)
     expect(page).to have_content(item1.price)

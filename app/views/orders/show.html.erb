@@ -16,6 +16,7 @@
         <td><%= link_to order_item.item.title, item_path(order_item.item) %></td>
         <td><%= number_to_currency(order_item.price, precision: 2) %></td>
         <td><%= order_item.quantity %></td>
+        <td><%= number_to_currency(order_item.subtotal, precision: 2) %></td>
       </tr>
       <% end %>
     </tbody>
