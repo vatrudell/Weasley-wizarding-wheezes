@@ -84,6 +84,13 @@ describe 'user can see nav and footer' do
       expect(page).to have_link("Admin Tools")
       expect(page).to_not have_link("User Tools")
     end
+
+    within(".admin-dropdown") do
+      expect(page).to have_link("Admin Dashboard")
+      expect(page).to have_link("All Items")
+      expect(page).to have_link("User Info")
+      expect(page).to have_link("Orders")
+    end
   end
 
   scenario 'when admin is logged in they see admin tools' do
@@ -96,6 +103,11 @@ describe 'user can see nav and footer' do
     within("nav") do
       expect(page).to_not have_link("Admin Tools")
       expect(page).to have_link("User Tools")
+    end
+
+    within(".user-dropdown") do
+      expect(page).to have_link("User Info")
+      expect(page).to have_link("Orders")
     end
   end
 end
