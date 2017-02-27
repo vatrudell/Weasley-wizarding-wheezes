@@ -3,7 +3,11 @@
   <div class="col s4">
     <div class="card">
       <div class="card-image">
-        <img class="image-format" src="<%= item.image_tag %>" />
+        <% if item.image_tag %>
+          <img class="image-format" src="<%= item.image_tag %>"/>
+        <% else %>
+          <img class="image-format" src="<%= item.image.url %>"/>
+        <% end %>
       </div>
       <div class="card-content">
          <span class="card-title"><%= link_to item.title, item_path(item) %></span>
