@@ -21,10 +21,8 @@ describe "user creates an order" do
                                     item_id: item2.id,
                                     quantity: 1,
                                     price: item2.price)
-    # byebug
     visit order_path(order)
 
-    save_and_open_page
     within(".order-items") do
       expect(page).to have_content("$7.00")
       expect(page).to have_content("$8.00")
