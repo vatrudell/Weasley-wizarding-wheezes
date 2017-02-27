@@ -18,4 +18,11 @@ RSpec.describe Item, type: :model do
   context "process" do
     it { should define_enum_for(:item_status) }
   end
+
+  it "has an image" do
+    item = Fabricate(:item)
+    expect(item.image_tag.present?).to eq(false)
+    item.update_attributes(image_tag: '/assests/images/dumbledore.jpg')
+    expect(item.image_tag.present?).to eq(true)
+  end
 end
