@@ -8,6 +8,7 @@ RSpec.describe OrderItem, type: :model do
 
   context "validations" do
     it { is_expected.to validate_presence_of(:quantity) }
+    it { is_expected.to validate_presence_of(:price) }
   end
 
   it ".subtotal returns the subtotal for an item and quantity" do
