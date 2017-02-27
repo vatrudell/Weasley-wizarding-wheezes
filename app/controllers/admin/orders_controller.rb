@@ -1,8 +1,6 @@
 class Admin::OrdersController < Admin::BaseController
   include ActionView::Helpers::TextHelper
 
-  before_action :set_status
-
   def index
     @orders = Order.all
   end
