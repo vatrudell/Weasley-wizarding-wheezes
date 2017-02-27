@@ -97,6 +97,18 @@
     padding: 15px 0 15px 15px;
   }
 
+  .admin-orders td{
+    padding: 15px 0 15px 0;
+  }
+
+  .admin-orders .change-status {
+    margin: 5px 0 5px 0;
+  }
+
+  #view-admin-order {
+    margin-left: 10px;
+  }
+
   /* ------------------ navbar ---------------- */
 
   /* ------------------- a ------------------   */
