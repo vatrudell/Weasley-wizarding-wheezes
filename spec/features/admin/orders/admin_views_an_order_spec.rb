@@ -8,7 +8,7 @@ describe "as an authenticated admin" do
 
     item1_subtotal = (item1.price * 2).round(2)
     item2_subtotal = item2.price
-    total = item1_subtotal + item2_subtotal
+    total = (item1_subtotal + item2_subtotal).round(2)
 
     order = Order.create!(total_price: total, user: user)
     order_item1 = order.order_items.create!(item: item1, quantity: 2)
@@ -17,7 +17,7 @@ describe "as an authenticated admin" do
     admin = Fabricate(:user, username: "admin", email: "admin@admin.com", role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     visit admin_order_path(order)
-    # save_and_open_page
+    save_and_open_page
     within(".date") do
       expect(page).to have_content(order.created_at)
     end
@@ -28,14 +28,20 @@ describe "as an authenticated admin" do
       expect(page).to have_content(user.address)
       expect(page).to have_content("Ordered By")
       expect(page).to have_content("Address")
+      expect(page).to have_content("Total")
+      expect(page).to have_content("Date")
+      expect(page).to have_content("Order Status")
     end
 
     within(".order-items") do
       expect(page).to have_content("Item")
+      expect(page).to have_content("Item Price")
       expect(page).to have_content("Quantity")
       expect(page).to have_content("Subtotal")
       expect(page).to have_link(item1.title)
+      expect(page).to have_content(item1.price)
       expect(page).to have_link(item2.title)
+      expect(page).to have_content(item2.price)
       expect(page).to have_content(order_item1.quantity)
       expect(page).to have_content(order_item2.quantity)
       expect(page).to have_content(item1_subtotal)
@@ -43,11 +49,14 @@ describe "as an authenticated admin" do
     end
 
     within(".total") do
-      expect(page).to have_content("Total: #{order.total_price}")
+      expect(page).to have_content("#{order.total_price}")
     end
 
     within(".order-status") do
       expect(page).to have_content("ordered")
     end
+
+    click_on "#{item1.title}"
+    expect(current_path).to eq(item_path(item1))
   end
 end
