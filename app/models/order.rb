@@ -21,7 +21,8 @@ class Order < ApplicationRecord
   def submit_order(cart)
     cart.items.each do |item, quantity|
       order_items.create!(item_id: item.id,
-                          quantity: quantity)
+                          quantity: quantity,
+                          price: item.price)
     end
   end
 end
