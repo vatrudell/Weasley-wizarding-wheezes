@@ -17,6 +17,7 @@ describe "user adds an item to the cart" do
     within("table") do
       expect(page).to have_link(item.title)
       expect(page).to have_content(item.price)
+      expect(page).to have_content(item.description)
     end
 
     within(".total") do

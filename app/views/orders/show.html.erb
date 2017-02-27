@@ -1,4 +1,5 @@
 <h1>Order #<%= @order.id %></h1>
+
 <hr>
   <table class="order-items">
     <thead>
@@ -6,6 +7,7 @@
         <th>Item</th>
         <th>Price</th>
         <th>Quantity</th>
+        <th>Subtotal</th>
       </tr>
     </thead>
     <tbody>
@@ -25,7 +27,7 @@
       <th>Total</th>
       <th>Status</th>
       <th>Created At</th>
-      <% if @order.status == "completed" || @order.status == "cancelled" %>
+      <% unless @order.status == "ordered"  %>
         <th>Updated At</th>
       <% end  %>
     </tr>
@@ -35,7 +37,7 @@
       <td><%= number_to_currency(@order.total_price, precision: 2) %></td>
       <td><%= @order.status %></td>
       <td><%= @order.created_at %></td>
-      <% if @order.status == "completed" || @order.status == "cancelled" %>
+      <% unless @order.status == "ordered"  %>
         <th><%= @order.updated_at%></th>
       <% end  %>
     </tr>

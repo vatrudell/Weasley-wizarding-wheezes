@@ -14,8 +14,8 @@
       <td><%= @status["paid"] %></td>
     </tr>
     <tr>
-      <th>Cancelled</th>
-      <td><%= @status["cancelled"] %></td>
+      <th>Canceled</th>
+      <td><%= @status["canceled"] %></td>
     </tr>
     <tr>
       <th>Completed</th>
@@ -31,36 +31,40 @@
       <option value="" disabled selected>Choose your status</option>
       <option value = "ordered">Ordered</option>
       <option value = 'paid'>Paid</option>
-      <option value = 'canceled'>Cancelled</option>
+      <option value = 'canceled'>Canceled</option>
       <option value = 'completed'>Completed</option>
       <option value = 'all'>All Orders</option>
     </select></br>
-    <%= f.submit "sort orders", class: "waves-effect waves-light btn" %>
+    <%= f.submit "filter", class: "waves-effect waves-light btn" %>
   <% end %>
   <br>
   <br>
   <br>
-  <table class="striped">
-    <tr>
-      <th>Order</th>
-      <th>Status</th>
-      <th>Change Status</th>
-    </tr>
-      <% @orders.each do |order| %>
+  <table class="striped admin-orders">
+    <thead>
       <tr>
-        <td><%= button_to order.id, admin_order_path(order), method: :get, class: "btn" %></td>
-        <td><%= order.status %></td>
-        <td>
-        <% if order.status == "ordered" %>
-          <%= button_to "Paid", admin_order_path(order, status: 'paid'), method: :put, class: "btn" %>
-        <% end %>
-        <% if order.status == "paid" %>
-          <%= button_to "Complete", admin_order_path(order, status: 'completed'), method: :put, class: "btn" %>
-        <% end %>
-        <% if order.status == 'ordered' || order.status == 'paid' %>
-          <%= button_to "Cancel", admin_order_path(order, status: 'canceled'), method: :put, class: "btn" %>
-        <% end %>
-        </td>
+        <th>Order</th>
+        <th>Status</th>
+        <th>Change Status</th>
       </tr>
-      <% end %>
+    </thead>
+    <tbody>
+    <% @orders.each do |order| %>
+        <tr>
+          <td><%= button_to order.id, admin_order_path(order), method: :get, class: "btn", id: "view-admin-order" %></td>
+          <td><%= order.status %></td>
+          <td>
+          <% if order.status == "ordered" %>
+              <%= button_to "Paid", admin_order_path(order, status: 'paid'), method: :put, class: "btn change-status" %>
+          <% end %>
+          <% if order.status == "paid" %>
+              <%= button_to "Complete", admin_order_path(order, status: 'completed'), method: :put, class: "btn change-status" %>
+          <% end %>
+          <% if order.status == 'ordered' || order.status == 'paid' %>
+              <%= button_to "Cancel", admin_order_path(order, status: 'canceled'), method: :put, class: "btn change-status" %>
+          <% end %>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
   </table>

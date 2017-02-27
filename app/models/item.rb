@@ -14,7 +14,15 @@ class Item < ApplicationRecord
   enum item_status: ['available', 'retired']
 
   def get_quantity_in_order(order)
-  	order_items.find_by(order_id: order.id).quantity
+  	get_order_item(order).quantity
+  end
+
+  def get_order_item(order)
+    order_items.find_by(order_id: order.id)
+  end
+
+  def get_subtotal_on_order(order)
+    get_order_item(order).subtotal
   end
   # def image_remote_url(url_value)
   #   self.image = URI.parse(url_value)
