@@ -1,5 +1,6 @@
-class SessionsController < ApplicationController
-  before_action :admin_login, except: [:destroy]
+ class SessionsController < ApplicationController
+   before_action :admin_login, only: [:create]
+
 
   def create
     user = User.find_by(username: params[:session][:username])
@@ -8,7 +9,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Logged in as #{user.username}"
       redirect_to dashboard_path
     else
-      flash.now[:notice] = "Your email or password"
+      flash.now[:notice] = "Your username or password is incorrect"
       render :new
     end
   end

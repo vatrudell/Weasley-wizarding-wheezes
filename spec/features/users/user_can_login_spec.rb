@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "user can login" do
   it "when they login" do
-    user = Fabricate(:user, role: 1)
+    user = Fabricate(:user)
     visit login_path
     fill_in "session[username]", with: user.username
     fill_in "session[password]", with: user.password
