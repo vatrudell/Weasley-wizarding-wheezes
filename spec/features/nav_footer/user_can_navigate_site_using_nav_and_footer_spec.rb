@@ -111,7 +111,48 @@ describe "authenticated user can navigate site using navbar" do
 
     expect(current_path).to eq(orders_path)
     expect(page).to have_content("#{user.username}'s Orders")
+  end
 
+  scenario "admin user can navigate using admin tools dropdown" do
+    user = Fabricate(:user, role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit root_path
+    within ("nav") do
+      click_on("Admin Tools")
+    end
+    within(".admin-dropdown") do
+      click_on("Admin Dashboard")
+    end
+
+    expect(current_path).to eq(admin_dashboard_path)
+
+    within ("nav") do
+      click_on("Admin Tools")
+    end
+    within(".admin-dropdown") do
+      click_on("All Items")
+    end
+
+    expect(current_path).to eq(admin_items_path)
+
+    within ("nav") do
+      click_on("Admin Tools")
+    end
+    within(".admin-dropdown") do
+      click_on("Orders")
+    end
+
+    expect(current_path).to eq(orders_path)
+
+    within ("nav") do
+      click_on("Admin Tools")
+    end
+    within(".admin-dropdown") do
+      click_on("User Info")
+    end
+
+    expect(current_path).to eq(dashboard_path)
   end
 end
 
