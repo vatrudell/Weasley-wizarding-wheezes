@@ -36,8 +36,8 @@ describe "as an authenticated admin" do
       expect(page).to have_content("Subtotal")
       expect(page).to have_link(item1.title)
       expect(page).to have_link(item2.title)
-      expect(page).to have_content(order_item1).quantity
-      expect(page).to have_content(order_item2).quantity
+      expect(page).to have_content(order_item1.quantity)
+      expect(page).to have_content(order_item2.quantity)
       expect(page).to have_content(item1_subtotal)
       expect(page).to have_content(item2_subtotal)
     end

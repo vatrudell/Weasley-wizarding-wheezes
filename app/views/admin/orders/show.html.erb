@@ -3,36 +3,36 @@
 <table class="order-items">
   <thead>
     <tr>
-      <th>Total</th>
-      <th>Status</th>
-      <th>Created At</th>
-      <% if @order.status == "completed" || @order.status == "cancelled" %>
-        <th>Updated At</th>
-      <% end  %>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
     </tr>
   </thead>
   <tbody>
+    <% @order.order_items.each do |order_item| %>
     <tr>
-      <td><%= @order.total_price %></td>
-      <td><%= @order.status %></td>
-      <td class="date"><%= "#{@order.created_at}" %></td>
-      <% if @order.status == "completed" || @order.status == "cancelled" %>
-        <th><%= @order.updated_at%></th>
-      <% end  %>
+      <td><%= link_to order_item.item.title, item_path(order_item.item) %></td>
+      <td><%= order_item.quantity %></td>
+      <td><%= order_item.subtotal %></td>
     </tr>
+    <% end %>
   </tbody>
 </table>
 
 <table class="user-info">
   <thead>
     <tr>
+      <th>Date</th>
+      <th>Total</th>
       <th>Ordered By</th>
       <th>Address</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td class="date"><%= "#{@order.created_at}" %></td>
       <td><%= "#{@order.user.first_name} #{@order.user.last_name}" %></td>
+      <td><%= @order.user.address %></td>
     </tr>
   </tbody>
 </table>
