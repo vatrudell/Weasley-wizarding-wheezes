@@ -1,0 +1,28 @@
+<h4>Create New Item</h4>
+
+<%= form_for [:admin, @item], html: {multipart: true} do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :price%>
+  <%= f.text_field :price%>
+# I've tried this a few times with different f. combos. Either nothing renders or there are a variety of nil class/merge/no conversion to key errors
+
+<%= form_for(@item) do |f| %>
+  <%= f.label :category %>
+  <select class="browser-default" name= "item[category]">
+    <% @categories.each do |category| %>
+        <option value="<%= category.id %>"><%= category.name %></option>
+    <% end %>
+  </select></br>
+  <%= f.submit "sort orders", class: "waves-effect waves-light btn" %>
+<% end %>
+  <%#= f.label :category %>
+  <%#= select_tag :category_id, options_from_collection_for_select(@categories, :id, :name) %>
+  <%#= f.collection_select :category_id, @categories, :id, :name, include_blank: true %>
+  <%#= f.collection_select :item, :category_id, @categories, :id, :name, include_blank: true %>
+
+<% end %>
