@@ -13,7 +13,7 @@ describe "When a user is on items index" do
       click_on "Whizbang"
 
       expect(current_path).to eq(admin_item_path(item2))
-      save_and_open_page
+
       within(".card-content") do
         expect(page).to have_content("Whizbang")
         expect(page).to have_content("Price: $#{item2.price}")
