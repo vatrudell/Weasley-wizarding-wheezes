@@ -7,6 +7,12 @@
     <th>View</th>
   </tr>
 <% @orders.each do |order| %>
+  <table>
+    <tr>
+      <th>Order Number</th>
+      <th></th>
+      <th>Total</th>
+    </tr>
     <tr>
       <td>#<%= order.id %>
       <td><%= number_to_currency(order.total_price, precision: 2) %></td>

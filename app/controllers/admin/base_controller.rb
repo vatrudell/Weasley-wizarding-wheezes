@@ -4,4 +4,8 @@ class Admin::BaseController < ApplicationController
   def current_admin
     render file: 'app/views/errors/not_found.html.erb' unless current_admin?
   end
+
+  def set_status
+    @status =Order.group(:status).count
+  end
 end
