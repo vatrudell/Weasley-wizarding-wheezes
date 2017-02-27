@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "when they visit the show page for an order" do
-  it "shows item title, price, quantity" do
+  it "shows item title, price, quantity, and subtotal" do
     user = Fabricate(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -17,17 +17,17 @@ describe "when they visit the show page for an order" do
                                    price: 8 )
 
 
-    order = user.orders.create(total_price: 15)
+    order = user.orders.create(total_price: 22.00)
 
-    OrderItem.create(order_id: order.id, item_id: item1.id, quantity: 1)
-    OrderItem.create(order_id: order.id, item_id: item2.id, quantity: 1)
-    OrderItem.create(order_id: order.id, item_id: item1.id, quantity: 2)
+    oi1 = OrderItem.create(order_id: order.id, item_id: item2.id, quantity: 1)
+    oi2 = OrderItem.create(order_id: order.id, item_id: item1.id, quantity: 2)
 
     visit order_path(order)
 
     expect(page).to have_link(item1.title)
     expect(page).to have_content(item1.price)
     expect(page).to have_content(item1.price)
+    expect(page).to have_content(oi2.subtotal)
     expect(page).to have_content(order.total_price)
     expect(page).to have_content(order.status)
     expect(page).to have_content(order.created_at)

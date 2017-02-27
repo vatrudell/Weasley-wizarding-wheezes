@@ -8,6 +8,10 @@ class Item < ApplicationRecord
   enum item_status: ['available', 'retired']
 
   def get_quantity_in_order(order)
-  	order_items.find_by(order_id: order.id).quantity
+  	get_order_item(order).quantity
+  end
+
+  def get_order_item(order)
+    order_items.find_by(order_id: order.id)
   end
 end
