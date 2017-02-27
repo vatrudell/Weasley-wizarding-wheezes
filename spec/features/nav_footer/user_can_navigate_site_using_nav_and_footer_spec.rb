@@ -86,6 +86,33 @@ describe "authenticated user can navigate site using navbar" do
 
     expect(current_path).to eq(category_path(category_2.slug))
   end
+
+  scenario "default user can navigate using user tools dropdown" do
+    user = Fabricate(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit root_path
+    within ("nav") do
+      click_on("User Tools")
+    end
+    within(".user-dropdown") do
+      click_on("User Info")
+    end
+
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("Welcome, #{user.first_name}!")
+
+    within ("nav") do
+      click_on("User Tools")
+    end
+    within(".user-dropdown") do
+      click_on("Orders")
+    end
+
+    expect(current_path).to eq(orders_path)
+    expect(page).to have_content("#{user.username}'s Orders")
+
+  end
 end
 
 describe "authenticated user can navigate site using footer links" do
