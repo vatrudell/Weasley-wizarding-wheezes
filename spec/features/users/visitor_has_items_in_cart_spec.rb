@@ -34,6 +34,7 @@ describe "when I visit root" do
       fill_in "user[last_name]", with: "Fluff"
       fill_in "user[username]", with: "razz"
       fill_in "user[email]", with: "email@email.com"
+      fill_in "Address", :with => "123 Turing Lane"
       fill_in "user[password]", with: "password"
       fill_in "user[password_confirmation]", with: "password"
     end
