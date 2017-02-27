@@ -13,8 +13,8 @@
       <td><%= @status["paid"] %></td>
     </tr>
     <tr>
-      <th>Cancelled</th>
-      <td><%= @status["cancelled"] %></td>
+      <th>Canceled</th>
+      <td><%= @status["canceled"] %></td>
     </tr>
     <tr>
       <th>Completed</th>
@@ -30,11 +30,11 @@
       <option value="" disabled selected>Choose your status</option>
       <option value = "ordered">Ordered</option>
       <option value = 'paid'>Paid</option>
-      <option value = 'canceled'>Cancelled</option>
+      <option value = 'canceled'>Canceled</option>
       <option value = 'completed'>Completed</option>
       <option value = 'all'>All Orders</option>
     </select></br>
-    <%= f.submit "sort orders", class: "waves-effect waves-light btn" %>
+    <%= f.submit "filter", class: "waves-effect waves-light btn" %>
   <% end %>
   <br>
   <br>
