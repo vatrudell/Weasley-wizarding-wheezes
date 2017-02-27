@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   has_many :order_items
   has_many :orders, through: :order_items
 
-  has_attached_file :image, styles: {medium: "200x200", thumb: "100x100"}, default_url: "/app/assets/images/dumbledore.jpg" # "http://vignette3.wikia.nocookie.net/harrypotter/images/4/40/Albus_Dumbledore_%28HBP_promo%29_3.jpg/revision/latest/scale-to-width-down/700?cb=20150822232849"
+  has_attached_file :image, styles: {medium: "200x200", thumb: "100x100"}, default_url: "/images/dumbledore.jpg" # "http://vignette3.wikia.nocookie.net/harrypotter/images/4/40/Albus_Dumbledore_%28HBP_promo%29_3.jpg/revision/latest/scale-to-width-down/700?cb=20150822232849"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   enum item_status: ['available', 'retired']
@@ -16,7 +16,6 @@ class Item < ApplicationRecord
   def get_quantity_in_order(order)
   	order_items.find_by(order_id: order.id).quantity
   end
-
   # def image_remote_url(url_value)
   #   self.image = URI.parse(url_value)
   #   @image_remote_url = url_value
