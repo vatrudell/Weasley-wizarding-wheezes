@@ -1,20 +1,33 @@
 <h4>Create New Item</h4>
 
 <%= form_for [:admin, @item], html: {multipart: true} do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
 
-  <%= f.label :price%>
-  <%= f.text_field :price%>
+  <div class="field">
+    <%= f.label :price%>
+    <%= f.text_field :price%>
+  </div>
 
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image, {class: "form-control"} %>
+  </div>
+
+  <div class="field drop-down">
     <%= f.label :category %>
-    <select class="browser-default" name= "item[category]">
+    <select class="browser-default" name= "item[category_id]">
       <% @categories.each do |category| %>
-          <option value="<%= category.id %>"><%= category.name %></option>
+          <option value=<%= category.id %>><%= category.name %></option>
       <% end %>
     </select></br>
-    <%= f.submit "sort orders", class: "waves-effect waves-light btn" %>
+  </div>
+    <%= f.submit "Submit Order", class: "waves-effect waves-light btn" %>
 <% end %>

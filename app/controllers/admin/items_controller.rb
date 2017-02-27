@@ -11,10 +11,24 @@ class Admin::ItemsController < Admin::BaseController
 
   def create
     @item = Item.new(item_params)
+    if @item.save
+      redirect_to admin_items_path
+     flash[:success] = "Mischief managed."
+    else
+      flash[:failure] = "Please make sure all fields are filled out."
+      render :new
+    end
   end
 
   private
   def item_params
+    params.require(:item).permit(:title,
+                                :description,
+                                :price,
+                                :category_id #,
+                              #  :tag_list,
+                              #  :image
+                                )
   end
-      
+
 end
