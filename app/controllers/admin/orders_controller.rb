@@ -12,7 +12,7 @@ class Admin::OrdersController < Admin::BaseController
   end
 
   def sort_orders
-    if params[:order] == "all"
+    if params[:order][:status] == "all"
       @orders = Order.all
       render "admin/orders/index"
     else
