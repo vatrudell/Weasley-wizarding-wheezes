@@ -24,7 +24,7 @@ describe "when they visit the show page for an order" do
                             price: item1.price)
 
     visit order_path(order)
-    save_and_open_page
+
     expect(page).to have_link(item1.title)
     expect(page).to have_content(item1.price)
     expect(page).to have_content(item1.price)
