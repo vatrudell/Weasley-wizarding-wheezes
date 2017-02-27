@@ -1,6 +1,5 @@
 <h1>Order #<%= @order.id %></h1>
 <hr>
-
   <table>
     <thead>
       <tr>
@@ -13,14 +12,12 @@
       <% @order.items.each do |item| %>
       <tr>
         <td><%= link_to item.title, item_path(item) %></td>
-        <td><%= item.price %></td>
+        <td><%= number_to_currency(item.price, precision: 2) %></td>
         <td><%= item.get_quantity_in_order(@order)%></td>
       </tr>
       <% end %>
     </tbody>
   </table>
-
-
 
 <table>
   <thead>

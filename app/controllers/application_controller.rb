@@ -18,13 +18,16 @@ class ApplicationController < ActionController::Base
     current_user && current_user.admin?
   end
 
-  def admin_login
-    redirect_to admin_dashboard_path if current_admin?
-  end
-
   def define_categories
     #defined here
     @categories = Category.all
   end
 
+  def admin_login
+    user = User.find_by(username: params[:session][:username])
+    if user && user.authenticate(params[:session][:password]) && user.admin?
+      "Logged in as #{user.username}"
+      redirect_to admin_dashboard_path
+    end
+  end
 end

@@ -10,6 +10,7 @@ describe "When user clicks create account" do
     fill_in "user[last_name]", :with => "Moore"
     fill_in "Username", :with => "Cj"
     fill_in "Email", :with => "email@email.com"
+    fill_in "Address", :with => "123 Turing Lane"
     fill_in "Password", :with => "password"
     fill_in "user[password_confirmation]", :with => "password"
 

@@ -16,7 +16,7 @@ describe "when an authenticated user visits their cart" do
     click_on "Check Out"
 
     expect(current_path).to eq(orders_path)
-    expect(page).to have_content("1")
+    expect(page).to have_content(Order.all.first.id)
 
     within(".success") do
       expect(page).to have_content("Mischief is coming your way, you have successfully placed your order!")
@@ -39,7 +39,10 @@ describe "when an authenticated user visits their cart" do
     click_on "Check Out"
 
     expect(current_path).to eq(orders_path)
-    expect(page).to have_content("2")
+    # save_and_open_page
+    within("table") do
+      expect(page).to have_content(Order.all.last.id)
+    end
 
     within(".success") do
       expect(page).to have_content("Mischief is coming your way, you have successfully placed your order!")

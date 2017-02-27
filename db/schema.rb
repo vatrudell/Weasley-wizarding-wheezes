@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170226223536) do
+=======
+ActiveRecord::Schema.define(version: 20170227005406) do
+>>>>>>> d25cabf572a077f79ef5b0714eea0cb7afc5e31d
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +69,7 @@ ActiveRecord::Schema.define(version: 20170226223536) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "role",            default: 0
+    t.text     "address"
   end
 
   add_foreign_key "items", "categories"

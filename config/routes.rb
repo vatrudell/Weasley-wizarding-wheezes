@@ -17,8 +17,13 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/dashboard", to: "orders#index"
     put "/dashboard", to: "orders#sort_orders"
+<<<<<<< HEAD
     
     resources :items, only: [:new, :create, :update]
+=======
+    resources :orders, only: [:show, :update]
+    resources :items, only: [:index, :edit]
+>>>>>>> d25cabf572a077f79ef5b0714eea0cb7afc5e31d
   end
 
   get '/dashboard', to: "users#show"
