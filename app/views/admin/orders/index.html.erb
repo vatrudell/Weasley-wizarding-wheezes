@@ -41,13 +41,23 @@
     <tr>
       <th>Order</th>
       <th>Status</th>
-      <th></th>
+      <th>Change Status</th>
     </tr>
       <% @orders.each do |order| %>
       <tr>
-        <td>#<%= order.id %></td>
+        <td><%= button_to order.id, order, method: :get, class: "btn" %></td>
         <td><%= order.status %></td>
-        <td><%= link_to "View", order %></td>
+        <td>
+        <% if order.status == "ordered" %>
+          <%= button_to "Paid", admin_order_path(order, status: 'paid'), method: :put, class: "btn" %>
+        <% end %>
+        <% if order.status == "paid" %>
+          <%= button_to "Complete", admin_order_path(order, status: 'completed'), method: :put, class: "btn" %>
+        <% end %>
+        <% if order.status == 'ordered' || order.status == 'paid' %>
+          <%= button_to "Cancel", admin_order_path(order, status: 'canceled'), method: :put, class: "btn" %>
+        <% end %>
+        </td>
       </tr>
       <% end %>
   </table>

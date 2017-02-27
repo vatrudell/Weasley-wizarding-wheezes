@@ -20,4 +20,15 @@ class Admin::OrdersController < Admin::BaseController
       render 'admin/orders/index'
     end
   end
+
+  def update
+    order = Order.find(params[:id])
+    if order.update_attribute(:status, params[:status])
+      flash[:notice] = "Updated order status"
+      redirect_to admin_dashboard_path
+    else
+      flash[:notice] = "Something didn't happen"
+      redirect_to admin_dashboard_path
+    end
+  end
 end
