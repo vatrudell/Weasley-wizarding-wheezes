@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     put "/dashboard", to: "orders#sort_orders"
 
     resources :orders, only: [:show, :update]
-    resources :items, only: [:index, :edit, :new, :create, :update]
+    resources :items, only: [:index, :edit, :new, :show, :create, :update]
   end
 
   get '/dashboard', to: "users#show"

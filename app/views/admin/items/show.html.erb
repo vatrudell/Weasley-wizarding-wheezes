@@ -19,12 +19,11 @@
             <li>Price: <%= number_to_currency(@item.price, precision: 2) %></li>
             <li>Category: <%= @item.category.name %></li>
             <li class="truncate">Description: <%= @item.description %></li>
+            <li>Status: <%= @item.item_status %></li>
           </ul>
-          <% if @item.available? %>
-            <%= button_to "Add to Cart", carts_path(item_id: @item.id), class: "btn" %>
-          <% else %>
-            <button  class="btn disabled">Retired</button>
-          <% end %>
+      </div>
+      <div class="card-action">
+        <%= link_to "Edit", edit_admin_item_path(@item) %>
       </div>
     </div>
   </div>
