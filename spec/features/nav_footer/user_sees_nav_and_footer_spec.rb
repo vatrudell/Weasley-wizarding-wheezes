@@ -78,8 +78,24 @@ describe 'user can see nav and footer' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
+    visit root_path
+
     within("nav") do
       expect(page).to have_link("Admin Tools")
+      expect(page).to_not have_link("User Tools")
+    end
+  end
+
+  scenario 'when admin is logged in they see admin tools' do
+    user = Fabricate(:user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit root_path
+
+    within("nav") do
+      expect(page).to_not have_link("Admin Tools")
+      expect(page).to have_link("User Tools")
     end
   end
 end
