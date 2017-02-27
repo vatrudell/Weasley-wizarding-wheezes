@@ -8,7 +8,7 @@
   <div class="col s8">
     <div class="card">
       <div class="card-image">
-        <img src="<%= @item.image_tag %>" />
+        <img class="image-format-show" src="<%= @item.image_tag %>" />
       </div>
       <div class="card-content">
           <span class="card-title"><%= @item.title %></span>
@@ -18,9 +18,9 @@
             <li>Description: <%= @item.description %></li>
           </ul>
           <% if @item.available? %>
-            <%= button_to "Add to Cart", carts_path(item_id: @item.id) %>
+            <%= button_to "Add to Cart", carts_path(item_id: @item.id), class: "btn" %>
           <% else %>
-            <%= button_to "Retired", class: "btn disabled" %>
+            <button  class="btn disabled">Retired</button>
           <% end %>
       </div>
     </div>
