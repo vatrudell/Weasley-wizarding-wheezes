@@ -2,7 +2,7 @@ class OrderItem < ApplicationRecord
   belongs_to :order
   belongs_to :item
 
-  validates :quantity, presence: true
+  validates :quantity, :price, presence: true
 
   def subtotal
     (item.price * quantity).round(2)
