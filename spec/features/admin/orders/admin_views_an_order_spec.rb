@@ -17,7 +17,7 @@ describe "as an authenticated admin" do
     admin = Fabricate(:user, username: "admin", email: "admin@admin.com", role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     visit admin_order_path(order)
-    save_and_open_page
+
     within(".date") do
       expect(page).to have_content(order.created_at)
     end
