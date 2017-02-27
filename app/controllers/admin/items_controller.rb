@@ -20,6 +20,22 @@ class Admin::ItemsController < Admin::BaseController
     end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+
+    if @item.update_attributes(item_params)
+      flash[:success] = "Mischief managed: #{@item.title} has been updated!"
+      redirect_to admin_items_path
+    else
+      flash[:failure] = "Uh-oh, not quite!"
+      render :update
+    end
+  end
+
   private
   def item_params
     params.require(:item).permit(:title,
