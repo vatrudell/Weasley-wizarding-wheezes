@@ -1,0 +1,23 @@
+<h1>All Items</h1>
+
+<div class="row">
+<% @items.each do |item| %>
+  <div class="col s4">
+    <div class="card">
+      <div class="card-image">
+        <img class="image-format" src="<%= item.image_tag %>" />
+      </div>
+      <div class="card-content">
+         <span class="card-title"><%=item.title%></span>
+         <ul>
+           <li><%= item.description %></li>
+           <li><%= item.item_status %></li>
+         </ul>
+      </div>
+      <div class="card-action">
+        <%= link_to "Edit", edit_admin_item_path(item) %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
