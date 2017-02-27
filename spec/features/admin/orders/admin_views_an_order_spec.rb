@@ -11,8 +11,8 @@ describe "as an authenticated admin" do
     total = (item1_subtotal + item2_subtotal).round(2)
 
     order = Order.create!(total_price: total, user: user)
-    order_item1 = order.order_items.create!(item: item1, quantity: 2)
-    order_item2 = order.order_items.create!(item: item2, quantity: 1)
+    order_item1 = order.order_items.create!(item: item1, quantity: 2, price: item1.price)
+    order_item2 = order.order_items.create!(item: item2, quantity: 1, price: item2.price)
 
     admin = Fabricate(:user, username: "admin", email: "admin@admin.com", role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
