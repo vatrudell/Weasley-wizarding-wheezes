@@ -15,28 +15,20 @@ describe "when they visit the admin dashbash board page" do
 
     visit "/admin/dashboard"
 
-    #
-    # within(".browser-default") do
-      # click_on "Choose Your Status"
-      # click_on "Ordered"
-    # end
     select("Ordered", from: "order[status]")
 
     click_on "sort orders"
-    #save_and_open_page
     within(".striped") do
-      expect(page).to have_content(order_one.id)
-      expect(page).to have_link("View")
-      expect(page).to_not have_content(order_two.id)
+      expect(page).to have_button(order_one.id.to_s)
+      expect(page).to_not have_button(order_two.id.to_s)
     end
 
     select("Paid", from: "order[status]")
     click_on "sort orders"
 
     within(".striped") do
-      expect(page).to have_content(order_two.id)
-      expect(page).to have_link("View")
-      expect(page).to_not have_content(order_one.id)
+      expect(page).to have_button(order_two.id.to_s)
+      expect(page).to_not have_button(order_one.id.to_s)
     end
   end
 end
