@@ -1,5 +1,5 @@
- class SessionsController < ApplicationController
-   before_action :admin_login, except: [:destroy]
+class SessionsController < ApplicationController
+  before_action :admin_login, except: [:destroy]
 
   def create
     user = User.find_by(username: params[:session][:username])
@@ -18,4 +18,4 @@
     flash[:notice] = "Logged Out"
     redirect_to login_path
   end
- end
+end
