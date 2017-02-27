@@ -13,19 +13,18 @@ describe "When a user is on items index" do
       click_on "Whizbang"
 
       expect(current_path).to eq(admin_item_path(item2))
-
+      save_and_open_page
       within(".card-content") do
         expect(page).to have_content("Whizbang")
         expect(page).to have_content("Price: $#{item2.price}")
         expect(page).to have_content("Category: #{item2.category.name}")
         expect(page).to have_content("Description: #{item2.description}")
         expect(page).to have_content("Status: #{item2.item_status}")
-        expect(page).to have_link("Edit")
       end
 
-      click_on "Edit"
-
-      expect(current_path).to eq(edit_admin_item_path(item2))
+      within(".card-action") do
+        expect(page).to have_link("Edit")
+      end
     end
   end
 end
