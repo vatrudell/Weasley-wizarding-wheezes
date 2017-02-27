@@ -48,7 +48,7 @@
     </tr>
       <% @orders.each do |order| %>
       <tr>
-        <td><%= button_to order.id, order, method: :get, class: "btn" %></td>
+        <td><%= button_to order.id, admin_order_path(order), method: :get, class: "btn" %></td>
         <td><%= order.status %></td>
         <td>
         <% if order.status == "ordered" %>
