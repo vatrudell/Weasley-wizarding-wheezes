@@ -16,11 +16,6 @@
             <li>Category: <%= @item.category.name %></li>
             <li>Description: <%= @item.description %></li>
           </ul>
-          <% if @item.available? %>
-            <%= button_to "Add to Cart", carts_path(item_id: @item.id) %>
-          <% else %>
-            <%= button_to "Retired", class: "btn disabled" %>
-          <% end %>
       </div>
     </div>
   </div>

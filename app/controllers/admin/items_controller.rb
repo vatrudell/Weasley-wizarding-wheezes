@@ -12,4 +12,7 @@ class Admin::ItemsController < Admin::BaseController
   def create
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
 end
