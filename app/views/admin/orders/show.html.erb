@@ -1,0 +1,38 @@
+<h1>Order #<%= @order.id %></h1>
+
+<table class="order-items">
+  <thead>
+    <tr>
+      <th>Total</th>
+      <th>Status</th>
+      <th>Created At</th>
+      <% if @order.status == "completed" || @order.status == "cancelled" %>
+        <th>Updated At</th>
+      <% end  %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @order.total_price %></td>
+      <td><%= @order.status %></td>
+      <td class="date"><%= "#{@order.created_at}" %></td>
+      <% if @order.status == "completed" || @order.status == "cancelled" %>
+        <th><%= @order.updated_at%></th>
+      <% end  %>
+    </tr>
+  </tbody>
+</table>
+
+<table class="user-info">
+  <thead>
+    <tr>
+      <th>Ordered By</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= "#{@order.user.first_name} #{@order.user.last_name}" %></td>
+    </tr>
+  </tbody>
+</table>

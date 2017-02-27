@@ -7,6 +7,11 @@ class Admin::OrdersController < Admin::BaseController
     @orders = Order.all
   end
 
+  def show
+    @order = Order.find(params[:id])
+    # byebug
+  end
+
   def sort_orders
     if params[:order] == "all"
       @orders = Order.all
@@ -14,6 +19,6 @@ class Admin::OrdersController < Admin::BaseController
     else
       @orders = Order.get_by_status(params[:order][:status])
       render 'admin/orders/index'
-    end  
+    end
   end
 end
