@@ -25,7 +25,7 @@
       <th>Total</th>
       <th>Status</th>
       <th>Created At</th>
-      <% if @order.status == "completed" || @order.status == "cancelled" %>
+      <% if @order.status == "completed" || @order.status == "cancelled" || @order.status == "paid" %>
         <th>Updated At</th>
       <% end  %>
     </tr>

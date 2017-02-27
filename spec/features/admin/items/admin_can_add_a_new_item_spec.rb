@@ -13,12 +13,13 @@ describe "when admin visits the items page" do
     item = Item.new(title: "Love Posions",
                     description: "For all your foolish needs",
                     price: 12.78,
-                    image_tage: "http://harrypotter.com/love_postion"  #you're going to want to change this
-    fill_in("title") with: item.title
-    fill_in("description") with: item.description
-    fill_in("price") with: item.price
-    fill_in("image_tage") with: item.image_tag
-    fill_in("title") with: category.id )
+                    image_tag: "http://harrypotter.com/love_postion") #you're going to want to change this
+
+    fill_in "item[title]", with: item.title
+    fill_in "item[description]", with: item.description
+    fill_in "item[price]", with: item.price
+    fill_in "item[image_tag]", with: item.image_tag   ###fix
+    fill_in "item[category]", with: category.id 
 
     click "Submit"
 
