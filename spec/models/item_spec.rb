@@ -56,6 +56,10 @@ RSpec.describe Item, type: :model do
                       item: item4,
                       quantity: 1,
                       price: item4.price)
-    expect(Item.most_popular).to eq(item3, item1, item2, item4)
+
+    expect(Item.most_popular.first).to eq(item3)
+    [item1, item2, item4].each do |item|
+      expect(Item.most_popular.include?(item)).to eq(true)
+    end
   end
 end
