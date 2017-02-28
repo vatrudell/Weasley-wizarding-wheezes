@@ -16,6 +16,10 @@
 
  /* --------------- Color Glossery -------------- */
  /* # Orange darken-3: #E65100 */
+ /* # Dark Green: #042A2B */
+ /* # Minty Green(Medium Aquamarine) #69DC9E */
+ /* # Light Yellow: #F2F3AE */
+ /* # Dark Purple/eggplanty: #3A2449 */
 
   /* ------------------- headers ------------------*/
 
@@ -113,47 +117,18 @@
   /* ------------------- a ------------------   */
 
   /*----- jumbotron ---------*/
-
-  .jumbotron {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
-  color: inherit;
-  background-color: #eee;
-}
-.jumbotron h1,
-.jumbotron .h1 {
-  color: inherit;
-}
-.jumbotron p {
-  margin-bottom: 15px;
-  font-size: 21px;
-  font-weight: 200;
-}
-.jumbotron > hr {
-  border-top-color: #d5d5d5;
-}
-.container .jumbotron,
-.container-fluid .jumbotron {
-  padding-right: 15px;
-  padding-left: 15px;
-  border-radius: 6px;
-}
-.jumbotron .container {
+#index-banner {
+  background-image: url("/images/store_front.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:  cover;;
+  margin: 0px;
   max-width: 100%;
+  max-height: 700px;
 }
-@media screen and (min-width: 768px) {
-  .jumbotron {
-    padding-top: 48px;
-    padding-bottom: 48px;
-  }
-  .container .jumbotron,
-  .container-fluid .jumbotron {
-    padding-right: 60px;
-    padding-left: 60px;
-  }
-  .jumbotron h1,
-  .jumbotron .h1 {
-    font-size: 63px;
-  }
+
+.transparent {
+	zoom: 1;
+	filter: alpha(opacity=50);
+	opacity: 0.5;
 }

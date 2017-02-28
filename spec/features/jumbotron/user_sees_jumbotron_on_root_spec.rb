@@ -9,6 +9,5 @@ describe "when user first navigates to site" do
 
     expect(current_path).to eq('/')
 
-    save_and_open_page
   end
 end
