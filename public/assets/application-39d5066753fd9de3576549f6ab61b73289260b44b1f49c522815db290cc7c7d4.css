@@ -1,0 +1,116 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+ /* --------------- Color Glossery -------------- */
+ /* # Orange darken-3: #E65100 */
+
+  /* ------------------- headers ------------------*/
+
+  /* ------------------- body ------------------*/
+
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  #main {
+    flex: 1 0 auto;
+  }
+
+  .image-format {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* ------------------- footer ------------------*/
+  #footer .page-footer{
+     position:absolute;
+     bottom:0;
+     width:100%;
+     height:40px;
+  }
+
+  .flash {
+    color: #69dc93;
+    font-size: 22px;
+  }
+
+  td {
+    padding: 0 10px 0 10px;
+  }
+
+  th {
+    padding: 0 10px 0 10px;
+  }
+
+  #quantity-form {
+    width: 50px;
+  }
+
+  .my-links {
+    padding-top: 10px;
+  }
+  /* ------------------- classes ------------------   */
+
+  .item-description {
+    width: 150px;
+    display: inline-block;
+    padding: 48px 0 0 0;
+  }
+
+  .item-description-head {
+    width: 150px;
+  }
+
+  .item-quantity {
+    padding-left: 30px;
+  }
+
+  .cart-table td {
+    font-size: 16px;
+  }
+
+  .cart-table th {
+    font-size: 20px
+  }
+
+  .image-format-show {
+    height: 500px;
+    width: 400px;
+  }
+
+  .order-index td{
+    padding: 15px 0 15px 15px;
+  }
+
+  .admin-orders td{
+    padding: 15px 0 15px 0;
+  }
+
+  .admin-orders .change-status {
+    margin: 5px 0 5px 0;
+  }
+
+  #view-admin-order {
+    margin-left: 10px;
+  }
+
+  /* ------------------ navbar ---------------- */
+
+  /* ------------------- a ------------------   */
+
+  /*----- ul/li ---------*/
