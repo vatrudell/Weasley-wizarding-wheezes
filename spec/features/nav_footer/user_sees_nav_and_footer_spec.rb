@@ -28,7 +28,7 @@ describe 'user can see nav and footer' do
       expect(page).to have_link("Products")
     end
 
-    within(".dropdown-content") do
+    within(".category-dropdown") do
       expect(page).to have_link(category.name)
       expect(page).to have_link(category_2.name)
     end
@@ -47,31 +47,9 @@ describe 'user can see nav and footer' do
       expect(page).to have_link("Products")
     end
 
-    within(".dropdown-content") do
+    within(".category-dropdown") do
       expect(page).to have_link(category.name)
       expect(page).to have_link(category_2.name)
-    end
-  end
-
-  scenario 'if user is logged in they see a link to their dashboard' do
-    user = Fabricate(:user)
-    
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
-    visit root_path
-
-    within (".page-footer") do
-      expect(page).to have_link("User Info")
-      expect(page).to have_link("Orders")
-      expect(page).to_not have_link("Admin Dashboard")
-    end
-
-    user.admin!
-
-    visit root_path
-
-    within(".page-footer") do
-      expect(page).to have_link("Admin Dashboard")
     end
   end
 
@@ -92,6 +70,44 @@ describe 'user can see nav and footer' do
 
     within('.nav-wrapper') do
       expect(page).to have_link("Logout")
+    end
+  end
+
+  scenario 'when admin is logged in they see admin tools' do
+    user = Fabricate(:user, role: 1)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit root_path
+
+    within("nav") do
+      expect(page).to have_link("Admin Tools")
+      expect(page).to_not have_link("User Tools")
+    end
+
+    within(".admin-dropdown") do
+      expect(page).to have_link("Admin Dashboard")
+      expect(page).to have_link("All Items")
+      expect(page).to have_link("User Info")
+      expect(page).to have_link("Orders")
+    end
+  end
+
+  scenario 'when admin is logged in they see admin tools' do
+    user = Fabricate(:user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit root_path
+
+    within("nav") do
+      expect(page).to_not have_link("Admin Tools")
+      expect(page).to have_link("User Tools")
+    end
+
+    within(".user-dropdown") do
+      expect(page).to have_link("User Info")
+      expect(page).to have_link("Orders")
     end
   end
 end
