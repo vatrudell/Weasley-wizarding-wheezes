@@ -39,7 +39,6 @@ describe "when an authenticated user visits their cart" do
     click_on "Check Out"
 
     expect(current_path).to eq(orders_path)
-    # save_and_open_page
     within("table") do
       expect(page).to have_button(Order.all.last.id)
     end
