@@ -3,7 +3,7 @@ require_relative '../app/models/category'
 require_relative '../app/models/item'
 
 def import_product_csv
-  CSV.foreach('db/csv/first_seed.csv', headers: true, header_converters: :symbol) do |row|
+  CSV.foreach('db/csv/all_wheezes.csv', headers: true, header_converters: :symbol) do |row|
     Item.create!(title: row[:title],
                  description: row[:description],
                  price: row[:price],
