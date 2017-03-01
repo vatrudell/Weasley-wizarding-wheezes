@@ -57,6 +57,6 @@ describe "as an authenticated admin" do
     end
 
     click_on "#{item1.title}"
-    expect(current_path).to eq(item_path(item1))
+    expect(current_path).to eq(admin_item_path(item1))
   end
 end
