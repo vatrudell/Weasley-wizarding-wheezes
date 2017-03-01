@@ -28,7 +28,7 @@ class Item < ApplicationRecord
   def self.most_popular
     item_ids = select('items.id, count(order_items.item_id) as frequency')
                .joins(:order_items).group('items.id')
-               .order('frequency desc')
+               .order('frequency desc').limit(6)
     item_ids.map { |item| find(item.id) }
   end
   # def image_remote_url(url_value)
