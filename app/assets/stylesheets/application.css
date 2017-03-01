@@ -108,6 +108,15 @@
     margin-left: 10px;
   }
 
+  .review-rating {
+    width: 50px;
+    float: right;
+  }
+
+.login-to-review{
+  float: right;
+}
+
   /* ------------------ navbar ---------------- */
 
   /* ------------------- a ------------------   */
