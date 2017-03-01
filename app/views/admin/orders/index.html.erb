@@ -1,9 +1,8 @@
 <h1>Admin Dashboard</h1>
 <%= link_to "Create New Item", new_admin_item_path, {class: "right waves-effect waves-light btn"} %>
 
-<%= link_to "View All Items", admin_items_path, class: "btn" %>
-<br>
-<br>
+<%= link_to "View All Items", admin_items_path %>
+
 <div class="summary">
   <table>
     <tr>
@@ -36,7 +35,7 @@
       <option value = 'completed'>Completed</option>
       <option value = 'all'>All Orders</option>
     </select></br>
-    <%= f.submit "filter", class: "btn" %>
+    <%= f.submit "filter", class: "waves-effect waves-light btn" %>
   <% end %>
   <br>
   <br>
@@ -69,5 +68,3 @@
     <% end %>
   </tbody>
   </table>
-  <br>
-  <br>
