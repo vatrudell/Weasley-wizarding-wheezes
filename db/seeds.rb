@@ -53,8 +53,8 @@ def create_orders
   puts "Order 3 added!"
 end
 
-
 OrderItem.delete_all
+Review.delete_all
 Item.delete_all
 Order.delete_all
 User.delete_all

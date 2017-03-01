@@ -12176,6 +12176,10 @@ return jQuery;
 
 
 }).call(this);
+// app/assets/javascript/init_materialize.js
+// You need to js-init some materialize component to be able to use them
+// Here are some we often use
+;
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //

@@ -17,4 +17,8 @@ class ItemsController < ApplicationController
     @reviews = Review.filter_reviews(params[:review][:sort_rating], @item)
     render 'items/show'
   end
+
+  def jumbotron
+    @items = Item.all
+  end
 end

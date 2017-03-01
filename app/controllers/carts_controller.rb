@@ -6,7 +6,7 @@ class CartsController < ApplicationController
     @cart.add_item(item.id)
     session[:cart] = @cart.contents
     flash[:notice] = "#{item.title} added to cart"
-    redirect_to root_path
+    redirect_to items_path
   end
 
   def show
