@@ -6,8 +6,7 @@
   <%= f.password_field :password %>
 
   <div class="login-submit">
-    <%=f.submit "Login", class: "waves-effect waves-light btn"%>
+    <%=f.submit "Login", class: "waves-effect waves-light btn"%> <%= button_to "Create Account", new_user_path, method: :get, class: "waves-effect waves-light btn right create-account" %>
+
   </div>
 <% end %>
-
-<%= button_to "Create Account", new_user_path, method: :get, class: "waves-effect waves-light btn" %>
