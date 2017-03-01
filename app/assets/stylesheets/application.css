@@ -32,6 +32,7 @@
     flex-direction: column;
     font-family: 'Chelsea Market', cursive;
     background-color: #FAF4FF;
+    color: #3A2449;
   }
 
   #main {
@@ -192,6 +193,11 @@ span.badge {
   font-size: 24px;
 }
 
+.btn-jumbotron:hover {
+  background: #3A2449;
+  color: #69DC9E;
+}
+
 .jumbo-block {
   background-color: #3A2449;
   color: #FC9E4F;
@@ -229,11 +235,35 @@ span.badge {
 
  .btn {
   background: #69DC9E;
+  color: #3A2449;
  }
 
 .btn:hover {
   background: #3A2449;
+  color: #69DC9E;
 }
+
+.footer-copyright .container {
+  color: #3A2449;
+}
+
+.card {
+  background: #EF7B45;
+}
+
+.orange-btn {
+  background: #E65100;
+  color: white;
+}
+
+a {
+  color:  #E65100 ;
+}
+
+.card-title {
+  color: #F2F3AE;
+}
+
 
 
 /* # Orange darken-3: #E65100 */

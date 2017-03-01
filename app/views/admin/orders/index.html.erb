@@ -62,7 +62,7 @@
               <%= button_to "Complete", admin_order_path(order, status: 'completed'), method: :put, class: "btn change-status" %>
           <% end %>
           <% if order.status == 'ordered' || order.status == 'paid' %>
-              <%= button_to "Cancel", admin_order_path(order, status: 'canceled'), method: :put, class: "btn change-status" %>
+              <%= button_to "Cancel", admin_order_path(order, status: 'canceled'), method: :put, class: "btn orange-btn" %>
           <% end %>
           </td>
         </tr>

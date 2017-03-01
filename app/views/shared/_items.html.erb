@@ -10,7 +10,7 @@
         <% end %>
       </div>
       <div class="card-content">
-         <span class="card-title truncate"><%= link_to item.title, item_path(item) %></span>
+         <span class="card-title truncate"><%= link_to item.title, item_path(item), class: "card-title" %></span>
          <h5>
             <%= number_to_currency(item.price, precision: 2) %>
         </h5>
