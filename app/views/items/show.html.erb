@@ -7,11 +7,7 @@
   <div class="col s8">
     <div class="card">
       <div class="card-image">
-        <% if @item.image_tag %>
-          <img class="image-format" src="<%= @item.image_tag %>"/>
-        <% else %>
-          <img class="image-format" src="<%= @item.image.url %>"/>
-        <% end %>
+        <img class="image-format" src="<%= @item.determine_image %>"/>
       </div>
       <div class="card-content">
           <span class="card-title"><%= @item.title %></span>

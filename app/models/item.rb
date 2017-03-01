@@ -27,4 +27,9 @@ class Item < ApplicationRecord
       []
     end
   end
+
+  def determine_image
+    return image_tag if image_tag
+    image.url
+  end
 end
