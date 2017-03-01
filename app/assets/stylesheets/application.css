@@ -20,6 +20,8 @@
  /* # Minty Green(Medium Aquamarine) #69DC9E */
  /* # Light Yellow: #F2F3AE */
  /* # Dark Purple/eggplanty: #3A2449 */
+ /* # Neon Carrot: #FC9E4F */
+ /* # Magnolia: #FAF4FF */
 
   /* ------------------- headers ------------------*/
 
@@ -29,6 +31,8 @@
     min-height: 100vh;
     flex-direction: column;
     font-family: 'Chelsea Market', cursive;
+    background-color: #FAF4FF;
+    color: #3A2449;
   }
 
   #main {
@@ -137,9 +141,9 @@ nav .brand-logo {
     white-space: nowrap;
 }
 nav ul a {
-    transition: background-color .3s;
+    transition: background-color .10s;
     font-size: 1rem;
-    color: #F2F3AE;
+    color: #3A2449 ;
     display: block;
     padding: 0 15px;
     cursor: pointer;
@@ -149,6 +153,12 @@ nav a {
     background-color: transparent;
 }
 
+.green {
+    background-color: #F2F3AE !important;
+}
+span.badge {
+    color:  #3A2449;
+}
   /* ------------------- a ------------------   */
 
   /*----- jumbotron ---------*/
@@ -217,6 +227,16 @@ nav a {
  color: #FC9E4F;
  background: #cc0000;
  }
+
+ .btn {
+  background: #69DC9E;
+ }
+
+.btn:hover {
+  background: #3A2449;
+}
+
+
 /* # Orange darken-3: #E65100 */
 /* # Dark Green: #042A2B */
 /* # Minty Green(Medium Aquamarine) #69DC9E */
