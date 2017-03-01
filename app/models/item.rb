@@ -1,8 +1,7 @@
 class Item < ApplicationRecord
-  # attr_reader :image_remote_url
   validates :title, :description, :price, presence: true
   validates :title, :description, uniqueness: true, allow_blank: false
-  # validates :price, numericality: true #, greater_than => 0
+  validates :price, :numericality => {:greater_than => 0}
 
   belongs_to :category
   has_many :order_items
@@ -28,8 +27,4 @@ class Item < ApplicationRecord
       []
     end
   end
-  # def image_remote_url(url_value)
-  #   self.image = URI.parse(url_value)
-  #   @image_remote_url = url_value
-  # end
 end

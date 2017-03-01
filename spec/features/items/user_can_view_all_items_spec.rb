@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "When user visits root" do
   scenario "They see list of all items" do
     item, item2 = Fabricate.times(2, :item)
-    visit root_path
+    visit items_path
 
     expect(page).to have_content(item.title)
     expect(page).to have_content(item.price)
@@ -41,7 +41,7 @@ describe "When user visits root" do
                       item: item4,
                       quantity: 1,
                       price: item4.price)
-    visit root_path
+    visit items_path
 
     within(".most-popular") do
       expect(page).to have_content("Our Most Popular Items")
