@@ -19,6 +19,17 @@
     <%= f.file_field :image, {class: "form-control"} %>
   </div>
 
+  <% unless @item.id.nil?  %>
+    <div class="field drop-down">
+      <%= f.label :category %>
+      <select class="browser-default" name="item[item_status]">
+        <option value="" disabled selected>Choose your status</option>
+        <option value="available">Available</option>
+        <option value="retired">Retired</option>
+      </select>
+    </div>
+  <% end %>
+
   <div class="field drop-down">
     <%= f.label :category %>
     <select class="browser-default" name= "item[category_id]">
