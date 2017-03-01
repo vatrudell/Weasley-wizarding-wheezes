@@ -15,6 +15,7 @@ describe "A signed in user" do
     click_on "Submit Review"
 
     within(".review") do
+      expect(page).to have_content(user.username)
       expect(page).to have_content("Awesome product!")
       within(".badge") do
         expect(page).to have_content("5")

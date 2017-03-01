@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :category
   has_many :order_items
   has_many :orders, through: :order_items
+  has_many :reviews
 
   has_attached_file :image, styles: {medium: "200x200", thumb: "100x100"}, default_url: "/images/dumbledore.jpg" # "http://vignette3.wikia.nocookie.net/harrypotter/images/4/40/Albus_Dumbledore_%28HBP_promo%29_3.jpg/revision/latest/scale-to-width-down/700?cb=20150822232849"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
