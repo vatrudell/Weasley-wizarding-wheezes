@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     user = User.find_by(username: params[:session][:username])
     if user && user.authenticate(params[:session][:password]) && user.admin?
       session[:user_id] = user.id
-      "Logged in as #{user.username}"
+      flash[:notice] = "Logged in as #{user.username}"
       redirect_to admin_dashboard_path
     end
   end

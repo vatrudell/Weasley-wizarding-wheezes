@@ -22,7 +22,6 @@ class CartsController < ApplicationController
     item = Item.find(params[:item_id])
     @cart.remove_item(params[:item_id])
     redirect_to cart_path(@cart)
-    title = item.title
     flash[:danger] = "Sucessfully Removed #{view_context.link_to(item.title, item_path(item))} from your cart"
   end
 end
