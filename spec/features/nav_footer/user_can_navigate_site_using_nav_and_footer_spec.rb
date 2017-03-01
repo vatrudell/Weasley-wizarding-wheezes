@@ -12,7 +12,7 @@ describe "guest user can navigate site using navbar" do
     visit cart_path
     click_on "Weasleys' Wizard Wheezes"
 
-    expect(current_path).to eq(items_path)
+    expect(current_path).to eq(root_path)
   end
 
   scenario "when user clicks on login it redirects to login page" do
@@ -56,7 +56,7 @@ describe "authenticated user can navigate site using navbar" do
     visit cart_path
     click_on "Weasleys' Wizard Wheezes"
 
-    expect(current_path).to eq(items_path)
+    expect(current_path).to eq(root_path)
   end
 
   scenario "user can logout using navbar" do
