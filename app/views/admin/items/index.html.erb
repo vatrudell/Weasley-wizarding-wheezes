@@ -11,11 +11,7 @@
   <% @items.each do |item| %>
     <tr>
       <td class="avatar">
-        <% if item.image_tag %>
-          <img class="image-format" src="<%= item.image_tag %>" class="circle" />
-        <% else %>
-          <img class="image-format" src="<%= item.image.url %>" class="circle" />
-        <% end %>
+        <img class="image-format" src="<%= item.determine_image %>"/>
       </td>
       <td><%= link_to item.title, admin_item_path(item) %></td>
       <td class="truncate"><%= item.description %></td>
