@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   get 'errors/internal_server_error'
 
   root 'items#jumbotron'
-  
-  resources :items, only: [:index, :show]
+
+  resources :items, only: [:index, :show] do
+    resources :reviews, only: [:create]
+  end
+
+  put '/items/:id', to: "items#sort_reviews"
 
   resources :orders, only: [:index, :show, :create]
 

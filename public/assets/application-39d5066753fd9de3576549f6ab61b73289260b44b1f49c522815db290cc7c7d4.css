@@ -4,31 +4,27 @@
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
  * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
-
+ *
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+
+
  */
 
  /* --------------- Color Glossery -------------- */
  /* # Orange darken-3: #E65100 */
- /* # Dark Green: #042A2B */
- /* # Minty Green(Medium Aquamarine) #69DC9E */
- /* # Light Yellow: #F2F3AE */
- /* # Dark Purple/eggplanty: #3A2449 */
 
   /* ------------------- headers ------------------*/
 
   /* ------------------- body ------------------*/
+
   body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    font-family: 'Chelsea Market', cursive;
   }
 
   #main {
@@ -113,113 +109,8 @@
     margin-left: 10px;
   }
 
-  .review-rating {
-    width: 50px;
-    float: right;
-  }
-
-.login-to-review{
-  float: right;
-}
-
   /* ------------------ navbar ---------------- */
-nav .nav-wrapper{
-  color: #F2F3AE;
-  background-color: #E65100;
-}
-
-nav .brand-logo {
-    position: absolute;
-    color: #3A2449;
-    display: inline-block;
-    font-size: 2.1rem;
-    padding: 0;
-    white-space: nowrap;
-}
-nav ul a {
-    transition: background-color .3s;
-    font-size: 1rem;
-    color: #F2F3AE;
-    display: block;
-    padding: 0 15px;
-    cursor: pointer;
-}
-
-nav a {
-    background-color: transparent;
-}
 
   /* ------------------- a ------------------   */
 
-  /*----- jumbotron ---------*/
-#index-banner {
-  background-image: url("/images/store_front.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size:  cover;;
-  margin: 0px;
-  max-width: 100%;
-  max-height: 700px;
-}
-
-.transparent {
-	zoom: 1;
-	filter: alpha(opacity=50);
-	opacity: 0.80;
-  color: #3A2449;
-}
-
-.jumbotron {
-  background-color: #69DC9E;
-}
-
-#jumbotron {
-  padding-top: 325px;
-}
-
-.btn-jumbotron {
-  background-color: #F2F3AE;
-  color: #3A2449;
-  font-size: 24px;
-}
-
-.jumbo-block {
-  background-color: #3A2449;
-  color: #FC9E4F;
-}
-
-.item-banner {
-  background-color: #69DC9E;
-}
-
-.jumbo-block a:link {
- font-weight: bold;
- text-decoration: none;
- color: #FC9E4F;
- }
-
-.jumbo-block a:visited {
- font-weight: bold;
- text-decoration: underline;
- color: #FC9E4F;
- }
-
-.jumbo-block a:hover {
- font-weight: normal;
- text-decoration: none;
- color: #E65100;
- background: #69DC9E;
- }
-
-.jumbo-block a:active {
- font-weight: normal;
- text-decoration: none;
- color: #FC9E4F;
- background: #cc0000;
- }
-/* # Orange darken-3: #E65100 */
-/* # Dark Green: #042A2B */
-/* # Minty Green(Medium Aquamarine) #69DC9E */
-/* # Light Yellow: #F2F3AE */
-/* # Dark Purple/eggplanty: #3A2449 */
-/* # Neon Carrot: #FC9E4F */
+  /*----- ul/li ---------*/

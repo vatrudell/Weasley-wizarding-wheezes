@@ -5,15 +5,23 @@ describe "When user views all orders" do
     user = Fabricate(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     category = Fabricate(:category)
-    item1 = Fabricate(:item)
-    item2 = Fabricate(:item)
+    item1, item2 = Fabricate.times(2, :item)
 
-    order1 = user.orders.create(total_price: (item1.price + item2.price))
-    order2 = user.orders.create(total_price: (item2.price * 2).round(2))
+    order1 = user.orders.create!(total_price: (item1.price + item2.price))
+    order2 = user.orders.create!(total_price: (item2.price * 2).round(2))
 
-    OrderItem.create(order_id: order1.id, item_id: item1.id, quantity: 1)
-    OrderItem.create(order_id: order1.id, item_id: item2.id, quantity: 1)
-    OrderItem.create(order_id: order2.id, item_id: item1.id, quantity: 2)
+    OrderItem.create!(order: order1,
+                      item: item1,
+                      quantity: 1,
+                      price: item1.price)
+    OrderItem.create!(order: order1,
+                      item: item2,
+                      quantity: 1,
+                      price: item2.price)
+    OrderItem.create!(order: order2,
+                      item: item1,
+                      quantity: 2,
+                      price: item1.price)
 
     visit orders_path
 
