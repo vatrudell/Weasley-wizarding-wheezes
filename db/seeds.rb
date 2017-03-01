@@ -15,50 +15,51 @@ def import_product_csv
   puts "Products have loaded!"
 end
 
-Order.delete_all
-User.delete_all
-Item.delete_all
-OrderItem.delete_all
-Category.delete_all
-import_product_csv
 
-user = User.create!(username: "user",
-                    email: "email@email.com",
-                    password: "user",
-                    first_name: "Standard",
-                    last_name: "User",
-                    address: "123 Fake St" )
-puts "User Created!"
+def import_user_csv
+CSV.foreach('db/csv/users2.csv', headers: true, header_converters: :symbol) do |row|
+  User.create!(username: row[:username],
+               email: row[:email],
+               password: row[:password],
+               first_name: row[:first_name],
+               last_name: row[:last_name],
+               address: row[:address],
+               role: row[:role])
 
-admin = User.create!(username: "admin",
-                     email: "admin@email.com",
-                     password: "admin",
-                     first_name: "Admin",
-                     last_name: "User",
-                     address: "123 Fake St",
-                     role: 1)
+end
 
 puts "Admin Created!"
+puts "User Created!"
+end
 
-item1 = Item.find(1)
-item2 = Item.find(2)
-item3 = Item.find(3)
-item4 = Item.find(4)
-item5 = Item.find(5)
 
-order1 = user.orders.create!(total_price: (item1.price + item2.price + item3.price).round(2))
-order1.order_items.create!(item: item1, quantity: 1, price: item1.price)
-order1.order_items.create!(item: item2, quantity: 1, price: item2.price)
-order1.order_items.create!(item: item3, quantity: 1, price: item3.price)
-puts "Order 1 added!"
+def create_orders
+  # byebug
+  order1 = User.find_by(username: "user").orders.create!(total_price: Item.find_by(title: "Anti Gravity Hat").price + Item.find_by(title: "Aviatomobile").price + Item.find_by(title: "Bang Bang Boggart Banger").price.round(2))
+  order1.order_items.create!(item: Item.find_by(title: "Anti Gravity Hat"), quantity: 1, price: Item.find_by(title: "Anti Gravity Hat").price)
+  order1.order_items.create!(item: Item.find_by(title: "Aviatomobile"), quantity: 1, price: Item.find_by(title: "Aviatomobile").price)
+  order1.order_items.create!(item: Item.find_by(title: "Bang Bang Boggart Banger"), quantity: 1, price: Item.find_by(title: "Bang Bang Boggart Banger").price)
+  puts "Order 1 added!"
 
-order2 = user.orders.create!(total_price: (item3.price + item4.price + item5.price).round(2))
-order2.order_items.create!(item: item3, quantity: 1, price: item3.price)
-order2.order_items.create!(item: item4, quantity: 1, price: item4.price)
-order2.order_items.create!(item: item5, quantity: 1, price: item5.price)
-puts "Order 2 added!"
+  order2 = User.find_by(username: "user").orders.create!(total_price: (Item.find_by(title: "Bang Bang Boggart Banger").price + Item.find_by(title: "Bombtastic Bomb").price + Item.find_by(title:"Box 'O' Rockets").price).round(2))
+  order2.order_items.create!(item: Item.find_by(title: "Bang Bang Boggart Banger"), quantity: 1, price: Item.find_by(title: "Bang Bang Boggart Banger").price)
+  order2.order_items.create!(item: Item.find_by(title: "Bombtastic Bomb"), quantity: 1, price: Item.find_by(title: "Bombtastic Bomb").price)
+  order2.order_items.create!(item: Item.find_by(title:"Box 'O' Rockets"), quantity: 1, price: Item.find_by(title:"Box 'O' Rockets").price)
+  puts "Order 2 added!"
 
-order3 = user.orders.create!(total_price: (item3.price * 2 + item5.price).round(2), status: "canceled")
-order3.order_items.create!(item: item3, quantity: 2, price: item3.price)
-order3.order_items.create!(item: item5, quantity: 1, price: item5.price)
-puts "Order 3 added!"
+  order3 = User.find_by(username: "user").orders.create!(total_price: (Item.find_by(title: "Bang Bang Boggart Banger").price * 2 + Item.find_by(title:"Box 'O' Rockets").price).round(2), status: "canceled")
+  order3.order_items.create!(item: Item.find_by(title: "Bang Bang Boggart Banger"), quantity: 2, price: Item.find_by(title: "Bang Bang Boggart Banger").price)
+  order3.order_items.create!(item: Item.find_by(title:"Box 'O' Rockets"), quantity: 1, price: Item.find_by(title:"Box 'O' Rockets").price)
+  puts "Order 3 added!"
+end
+
+
+OrderItem.delete_all
+Item.delete_all
+Order.delete_all
+User.delete_all
+Category.delete_all
+
+import_product_csv
+import_user_csv
+create_orders
