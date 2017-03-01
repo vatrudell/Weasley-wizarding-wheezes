@@ -1,8 +1,9 @@
 <h1>Admin Dashboard</h1>
 <%= link_to "Create New Item", new_admin_item_path, {class: "right waves-effect waves-light btn"} %>
 
-<%= link_to "View All Items", admin_items_path %>
-
+<%= link_to "View All Items", admin_items_path, class: "btn" %>
+<br>
+<br>
 <div class="summary">
   <table>
     <tr>
@@ -68,3 +69,5 @@
     <% end %>
   </tbody>
   </table>
+  <br>
+  <br>
