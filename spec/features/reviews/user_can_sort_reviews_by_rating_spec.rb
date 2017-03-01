@@ -14,79 +14,79 @@ describe "When a user visits an item page" do
     select("Negative Reviews", from: 'review[sort_rating]')
     click_on("Filter Reviews")
 
-    bad_reviews = page.all(".reviews")
+    bad_reviews = page.all(".review")
 
     within(bad_reviews[0]) do
-      expect(page).to have_content(rating1.author)
-      expect(page).to have_content(rating1.content)
+      expect(page).to have_content(review1.author)
+      expect(page).to have_content(review1.content)
       within(".badge") do
-        expect(page).to have_content(rating1.rating)
+        expect(page).to have_content(review1.rating)
       end
     end
 
     within(bad_reviews[1]) do
-      expect(page).to have_content(rating2.author)
-      expect(page).to have_content(rating2.content)
+      expect(page).to have_content(review2.author)
+      expect(page).to have_content(review2.content)
       within(".badge") do
-        expect(page).to have_content(rating2.rating)
+        expect(page).to have_content(review2.rating)
       end
     end
 
     select("Positive Reviews", from: 'review[sort_rating]')
     click_on("Filter Reviews")
 
-    good_reviews = page.all(".reviews")
+    good_reviews = page.all(".review")
 
     within(good_reviews[0]) do
-      expect(page).to have_content(rating3.author)
-      expect(page).to have_content(rating3.content)
+      expect(page).to have_content(review3.author)
+      expect(page).to have_content(review3.content)
       within(".badge") do
-        expect(page).to have_content(rating3.rating)
+        expect(page).to have_content(review3.rating)
       end
     end
 
     within(good_reviews[1]) do
-      expect(page).to have_content(rating4.author)
-      expect(page).to have_content(rating4.content)
+      expect(page).to have_content(review4.author)
+      expect(page).to have_content(review4.content)
       within(".badge") do
-        expect(page).to have_content(rating4.rating)
+        expect(page).to have_content(review4.rating)
       end
     end
 
-    select("Positive Reviews", from: 'review[sort_rating]')
+    select("All Reviews", from: 'review[sort_rating]')
     click_on("Filter Reviews")
 
-    all_reviews = page.all(".reviews")
+    all_reviews = page.all(".review")
 
     within(all_reviews[0]) do
-      expect(page).to have_content(rating1.author)
-      expect(page).to have_content(rating1.content)
+      expect(page).to have_content(review1.author)
+      expect(page).to have_content(review1.content)
       within(".badge") do
-        expect(page).to have_content(rating1.rating)
+        expect(page).to have_content(review1.rating)
       end
     end
 
     within(all_reviews[1]) do
-      expect(page).to have_content(rating2.author)
-      expect(page).to have_content(rating2.content)
+      expect(page).to have_content(review2.author)
+      expect(page).to have_content(review2.content)
       within(".badge") do
-        expect(page).to have_content(rating2.rating)
+        expect(page).to have_content(review2.rating)
       end
     end
 
     within(all_reviews[2]) do
-      expect(page).to have_content(rating3.author)
-      expect(page).to have_content(rating3.content)
+      expect(page).to have_content(review3.author)
+      expect(page).to have_content(review3.content)
       within(".badge") do
-        expect(page).to have_content(rating3.rating)
+        expect(page).to have_content(review3.rating)
       end
     end
 
     within(all_reviews[3]) do
-      expect(page).to have_content(rating4.author)
-      expect(page).to have_content(rating4.content)
+      expect(page).to have_content(review4.author)
+      expect(page).to have_content(review4.content)
       within(".badge") do
-        expect(page).to have_content(rating4.rating)
+        expect(page).to have_content(review4.rating)
       end
     end
   end

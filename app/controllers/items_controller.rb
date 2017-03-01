@@ -8,11 +8,14 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @review = Review.new
+    @reviews = @item.get_reviews
   end
 
   def sort_reviews
     @item = Item.find(params[:id])
     @review = Review.new
-    @reviews = 
+    @reviews = Review.filter_reviews(params[:review][:sort_rating])
+    item_id = @item.id
+    render 'items/show'
   end
 end

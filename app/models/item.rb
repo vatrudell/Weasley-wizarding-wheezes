@@ -32,6 +32,14 @@ class Item < ApplicationRecord
                .order('frequency desc').limit(6)
     item_ids.map { |item| find(item.id) }
   end
+
+  def get_reviews
+    unless reviews.nil?
+      reviews
+    else
+      []
+    end
+  end
   # def image_remote_url(url_value)
   #   self.image = URI.parse(url_value)
   #   @image_remote_url = url_value
