@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
   def sort_reviews
     @item = Item.find(params[:id])
     @review = Review.new
-    @reviews = Review.filter_reviews(params[:review][:sort_rating])
+    @reviews = Review.filter_reviews(params[:review][:sort_rating], @item)
     render 'items/show'
   end
 end

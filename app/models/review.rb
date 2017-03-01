@@ -3,13 +3,13 @@ class Review < ApplicationRecord
 
   validates :content, :rating, presence: true
 
-  def self.filter_reviews(rating)
+  def self.filter_reviews(rating, item)
     if rating == "negative_reviews"
-      where("rating <= ?", 2)
+      where("rating <= ? and item_id = ?", 2, item.id)
     elsif rating == "positive_reviews"
-      where("rating >= ?", 3)
+      where("rating >= ? and item_id = ?", 3, item.id)
     else
-      all
+      where("item_id = ?", item.id)
     end
   end
 end
