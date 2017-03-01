@@ -28,7 +28,7 @@
 <nav>
    <div class="nav-wrapper">
      <div class ="container">
-       <a href="<%= items_path %>" class="brand-logo">Weasleys' Wizard Wheezes</a>
+       <a href="<%= root_path %>" class="brand-logo">Weasleys' Wizard Wheezes</a>
        <ul id="nav-mobile" class="right hide-on-med-and-down">
          <li><a class="dropdown-button" href="/" data-activates="dropdown1">Products</a></li>
           <% if current_user && current_admin? %>
@@ -38,7 +38,7 @@
           <% end %>
           <li>
             <% unless @cart.total_count.nil?  %>
-              <a href="/cart" class="cart-nav">Cart<span class="badge purple circle white-text"><%= @cart.total_count %></span></a></li>
+              <a href="/cart" class="cart-nav">Cart<span class="badge green circle"><%= @cart.total_count %></span></a></li>
             <% else %>
               <a href="/cart">Cart</a></li>
             <% end %>
