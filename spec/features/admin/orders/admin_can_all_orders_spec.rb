@@ -17,14 +17,14 @@ describe "when they visit the admin dashbash board page" do
 
     select("Ordered", from: "order[status]")
 
-    click_on "sort orders"
+    click_on "filter"
     within(".striped") do
       expect(page).to have_button(order_one.id.to_s)
       expect(page).to_not have_button(order_two.id.to_s)
     end
 
     select("Paid", from: "order[status]")
-    click_on "sort orders"
+    click_on "filter"
 
     within(".striped") do
       expect(page).to have_button(order_two.id.to_s)

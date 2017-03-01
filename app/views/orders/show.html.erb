@@ -1,41 +1,44 @@
 <h1>Order #<%= @order.id %></h1>
+
 <hr>
-  <table>
+  <table class="order-items">
     <thead>
       <tr>
         <th>Item</th>
         <th>Price</th>
         <th>Quantity</th>
+        <th>Subtotal</th>
       </tr>
     </thead>
     <tbody>
-      <% @order.items.each do |item| %>
+      <% @order.order_items.each do |order_item| %>
       <tr>
-        <td><%= link_to item.title, item_path(item) %></td>
-        <td><%= number_to_currency(item.price, precision: 2) %></td>
-        <td><%= item.get_quantity_in_order(@order)%></td>
+        <td><%= link_to order_item.item.title, item_path(order_item.item) %></td>
+        <td><%= number_to_currency(order_item.price, precision: 2) %></td>
+        <td><%= order_item.quantity %></td>
+        <td><%= number_to_currency(order_item.subtotal, precision: 2) %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
 
-<table>
+<table class="order-info">
   <thead>
     <tr>
       <th>Total</th>
       <th>Status</th>
       <th>Created At</th>
-      <% if @order.status == "completed" || @order.status == "cancelled" %>
+      <% unless @order.status == "ordered"  %>
         <th>Updated At</th>
       <% end  %>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><%= @order.total_price %></td>
+      <td><%= number_to_currency(@order.total_price, precision: 2) %></td>
       <td><%= @order.status %></td>
       <td><%= @order.created_at %></td>
-      <% if @order.status == "completed" || @order.status == "cancelled" %>
+      <% unless @order.status == "ordered"  %>
         <th><%= @order.updated_at%></th>
       <% end  %>
     </tr>

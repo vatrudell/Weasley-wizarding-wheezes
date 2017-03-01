@@ -1,0 +1,39 @@
+</div>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="row" id="jumbotron">
+      </div>
+      <div class="row center">
+    <%= button_to "Welcome, Wizards!", login_path, method: :get, class: "btn-large waves-effect waves-light btn-jumbotron", id: "welcome-wizards" %>
+   </div>
+      </div>
+    </div>
+
+    <div class="no-pad-bot">
+  <div class="row jumbo-block">
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center"><i class="material-icons">play_arrow</i></h2>
+        <h5 class="center"><%= link_to "Start Shopping", items_path %></h5>
+      </div>
+    </div>
+
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center"><i class="material-icons">flash_on</i></h2>
+        <h5 class="center"><%= link_to "Login Here", login_path %></h5>
+      </div>
+    </div>
+
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center "><i class="material-icons">settings</i></h2>
+        <h5 class="center"><%= link_to "Create An Account!", new_user_path %></h5>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<div class="container">
+<%= render partial: 'shared/items' %>

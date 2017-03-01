@@ -3,19 +3,22 @@
   <div class="col s4">
     <div class="card">
       <div class="card-image">
-        <img class="image-format" src="<%= item.image_tag %>" />
+        <% if item.image_tag %>
+          <img class="image-format" src="<%= item.image_tag %>"/>
+        <% else %>
+          <img class="image-format" src="<%= item.image.url %>"/>
+        <% end %>
       </div>
       <div class="card-content">
-         <span class="card-title"><%= link_to item.title, item_path(item) %></span>
+         <span class="card-title truncate"><%= link_to item.title, item_path(item) %></span>
          <h5>
             <%= number_to_currency(item.price, precision: 2) %>
         </h5>
           <% if item.available? %>
-            <%= button_to "Add to Cart", carts_path(item_id: item.id) %>
+            <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "btn" %>
           <% else %>
-            <%= button_to "Retired", class: "btn disabled" %>
+            <button  class="btn disabled">Retired</button>
           <% end %>
-
       </div>
     </div>
   </div>

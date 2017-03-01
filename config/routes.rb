@@ -3,8 +3,13 @@ Rails.application.routes.draw do
 
   get 'errors/internal_server_error'
 
-  root 'items#index'
-  resources :items, only: [:index, :show]
+  root 'items#jumbotron'
+
+  resources :items, only: [:index, :show] do
+    resources :reviews, only: [:create]
+  end
+
+  put '/items/:id', to: "items#sort_reviews"
 
   resources :orders, only: [:index, :show, :create]
 
@@ -17,8 +22,9 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/dashboard", to: "orders#index"
     put "/dashboard", to: "orders#sort_orders"
+
     resources :orders, only: [:show, :update]
-    resources :items, only: [:index, :edit]
+    resources :items, only: [:index, :edit, :new, :show, :create, :update]
   end
 
   get '/dashboard', to: "users#show"

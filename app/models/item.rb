@@ -1,13 +1,30 @@
 class Item < ApplicationRecord
   validates :title, :description, :price, presence: true
-  validates :title, :description, uniqueness: true
+  validates :title, :description, uniqueness: true, allow_blank: false
+  validates :price, :numericality => {:greater_than => 0}
+
   belongs_to :category
   has_many :order_items
   has_many :orders, through: :order_items
+  has_many :reviews
+
+  has_attached_file :image, styles: {medium: "200x200", thumb: "100x100"}, default_url: "/images/dumbledore.jpg" # "http://vignette3.wikia.nocookie.net/harrypotter/images/4/40/Albus_Dumbledore_%28HBP_promo%29_3.jpg/revision/latest/scale-to-width-down/700?cb=20150822232849"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   enum item_status: ['available', 'retired']
 
-  def get_quantity_in_order(order)
-  	order_items.find_by(order_id: order.id).quantity
+  def self.most_popular
+    item_ids = select('items.id, count(order_items.item_id) as frequency')
+               .joins(:order_items).group('items.id')
+               .order('frequency desc').limit(6)
+    item_ids.map { |item| find(item.id) }
+  end
+
+  def get_reviews
+    unless reviews.nil?
+      reviews
+    else
+      []
+    end
   end
 end

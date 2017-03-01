@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col s2">
+    <p>
+
+    </p>
+  </div>
+  <div class="col s8">
+    <div class="card">
+      <div class="card-image">
+        <% if @item.image_tag %>
+          <img class="image-format" src="<%= @item.image_tag %>"/>
+        <% else %>
+          <img class="image-format" src="<%= @item.image.url %>"/>
+        <% end %>
+      </div>
+      <div class="card-content">
+          <span class="card-title"><%= @item.title %></span>
+          <ul>
+            <li>Price: <%= number_to_currency(@item.price, precision: 2) %></li>
+            <li>Category: <%= @item.category.name %></li>
+            <li class="truncate">Description: <%= @item.description %></li>
+            <li>Status: <%= @item.item_status %></li>
+          </ul>
+      </div>
+      <div class="card-action">
+        <%= link_to "Edit", edit_admin_item_path(@item) %>
+      </div>
+    </div>
+  </div>
+</div>
