@@ -11,9 +11,8 @@
    end
 
    def total
-     prices = []
-     contents.each_pair do |id, quantity|
-       prices << (Item.find(id).price * quantity)
+     prices = contents.map do |id, quantity|
+        (Item.find(id).price * quantity)
      end
      prices.reduce(:+)
    end
