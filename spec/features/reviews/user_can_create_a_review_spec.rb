@@ -24,42 +24,40 @@ describe "On an item page" do
       end
     end
     scenario "can see another users review" do
-      review_user = Fabricate(:user, first_name: "Jeffery",
-                                     last_name: "Lebowski",
-                                     username: "TheDude",
-                                     password: "OpinionMan",
-                                     address: "123 Place Pl",
-                                     email: "dude@dude.com")
-
-      item = Fabricate(:item)
-      review = item.reviews.create!(content: "I like pretty colors",
-                                    rating: 4,
-                                    author: review_user.username)
+      review = Fabricate(:review)
 
       user = Fabricate(:user)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      visit item_path(item)
+      visit item_path(review.item)
 
       within(".review") do
-        expect(page).to have_content(review_user.username)
+        expect(page).to have_content(review.author)
         expect(page).to have_content(review.content)
         within(".badge") do
-          expect(page).to have_content("Rating: 4")
+          expect(page).to have_content("Rating: 1")
         end
       end
     end
   end
 
   context "an un-authenticated user" do
-    scenario "cannot create a review" do
-      item = Fabricate(:item)
-      visit item_path(item)
+    scenario "cannot create a review but can see reviews" do
+      review = Fabricate(:review)
+      visit item_path(review.item)
 
       expect(page).to have_content("Login or Create Account to Write a Review")
       expect(page).to have_button("Login")
       expect(page).to have_button("Create Account")
+
+      within(".review") do
+        expect(page).to have_content(review.author)
+        expect(page).to have_content(review.content)
+        within(".badge") do
+          expect(page).to have_content("Rating: 1")
+        end
+      end
     end
   end
 end

@@ -9,4 +9,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @review = Review.new
   end
+
+  def sort_reviews
+    @item = Item.find(params[:id])
+    @review = Review.new
+    @reviews = 
+  end
 end

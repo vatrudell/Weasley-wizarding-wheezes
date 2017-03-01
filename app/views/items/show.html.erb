@@ -48,6 +48,16 @@
 <% end %>
 </div>
 
+<%= form_for(:session, url: item_path(@item), method: :put) do |f| %>
+  <%= f.label :sort_reviews %>
+  <select class="browser-default" name= "review[sort_rating]">
+    <option value = "all_reviews">All Reviews</option>
+    <option value = 'positive_reviews'>Positive Reviews</option>
+    <option value = 'negative_reviews'>Negative Reviews</option>
+  </select></br>
+  <%= f.submit "Filter Reviews", class: "waves-effect waves-light btn" %>
+<% end %>
+
 <% @item.reviews.each do |review| %>
   <div class="row">
     <div class="col s2"><p></p></div>
