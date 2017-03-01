@@ -1,48 +1,39 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>WeasleysWizardWheezes</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" rel="stylesheet"/>
-    <%= csrf_meta_tags %>
-    <link rel="stylesheet" href="/application.css">
+</div>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
-
-  <body>
-    <%= render partial: 'shared/nav' %>
-    <div class="container flash">
-      <% flash.each do |type, message| %>
-      <%= content_tag :div, sanitize(message), class: type %>
-      <% end %>
-    </div>
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
-        <br><br>
-        <h1 class="header center text-lighten-2">Welcome, Wizards!</h1>
-        <div class="row">
-          <div class="col s4"><p></p></div>
-          <div class="col s4 z-depth-1 transparent">
-            <div class="card-panel teal">
-              <span class="white-text">Welcome to Weasley's Wizard Weazes!
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="row center">
-          <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
-        </div>
-        <br><br>
+      <div class="row" id="jumbotron">
       </div>
+      <div class="row center">
+    <%= button_to "Welcome, Wizards!", login_path, method: :get, class: "btn-large waves-effect waves-light btn-jumbotron", id: "welcome-wizards" %>
+   </div>
+      </div>
+    </div>
+
+    <div class="no-pad-bot">
+  <div class="row jumbo-block">
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center"><i class="material-icons">play_arrow</i></h2>
+        <h5 class="center"><%= link_to "Start Shopping", items_path %></h5>
+      </div>
+    </div>
+
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center"><i class="material-icons">flash_on</i></h2>
+        <h5 class="center"><%= link_to "Login", login_path %></h5>
+      </div>
+    </div>
+
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center "><i class="material-icons">settings</i></h2>
+        <h5 class="center"><%= link_to "Create An Account!", new_user_path %></h5>
+      </div>
+    </div>
   </div>
-  <div class="container">
+  </div>
+
+<div class="container">
 <%= render partial: 'shared/items' %>
-</div>
-<%= render partial: 'shared/footer' %>
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
-</body>
-</html>

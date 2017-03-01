@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   validates :title, :description, :price, presence: true
   validates :title, :description, uniqueness: true, allow_blank: false
+  validates :price, :numericality => {:greater_than => 0}
 
   belongs_to :category
   has_many :order_items

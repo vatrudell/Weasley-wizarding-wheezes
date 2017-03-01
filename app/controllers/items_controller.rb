@@ -10,6 +10,5 @@ class ItemsController < ApplicationController
 
   def jumbotron
     @items = Item.all
-    render layout: false
   end
 end

@@ -28,6 +28,7 @@
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: 'Chelsea Market', cursive;
   }
 
   #main {
@@ -113,12 +114,37 @@
   }
 
   /* ------------------ navbar ---------------- */
+nav .nav-wrapper{
+  color: #F2F3AE;
+  background-color: #E65100;
+}
+
+nav .brand-logo {
+    position: absolute;
+    color: #3A2449;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding: 0;
+    white-space: nowrap;
+}
+nav ul a {
+    transition: background-color .3s;
+    font-size: 1rem;
+    color: #F2F3AE;
+    display: block;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+nav a {
+    background-color: transparent;
+}
 
   /* ------------------- a ------------------   */
 
   /*----- jumbotron ---------*/
 #index-banner {
-  background-image: url("/images/store_front.jpeg");
+  background-image: url("/images/store_front.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size:  cover;;
@@ -130,5 +156,57 @@
 .transparent {
 	zoom: 1;
 	filter: alpha(opacity=50);
-	opacity: 0.5;
+	opacity: 0.80;
+  color: #3A2449;
 }
+
+.jumbotron {
+  background-color: #69DC9E;
+}
+
+#jumbotron {
+  padding-top: 325px;
+}
+
+.btn-jumbotron {
+  background-color: #F2F3AE;
+  color: #3A2449;
+  font-size: 24px;
+}
+
+.jumbo-block {
+  background-color: #3A2449;
+  color: #FC9E4F;
+}
+
+.jumbo-block a:link {
+ font-weight: bold;
+ text-decoration: none;
+ color: #FC9E4F;
+ }
+
+.jumbo-block a:visited {
+ font-weight: bold;
+ text-decoration: underline;
+ color: #FC9E4F;
+ }
+
+.jumbo-block a:hover {
+ font-weight: normal;
+ text-decoration: none;
+ color: #E65100;
+ background: #69DC9E;
+ }
+
+.jumbo-block a:active {
+ font-weight: normal;
+ text-decoration: none;
+ color: #FC9E4F;
+ background: #cc0000;
+ }
+/* # Orange darken-3: #E65100 */
+/* # Dark Green: #042A2B */
+/* # Minty Green(Medium Aquamarine) #69DC9E */
+/* # Light Yellow: #F2F3AE */
+/* # Dark Purple/eggplanty: #3A2449 */
+/* # Neon Carrot: #FC9E4F */
