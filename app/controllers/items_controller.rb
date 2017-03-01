@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.paginate(:page => params[:page], :per_page => 30)
+    @items = Item.all
     @popular_items = Item.most_popular
   end
 
@@ -19,6 +19,6 @@ class ItemsController < ApplicationController
   end
 
   def jumbotron
-    @items = Item.paginate(:page => params[:page], :per_page => 30)
+    @items = Item.all
   end
 end
