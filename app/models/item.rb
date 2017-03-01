@@ -1,15 +1,14 @@
 class Item < ApplicationRecord
-  # attr_reader :image_remote_url
   validates :title, :description, :price, presence: true
   validates :title, :description, uniqueness: true, allow_blank: false
-  # validates :price, numericality: true #, greater_than => 0
+
 
   belongs_to :category
   has_many :order_items
   has_many :orders, through: :order_items
   has_many :reviews
 
-  has_attached_file :image, styles: {medium: "200x200", thumb: "100x100"}, default_url: "/images/dumbledore.jpg" # "http://vignette3.wikia.nocookie.net/harrypotter/images/4/40/Albus_Dumbledore_%28HBP_promo%29_3.jpg/revision/latest/scale-to-width-down/700?cb=20150822232849"
+  has_attached_file :image, styles: {medium: "200x200", thumb: "100x100"}, default_url: "/images/dumbledore.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   enum item_status: ['available', 'retired']
@@ -28,8 +27,4 @@ class Item < ApplicationRecord
       []
     end
   end
-  # def image_remote_url(url_value)
-  #   self.image = URI.parse(url_value)
-  #   @image_remote_url = url_value
-  # end
 end
