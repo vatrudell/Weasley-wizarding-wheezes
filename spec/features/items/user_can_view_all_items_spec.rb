@@ -42,9 +42,10 @@ describe "When user visits root" do
                       quantity: 1,
                       price: item4.price)
     visit root_path
-    save_and_open_page
+
     within(".most-popular") do
       expect(page).to have_content("Our Most Popular Items")
+      expect(page).to have_css(".divider")
       expect(page).to have_content(item1.title)
       expect(page).to have_content(item2.title)
       expect(page).to have_content(item3.title)
