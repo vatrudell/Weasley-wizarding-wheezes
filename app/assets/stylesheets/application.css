@@ -264,7 +264,9 @@ a {
   color: #F2F3AE;
 }
 
-
+.dropdown-content li>a, .dropdown-content li>span {
+  color: #E65100;
+}
 
 /* # Orange darken-3: #E65100 */
 /* # Dark Green: #042A2B */
