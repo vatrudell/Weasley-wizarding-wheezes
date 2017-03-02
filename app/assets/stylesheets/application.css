@@ -132,6 +132,15 @@
   float: right;
 }
 
+.btn .btn-large #create-account {
+    text-decoration: none;
+    color: #fff;
+    background-color: #E65100;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    cursor: pointer;
+}
   /* ------------------ navbar ---------------- */
 nav .nav-wrapper{
   color: #F2F3AE;
