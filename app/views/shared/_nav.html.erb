@@ -38,7 +38,7 @@
           <% end %>
           <li>
             <% unless @cart.total_count.nil?  %>
-              <a href="/cart" class="cart-nav">Cart<span class="badge green circle"><%= @cart.total_count %></span></a></li>
+              <a href="/cart" class="cart-nav">Cart<span class="badge purple circle white-text"><%= @cart.total_count %></span></a></li>
             <% else %>
               <a href="/cart">Cart</a></li>
             <% end %>

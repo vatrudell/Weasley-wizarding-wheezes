@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
   end
 
   def define_categories
-    #defined here
     @categories = Category.all
   end
 

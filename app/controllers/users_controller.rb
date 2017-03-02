@@ -49,5 +49,4 @@ class UsersController < ApplicationController
                                  :last_name,
                                  :address)
   end
-
 end

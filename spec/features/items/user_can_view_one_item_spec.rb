@@ -12,4 +12,16 @@ describe 'when user visits show page for one item' do
     expect(page).to have_content(item.category.name)
     expect(page).to have_button('Add to Cart')
   end
+
+  scenario "they click on the logo" do
+    item = Fabricate(:item)
+
+    visit item_path(item)
+
+    within('.nav-wrapper') do
+      click_on "Weasleys' Wizard Wheezes"
+    end
+
+    expect(current_path).to eq(root_path)
+  end
 end

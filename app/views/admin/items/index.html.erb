@@ -10,15 +10,15 @@
   </tr>
   <% @items.each do |item| %>
     <tr>
-      <td class="avatar">
+      <td class="avatar" id="admin-item-image">
         <% if item.image_tag %>
-          <img class="image-format" src="<%= item.image_tag %>" class="circle" />
+          <img src="<%=item.image_tag%>" width=75px height=75px class="circle"/></td>
         <% else %>
-          <img class="image-format" src="<%= item.image.url %>" class="circle" />
+          <img src="<%= item.image.url %>" width=75px height=75px class="circle"/></td>
         <% end %>
       </td>
-      <td><%= link_to item.title, admin_item_path(item) %></td>
-      <td class="truncate"><%= item.description %></td>
+      <td class="item-description-head"><%= link_to item.title, admin_item_path(item) %></td>
+      <td class="truncate admin-item-description"><%= item.description %></td>
       <td><%= item.item_status %></td>
       <td><%= link_to "Edit", edit_admin_item_path(item) %></td>
     </tr>
