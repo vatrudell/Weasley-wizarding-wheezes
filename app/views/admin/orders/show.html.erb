@@ -14,7 +14,7 @@
       <tbody>
         <% @order.order_items.each do |order_item| %>
         <tr>
-          <td><%= link_to order_item.item.title, item_path(order_item.item) %></td>
+          <td><%= link_to order_item.item.title, admin_item_path(order_item.item) %></td>
           <td><%= number_to_currency(order_item.item.price, precision: 2) %></td>
           <td><%= order_item.quantity %></td>
           <td><%= number_to_currency(order_item.subtotal, precision: 2) %></td>

@@ -1,4 +1,5 @@
 <div class="row">
+<<<<<<< HEAD
 <% @items.each do |item| %>
   <div class="col s4">
     <div class="card">
@@ -18,9 +19,9 @@
             <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "btn" %>
           <% else %>
             <button  class="btn disabled">Retired</button>
-          <% end %>
+            <% end %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 </div>

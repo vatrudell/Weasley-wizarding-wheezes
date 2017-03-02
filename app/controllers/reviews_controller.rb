@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
   def create
     @item = Item.find(params[:item_id])
     @review = @item.reviews.new(review_params)
-
     if @review.save
       @review.update_attributes(author: current_user.username)
       flash[:notice] = "You have submitted a review"

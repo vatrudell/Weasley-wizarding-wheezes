@@ -20,8 +20,6 @@
  /* # Minty Green(Medium Aquamarine) #69DC9E */
  /* # Light Yellow: #F2F3AE */
  /* # Dark Purple/eggplanty: #3A2449 */
- /* # Neon Carrot: #FC9E4F */
- /* # Magnolia: #FAF4FF */
 
   /* ------------------- headers ------------------*/
 
@@ -80,6 +78,16 @@
     padding: 48px 0 0 0;
   }
 
+  .admin-item-description{
+    width: 650px;
+    display: inline-block;
+    padding: 30px 0 0 0;
+  }
+
+  #admin-item-image {
+    width: 100px;
+  }
+
   .item-description-head {
     width: 150px;
   }
@@ -118,7 +126,7 @@
   }
 
   .review-rating {
-    width: 50px;
+    width: 70px;
     float: right;
   }
 
@@ -141,9 +149,9 @@ nav .brand-logo {
     white-space: nowrap;
 }
 nav ul a {
-    transition: background-color .10s;
+    transition: background-color .3s;
     font-size: 1rem;
-    color: #3A2449 ;
+    color: #F2F3AE;
     display: block;
     padding: 0 15px;
     cursor: pointer;
@@ -153,12 +161,6 @@ nav a {
     background-color: transparent;
 }
 
-.green {
-    background-color: #F2F3AE !important;
-}
-span.badge {
-    color:  #3A2449;
-}
   /* ------------------- a ------------------   */
 
   /*----- jumbotron ---------*/
@@ -232,6 +234,7 @@ span.badge {
  color: #FC9E4F;
  background: #cc0000;
  }
+
 
  .btn {
   background: #69DC9E;

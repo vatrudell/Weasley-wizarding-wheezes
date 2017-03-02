@@ -4,8 +4,7 @@ describe "user adds an item to the cart" do
   it "from root path" do
     item = Fabricate(:item)
     visit root_path
-    click_on "Add to Cart"
-
+    click_on "Add to Cart" 
     within(".notice") do
       expect(page).to have_content("#{item.title} added to cart")
     end
