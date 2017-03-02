@@ -29,7 +29,6 @@ class Admin::ItemsController < Admin::BaseController
     @item.update(image_tag: nil) if item_params[:image]
     if @item.update_attributes(item_params)
       @item.update_attributes(item_status: params[:item][:item_status])
-      # byebug
       flash[:success] = "Mischief managed: #{@item.title} has been updated!"
       redirect_to admin_items_path
     else
