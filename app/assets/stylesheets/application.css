@@ -29,6 +29,8 @@
     min-height: 100vh;
     flex-direction: column;
     font-family: 'Chelsea Market', cursive;
+    background-color: #FAF4FF;
+    color: #3A2449;
   }
 
   #main {
@@ -193,6 +195,11 @@ nav a {
   font-size: 24px;
 }
 
+.btn-jumbotron:hover {
+  background: #3A2449;
+  color: #69DC9E;
+}
+
 .jumbo-block {
   background-color: #3A2449;
   color: #FC9E4F;
@@ -227,6 +234,43 @@ nav a {
  color: #FC9E4F;
  background: #cc0000;
  }
+
+
+ .btn {
+  background: #69DC9E;
+  color: #3A2449;
+ }
+
+.btn:hover {
+  background: #3A2449;
+  color: #69DC9E;
+}
+
+.footer-copyright .container {
+  color: #3A2449;
+}
+
+.card {
+  background: #EF7B45;
+}
+
+.orange-btn {
+  background: #E65100;
+  color: white;
+}
+
+a {
+  color:  #E65100 ;
+}
+
+.card-title {
+  color: #F2F3AE;
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+  color: #E65100;
+}
+
 /* # Orange darken-3: #E65100 */
 /* # Dark Green: #042A2B */
 /* # Minty Green(Medium Aquamarine) #69DC9E */

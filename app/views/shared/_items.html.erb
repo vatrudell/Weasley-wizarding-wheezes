@@ -1,23 +1,23 @@
 <div class="row">
-  <% @items.each do |item| %>
-    <div class="col s4">
-      <div class="card">
-        <div class="card-image">
-          <% if item.image_tag %>
-            <img class="image-format" src="<%= item.image_tag %>"/>
+<% @items.each do |item| %>
+  <div class="col s4">
+    <div class="card">
+      <div class="card-image">
+        <% if item.image_tag %>
+          <img class="image-format" src="<%= item.image_tag %>"/>
+        <% else %>
+          <img class="image-format" src="<%= item.image.url %>"/>
+        <% end %>
+      </div>
+      <div class="card-content">
+         <span class="card-title truncate"><%= link_to item.title, item_path(item), class: "card-title" %></span>
+         <h5>
+            <%= number_to_currency(item.price, precision: 2) %>
+        </h5>
+          <% if item.available? %>
+            <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "btn" %>
           <% else %>
-            <img class="image-format" src="<%= item.image.url %>"/>
-          <% end %>
-        </div>
-        <div class="card-content">
-           <span class="card-title truncate"><%= link_to item.title, item_path(item) %></span>
-           <h5>
-              <%= number_to_currency(item.price, precision: 2) %>
-          </h5>
-            <% if item.available? %>
-              <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "btn" %>
-            <% else %>
-              <button  class="btn disabled">Retired</button>
+            <button  class="btn disabled">Retired</button>
             <% end %>
         </div>
       </div>
