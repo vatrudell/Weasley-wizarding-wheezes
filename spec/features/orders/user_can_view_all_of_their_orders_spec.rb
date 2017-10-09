@@ -4,7 +4,7 @@ describe "When user views all orders" do
   scenario "they see all their orders" do
     user = Fabricate(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    category = Fabricate(:category)
+    Fabricate(:category)
     item1, item2 = Fabricate.times(2, :item)
 
     order1 = user.orders.create!(total_price: (item1.price + item2.price))

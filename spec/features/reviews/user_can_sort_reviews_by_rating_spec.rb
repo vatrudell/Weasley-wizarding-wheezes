@@ -9,7 +9,7 @@ describe "When a user visits an item page" do
 
       review3, review4 = Fabricate.times(2, :review, rating: 5, item: item)
 
-      user = Fabricate(:user)
+      Fabricate(:user)
       visit(item_path(item))
 
       select("Negative Reviews", from: 'review[sort_rating]')
