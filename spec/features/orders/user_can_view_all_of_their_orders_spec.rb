@@ -10,6 +10,7 @@ describe "When user views all orders" do
     order1 = user.orders.create!(total_price: (item1.price + item2.price))
     order2 = user.orders.create!(total_price: (item2.price * 2).round(2))
 
+
     OrderItem.create!(order: order1,
                       item: item1,
                       quantity: 1,
@@ -29,7 +30,6 @@ describe "When user views all orders" do
     expect(page).to have_content(order1.total_price)
     expect(page).to have_content(order1.total_price)
     expect(page).to have_button(order2.id)
-
     expect(page).to have_content(order2.total_price)
   end
 end
