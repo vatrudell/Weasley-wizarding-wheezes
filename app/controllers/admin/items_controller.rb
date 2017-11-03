@@ -21,11 +21,11 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @item = Item.find(item_id_param)
   end
 
   def update
-    @item = Item.find(params[:id])
+    @item = Item.find(item_id_param)
     @item.update(image_tag: nil) if item_params[:image]
     if @item.update_attributes(item_params)
       @item.update_attributes(item_status: params[:item][:item_status])
@@ -39,7 +39,7 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.find(item_id_param)
   end
 
   private
@@ -52,5 +52,9 @@ class Admin::ItemsController < Admin::BaseController
                                 :image,
                                 :status
                                 )
+  end
+
+  def item_id_param
+    params.require(:item).permit(:id)
   end
 end

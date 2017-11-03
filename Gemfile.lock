@@ -50,6 +50,7 @@ GEM
     arel (7.1.4)
     ast (2.3.0)
     bcrypt (3.1.11)
+    brakeman (4.0.1)
     builder (3.2.3)
     byebug (9.0.6)
     capybara (2.12.0)
@@ -226,6 +227,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  brakeman
   byebug
   capybara
   coffee-rails (~> 4.2)
@@ -252,4 +254,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.13.6
+   1.15.4

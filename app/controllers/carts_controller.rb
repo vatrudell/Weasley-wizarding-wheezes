@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def create
-    item = Item.find(params[:item_id])
+    item = Item.find(item_id_param)
     @cart.add_item(item.id)
     session[:cart] = @cart.contents
     flash[:notice] = "#{item.title} added to cart"
@@ -18,10 +18,16 @@ class CartsController < ApplicationController
     redirect_to cart_path
   end
 
-  def remove
-    item = Item.find(params[:item_id])
-    @cart.remove_item(params[:item_id])
+  def remove #this isn't restful
+    item = Item.find(item_id_param)
+    @cart.remove_item(item_id_param) #sanitize
     redirect_to cart_path(@cart)
     flash[:danger] = "Sucessfully Removed #{view_context.link_to(item.title, item_path(item))} from your cart"
+  end
+
+  private
+
+  def item_id_param
+    params.require(:item).permit(:item_id)
   end
 end
